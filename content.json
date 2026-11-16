@@ -5,15 +5,11 @@
     "instagram_second": "marta.matviykiv"
   },
   "photos": {
-    "about": "",
-    "contact": ""
+    "contact": "/images/hf_20260926_181224_6c8fef1f-475d-4294-984e-754c3ab91368.png"
   },
   "projects": [
     {
       "id": "rouge",
-      "placeholder": "product",
-      "tint": "#c1121f",
-      "images": [],
       "title_uk": "Rouge",
       "category_uk": "Рекламна кампанія · догляд за шкірою",
       "for_uk": "Запуск нового крему бренду косметики: соцмережі, сайт, банери.",
@@ -24,15 +20,11 @@
       "for_en": "Launch of a new cream for a cosmetics brand: social, website, banners.",
       "task_en": "Present the cream as a luxury object and create a series that stands out in the feed from the first second.",
       "solution_en": "Deep red, dramatic light and glass catching reflections. Each frame is built like a cover: one object, one emotion, nothing extra.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#c1121f",
+      "placeholder": "product"
     },
     {
       "id": "elysium",
-      "placeholder": "columns",
-      "tint": "#e08a3c",
-      "images": [],
       "title_uk": "Elysium",
       "category_uk": "Фотосесія · блогерка",
       "for_uk": "Особистий бренд блогерки: аватар, обкладинки, серія постів.",
@@ -43,15 +35,11 @@
       "for_en": "A creator’s personal brand: avatar, covers, a post series.",
       "task_en": "Place her in ancient Greece: marble, golden light, fabric in motion.",
       "solution_en": "Warm evening light, true architectural proportions and painterly composition in the manner of the old masters.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#e08a3c",
+      "placeholder": "columns"
     },
     {
       "id": "noir",
-      "placeholder": "portrait",
-      "tint": "#9a958e",
-      "images": [],
       "title_uk": "Noir",
       "category_uk": "Портретна серія · публічна людина",
       "for_uk": "Фото для інтерв’ю, обкладинки подкасту та преси.",
@@ -62,15 +50,11 @@
       "for_en": "Images for interviews, a podcast cover and press.",
       "task_en": "A restrained black-and-white look that shows character without excess gloss.",
       "solution_en": "Hard side light, deep shadows, visible skin texture. Retouching that keeps the personality.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#9a958e",
+      "placeholder": "portrait"
     },
     {
       "id": "dune",
-      "placeholder": "fashion",
-      "tint": "#3f9f97",
-      "images": [],
       "title_uk": "Dune",
       "category_uk": "Лукбук · бренд одягу",
       "for_uk": "Нова колекція бренду одягу для сайту та маркетплейсів.",
@@ -81,15 +65,11 @@
       "for_en": "A new collection for a fashion brand’s website and marketplaces.",
       "task_en": "Shoot the collection in the desert without sending a crew or weeks of prep.",
       "solution_en": "Sand, turquoise sky, models in motion. Fabrics keep their texture and colours match the real garments.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#3f9f97",
+      "placeholder": "fashion"
     },
     {
       "id": "soft-world",
-      "placeholder": "cartoon",
-      "tint": "#ff8fab",
-      "images": [],
       "title_uk": "Soft World",
       "category_uk": "AI-мультфільм · дитячий бренд",
       "for_uk": "Рекламний мультфільм і персонаж для дитячого бренду.",
@@ -100,15 +80,11 @@
       "for_en": "An animated ad and a mascot for a children’s brand.",
       "task_en": "Create a hero and a short story kids will want to watch again.",
       "solution_en": "Soft shapes, a pastel palette and a warm narrator. The character stays consistent in every scene.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#ff8fab",
+      "placeholder": "cartoon"
     },
     {
       "id": "neon-night",
-      "placeholder": "city",
-      "tint": "#ff2fd1",
-      "images": [],
       "title_uk": "Neon Night",
       "category_uk": "AI-відео · музичний реліз",
       "for_uk": "Тизер і обкладинка синглу для музиканта.",
@@ -119,18 +95,15 @@
       "for_en": "A teaser and single cover for a musician.",
       "task_en": "Build a visual world for the release that holds attention from the first frame.",
       "solution_en": "A night city, neon reflections on wet asphalt, cuts timed to the beat.",
-      "live_budget": "",
-      "live_people": "",
-      "live_days": ""
+      "tint": "#ff2fd1",
+      "placeholder": "city"
     }
   ],
   "singles": [
     {
-      "image": "",
       "placeholder": "columns"
     },
     {
-      "image": "",
       "placeholder": "product"
     }
   ],
@@ -140,11 +113,9 @@
       "name_uk": "AI-фотосесія",
       "desc_uk": "Персональна зйомка для блогерів і публічних людей: концепція, образи, локації, 10 фото у високій якості з повною схожістю.",
       "price_uk": "від 1 800 грн",
-      "note_uk": "",
       "name_en": "AI Photoshoot",
       "desc_en": "A personal shoot for creators and public figures: concept, looks, locations, 10 high-resolution photos with a true likeness.",
       "price_en": "from 1,800 UAH",
-      "note_en": "",
       "preview_project": "rouge",
       "calc_type": "package",
       "package_price": 1800,
@@ -156,19 +127,16 @@
       "qty_max": 50,
       "qty_step": 5,
       "unit_uk": "фото",
-      "unit_en": "photos",
-      "discounts": []
+      "unit_en": "photos"
     },
     {
       "id": "brand",
       "name_uk": "AI-контент для бренду",
       "desc_uk": "Предметна та рекламна зйомка продукту, лукбуки, кадри для соцмереж, сайту й маркетплейсів. 10 кадрів.",
       "price_uk": "від 3 200 грн",
-      "note_uk": "",
       "name_en": "AI Brand Content",
       "desc_en": "Product and advertising shots, lookbooks, images for social, web and marketplaces. 10 frames.",
       "price_en": "from 3,200 UAH",
-      "note_en": "",
       "preview_project": "rouge",
       "calc_type": "package",
       "package_price": 3200,
@@ -180,19 +148,16 @@
       "qty_max": 60,
       "qty_step": 5,
       "unit_uk": "кадрів",
-      "unit_en": "frames",
-      "discounts": []
+      "unit_en": "frames"
     },
     {
       "id": "identity",
       "name_uk": "AI-візуал під бренд",
       "desc_uk": "Власний візуальний стиль бренду: постійна AI-модель або персонаж, кольори, світло. Кампанія від 20 візуалів.",
       "price_uk": "від 9 500 грн",
-      "note_uk": "",
       "name_en": "AI Brand Visual Identity",
       "desc_en": "Your brand’s own visual language: a recurring AI model or character, colour, light. A campaign of 20+ visuals.",
       "price_en": "from 9,500 UAH",
-      "note_en": "",
       "preview_project": "dune",
       "calc_type": "package",
       "package_price": 9500,
@@ -204,8 +169,7 @@
       "qty_max": 80,
       "qty_step": 5,
       "unit_uk": "візуалів",
-      "unit_en": "visuals",
-      "discounts": []
+      "unit_en": "visuals"
     },
     {
       "id": "illus",
@@ -257,19 +221,16 @@
       "qty_max": 10,
       "qty_step": 1,
       "unit_uk": "ролик(ів)",
-      "unit_en": "video(s)",
-      "discounts": []
+      "unit_en": "video(s)"
     },
     {
       "id": "anim",
       "name_uk": "AI-мультфільм",
       "desc_uk": "Анімаційна історія від ідеї до готового фільму: сценарій, персонажі, озвучка, музика.",
       "price_uk": "від 5 000 грн / хв",
-      "note_uk": "",
       "name_en": "AI Animation",
       "desc_en": "An animated story from idea to finished film: script, characters, voice, music.",
       "price_en": "from 5,000 UAH / min",
-      "note_en": "",
       "preview_project": "soft-world",
       "calc_type": "per",
       "package_price": 0,
@@ -281,8 +242,7 @@
       "qty_max": 10,
       "qty_step": 1,
       "unit_uk": "хв",
-      "unit_en": "min",
-      "discounts": []
+      "unit_en": "min"
     },
     {
       "id": "voice",
@@ -305,8 +265,7 @@
       "qty_max": 20,
       "qty_step": 1,
       "unit_uk": "ролик(ів)",
-      "unit_en": "clip(s)",
-      "discounts": []
+      "unit_en": "clip(s)"
     },
     {
       "id": "edit",
@@ -329,8 +288,7 @@
       "qty_max": 20,
       "qty_step": 1,
       "unit_uk": "Reels",
-      "unit_en": "Reels",
-      "discounts": []
+      "unit_en": "Reels"
     },
     {
       "id": "retouch",
@@ -368,31 +326,30 @@
   ],
   "urgency": [
     {
-      "extra_percent": 0,
       "name_uk": "Стандарт",
       "time_uk": "5–7 робочих днів",
       "name_en": "Standard",
-      "time_en": "5–7 working days"
+      "time_en": "5–7 working days",
+      "extra_percent": 0
     },
     {
-      "extra_percent": 30,
       "name_uk": "Швидко",
       "time_uk": "2–3 дні",
       "name_en": "Fast",
-      "time_en": "2–3 days"
+      "time_en": "2–3 days",
+      "extra_percent": 30
     },
     {
-      "extra_percent": 60,
       "name_uk": "Терміново",
       "time_uk": "24–48 годин",
       "name_en": "Urgent",
-      "time_en": "24–48 hours"
+      "time_en": "24–48 hours",
+      "extra_percent": 60
     }
   ],
   "journal": [
     {
       "project": "rouge",
-      "cover": "",
       "title_uk": "Як зібрати світло для кадру Rouge",
       "meta_uk": "Розбір · 3 хв",
       "excerpt_uk": "Чому червоний виглядає дорого лише з правильними тінями, і як скло стає головним героєм.",
@@ -404,7 +361,6 @@
     },
     {
       "project": "elysium",
-      "cover": "",
       "title_uk": "Античність без виїзду: Elysium",
       "meta_uk": "Розбір · 4 хв",
       "excerpt_uk": "Як перенести людину в Грецію й не загубити її впізнаваність.",
@@ -416,7 +372,6 @@
     },
     {
       "project": "noir",
-      "cover": "",
       "title_uk": "Чому ретуш не повинна стирати шкіру",
       "meta_uk": "Думка · 2 хв",
       "excerpt_uk": "Про пори, текстуру й портрети, яким хочеться вірити.",
@@ -427,8 +382,6 @@
       "body_en": "Perfectly smooth skin reads as a mask. Viewers can’t say why, but they stop trusting the image.\n\n## What I remove\n\nThe temporary: irritation, signs of fatigue, stray hairs, glare. Things that wouldn’t be there on a good day.\n\n## What I keep\n\nPores, smile lines, moles. That is the character people recognise."
     }
   ],
-  "retouch": [],
-  "idea": [],
   "photographers": {
     "prices": [
       {
