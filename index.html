@@ -67,7 +67,7 @@ button{background:none;border:0;padding:0;cursor:pointer}
 #pre .bar i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0);transition:transform .3s linear}
 
 /* header */
-header.top{position:fixed;left:0;right:0;top:0;z-index:120;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent}
+header.top{position:fixed;left:0;right:0;top:0;z-index:140;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent}
 header.top.solid{background:rgba(11,11,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
 .top .logo{font-size:20px;text-decoration:none;padding-left:.16em}
@@ -94,10 +94,11 @@ header.top.solid{background:rgba(11,11,12,.72);backdrop-filter:blur(14px);-webki
 .menu-btn i:first-child{top:18px}.menu-btn i:last-child{top:26px}
 .menu-open .menu-btn i:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-open .menu-btn i:last-child{transform:translateY(-4px) rotate(-45deg)}
-#mnav{position:fixed;inset:0;z-index:110;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:96px var(--gut) 40px;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease);visibility:hidden;overflow-y:auto}
+#mnav{position:fixed;inset:0;z-index:135;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-start;gap:4px;padding:clamp(110px,16vh,160px) var(--gut) 40px;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease);visibility:hidden;overflow-y:auto}
 .menu-open #mnav{clip-path:inset(0);visibility:visible}
 #mnav a{font-family:var(--f-head);font-weight:300;font-size:clamp(38px,10vw,64px);line-height:1.15;text-decoration:none}
-#mnav .micro{margin-top:28px}
+#mnav .micro{margin-top:28px;letter-spacing:.2em;line-height:2;white-space:pre-line}
+.menu-open .hero-c,.menu-open #stage{visibility:hidden}
 
 /* hero sphere */
 #hero{position:relative;height:clamp(600px,100svh,1000px);overflow:hidden;background:radial-gradient(ellipse 60% 55% at 50% 50%,#19181B 0%,var(--bg) 70%)}
@@ -768,7 +769,7 @@ $$(".lang button").forEach(function(b){ b.addEventListener("click",function(){ l
 (function(){ var igs=SITE.instagram||[]; var ig=$("#igBtn"); if(!igs.length) return; ig.parentNode.removeChild(ig);
   var box=$("#contact .ctas"), ref=box.children[1]||null;
   igs.forEach(function(h){ var a=document.createElement("a"); a.className="btn"; a.href="https://instagram.com/"+h; a.target="_blank"; a.rel="noopener"; a.textContent="Instagram · @"+h; box.insertBefore(a,ref); });
-  var mn=$("#mnav .micro"); if(mn) mn.textContent="Telegram · @"+SITE.telegram+"  ·  Instagram · @"+igs[0];
+  var mn=$("#mnav .micro"); if(mn) mn.textContent="Telegram · @"+SITE.telegram+"\nInstagram · @"+igs[0];
 })();
 $$('a[href^="https://t.me/"]').forEach(function(x){ x.href="https://t.me/"+SITE.telegram; if(/Telegram · @/.test(x.textContent)) x.textContent="Telegram · @"+SITE.telegram; });
 
