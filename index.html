@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATIÉ AI Visual Studio</title>
+<meta name="description" content="MATIÉ — AI-фотосесії, контент для брендів, AI-відео, мультфільми та ретуш від Marta Matviikiv.">
+<link rel="canonical" href="https://matie.vercel.app/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0C">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MATIÉ">
+<meta property="og:title" content="MATIÉ — AI Visual Studio by Marta Matviikiv">
+<meta property="og:description" content="AI-фотосесії, контент для брендів, AI-відео, мультфільми та ретуш.">
+<meta property="og:url" content="https://matie.vercel.app/">
+<meta property="og:image" content="https://matie.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"MATIÉ AI Visual Studio","url":"https://matie.vercel.app/","image":"https://matie.vercel.app/og.jpg","founder":{"@type":"Person","name":"Marta Matviikiv"},"areaServed":"Worldwide","priceRange":"₴₴","sameAs":["https://t.me/martamatviykiv","https://instagram.com/matiemoi","https://instagram.com/marta.matviykiv"]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* MATIÉ — one dark "museum at night" world; the work is the colour */
+  --bg:#0B0B0C; --bg-2:#141315; --ink:#EDE8E0; --soft:#C9C3BA; --muted:#8A857E; --line:rgba(237,232,224,.14); --accent:#C9B79C;
+  --f-logo:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-head:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:clamp(16px,4vw,56px); --max:1360px;
+  --ease:cubic-bezier(.19,1,.22,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--ink);color:var(--bg);padding:10px 16px;font-size:13px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.micro{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:250;opacity:.07;mix-blend-mode:overlay;background-size:256px 256px}
+
+/* logo wordmark */
+.logo{font-family:var(--f-logo);font-weight:400;letter-spacing:.16em;line-height:1;white-space:nowrap;text-transform:uppercase}
+.logo .e{position:relative;display:inline-block;letter-spacing:0}
+.logo .acc{position:absolute;left:.34em;top:-.34em;width:max(1px,.013em);height:.4em;background:linear-gradient(to top,var(--accent),rgba(201,183,156,.1));transform:rotate(36deg);transform-origin:bottom center}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transition:clip-path 1.1s var(--ease)}
+#pre.out{clip-path:inset(0 0 100% 0)}
+#pre .logo{font-size:clamp(44px,9vw,120px);padding-left:.16em;display:flex}
+#pre .logo > span{display:inline-block;opacity:0;transform:translateY(40%);filter:blur(8px);transition:opacity 1s var(--ease),transform 1.2s var(--ease),filter 1s var(--ease)}
+#pre.go .logo > span{opacity:1;transform:none;filter:none}
+#pre .acc{transform:rotate(36deg) scaleY(0);transition:transform .9s var(--ease) .75s}
+#pre.go .acc{transform:rotate(36deg) scaleY(1)}
+#pre .bar{width:min(220px,50vw);height:1px;background:var(--line);position:relative;overflow:hidden}
+#pre .bar i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0);transition:transform .3s linear}
+
+/* header */
+header.top{position:fixed;left:0;right:0;top:0;z-index:120;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent}
+header.top.solid{background:rgba(11,11,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.top .logo{font-size:20px;text-decoration:none;padding-left:.16em}
+.nav{display:flex;align-items:center;gap:clamp(14px,2vw,34px)}
+.nav a.l{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:.78;position:relative;padding:12px 0;white-space:nowrap}
+.nav a.l::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.nav a.l:hover{opacity:1}.nav a.l:hover::after{transform:scaleX(1);transform-origin:left}
+.tools{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line)}
+.lang button{font-size:11px;font-weight:600;letter-spacing:.16em;padding:9px 10px;min-width:44px;min-height:40px;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.snd{width:44px;height:42px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:2px}
+.snd i{display:block;width:2px;height:6px;background:var(--muted);transition:height .3s}
+.snd[aria-pressed="true"] i{background:var(--ink);animation:eq 1.1s ease-in-out infinite}
+.snd[aria-pressed="true"] i:nth-child(2){animation-delay:.2s}.snd[aria-pressed="true"] i:nth-child(3){animation-delay:.45s}.snd[aria-pressed="true"] i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:5px}50%{height:16px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:0 24px;border:1px solid rgba(237,232,224,.4);font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;transition:background .5s var(--ease),color .5s var(--ease),border-color .5s;white-space:nowrap}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.fill:hover{background:var(--accent);border-color:var(--accent)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.menu-btn{display:none;width:44px;height:44px;position:relative}
+.menu-btn i{position:absolute;left:10px;right:10px;height:1px;background:var(--ink);transition:transform .5s var(--ease)}
+.menu-btn i:first-child{top:18px}.menu-btn i:last-child{top:26px}
+.menu-open .menu-btn i:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-open .menu-btn i:last-child{transform:translateY(-4px) rotate(-45deg)}
+#mnav{position:fixed;inset:0;z-index:110;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:96px var(--gut) 40px;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease);visibility:hidden;overflow-y:auto}
+.menu-open #mnav{clip-path:inset(0);visibility:visible}
+#mnav a{font-family:var(--f-head);font-weight:300;font-size:clamp(38px,10vw,64px);line-height:1.15;text-decoration:none}
+#mnav .micro{margin-top:28px}
+
+/* hero sphere */
+#hero{position:relative;height:clamp(600px,100svh,1000px);overflow:hidden;background:radial-gradient(ellipse 60% 55% at 50% 50%,#19181B 0%,var(--bg) 70%)}
+#stage{position:absolute;inset:0;cursor:grab;touch-action:pan-y}
+#stage.drag{cursor:grabbing}
+.card{position:absolute;left:0;top:0;will-change:transform,opacity;padding:0;background:#1a191b;box-shadow:0 20px 50px rgba(0,0,0,.5);transform-origin:center}
+.card img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;user-select:none}
+.card::after{content:"";position:absolute;inset:0;border:1px solid rgba(237,232,224,.12);transition:border-color .4s}
+.card:hover::after{border-color:var(--accent)}
+.hero-word{position:absolute;margin:0;left:50%;top:50%;transform:translate(-50%,-50%);z-index:50;pointer-events:none;font-size:clamp(60px,16.5vw,270px);padding-left:.16em;text-shadow:0 10px 60px rgba(0,0,0,.4)}
+.hero-c{position:absolute;z-index:120;pointer-events:none;margin:0}
+.hero-c.tl{left:var(--gut);top:104px}.hero-c.tr{right:var(--gut);top:104px;text-align:right}
+.hero-c.bl{left:var(--gut);bottom:36px;max-width:420px;pointer-events:auto}
+.hero-c.br{right:var(--gut);bottom:36px;text-align:right}
+.hero-c.bl p{margin:0 0 20px;font-size:15px;color:var(--ink);opacity:.86;line-height:1.55}
+.hero-c.bl .ctas{margin:0}
+.drag-hint{display:inline-flex;align-items:center;gap:12px}
+.drag-hint svg{width:42px;height:12px}
+
+/* cursor */
+#cur{position:fixed;left:0;top:0;z-index:260;pointer-events:none;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:1px solid var(--ink);transition:width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),background .45s,border-color .45s;display:flex;align-items:center;justify-content:center;opacity:0}
+#cur span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);opacity:0;transition:opacity .3s;white-space:nowrap}
+#cur.big{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--ink);border-color:var(--ink)}
+#cur.big span{opacity:1}
+#tip{position:fixed;left:0;top:0;z-index:255;pointer-events:none;font-family:var(--f-head);font-style:italic;font-size:22px;opacity:0;transition:opacity .3s;white-space:nowrap;text-shadow:0 2px 16px rgba(0,0,0,.8)}
+@media (hover:hover) and (pointer:fine){#cur{opacity:1}}
+
+/* sections */
+section{position:relative}
+.sec{padding:clamp(88px,12vw,180px) 0}
+.sec.tight{padding-top:0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:24px var(--gut);align-items:end;margin-bottom:clamp(40px,6vw,80px)}
+h2{font-family:var(--f-head);font-weight:300;font-size:clamp(44px,7vw,112px);line-height:.95;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2 em,h3 em,.big em{font-style:italic;color:var(--accent)}
+.lede{color:var(--muted);max-width:56ch;margin:16px 0 0}
+.head-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.rv{transition:opacity 1.2s var(--ease),transform 1.4s var(--ease)}
+.rv.pre{opacity:.15;transform:translateY(40px)}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,36px) clamp(16px,2vw,28px)}
+.work{display:flex;flex-direction:column;gap:16px;text-align:left}
+.work:nth-child(3n+2){margin-top:clamp(0px,8vw,120px)}
+.work .ph{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--bg-2);position:relative}
+.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.work:hover .ph img{transform:scale(1.06)}
+.work .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:14px}
+.work .h3{display:block;font-family:var(--f-head);font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.1}
+.work .cat{display:block;font-size:13px;color:var(--muted);margin:2px 0 0}
+.work .n{font-family:var(--f-logo);font-size:13px;color:var(--muted);letter-spacing:.1em}
+
+/* marquee */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;white-space:nowrap}
+.marq .track{display:inline-flex;gap:48px;animation:marq 40s linear infinite;padding-left:48px}
+.marq span{font-family:var(--f-head);font-style:italic;font-weight:300;font-size:clamp(32px,4.4vw,64px);line-height:1}
+.marq b{font-family:var(--f-logo);font-weight:400;color:var(--accent);font-size:.5em;align-self:center}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:center}
+.about .portrait{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg-2);margin:0}
+.about .portrait img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.about .portrait figcaption{position:absolute;left:16px;bottom:14px}
+.big{font-family:var(--f-head);font-weight:300;font-size:clamp(34px,4.2vw,64px);line-height:1.08;margin:0 0 32px;text-wrap:balance}
+.about p.body{max-width:56ch;color:var(--soft);margin:0 0 18px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);margin-top:36px;padding-top:24px}
+.facts b{display:block;font-family:var(--f-head);font-weight:300;font-size:30px;line-height:1.1}
+.facts span{font-size:13px;color:var(--muted)}
+
+/* services */
+.svc{border-top:1px solid var(--line);list-style:none;margin:0;padding:0}
+.svc li{display:grid;grid-template-columns:56px minmax(0,1.3fr) minmax(0,1.6fr) minmax(150px,auto);gap:16px var(--gut);align-items:baseline;padding:28px 0;border-bottom:1px solid var(--line);position:relative;transition:padding .7s var(--ease)}
+.svc li:hover{padding-left:16px}
+.svc .i{font-family:var(--f-logo);font-size:13px;color:var(--muted)}
+.svc h3{font-family:var(--f-head);font-weight:400;font-size:clamp(28px,2.8vw,40px);line-height:1.05;margin:0}
+.svc h3 small{display:block;font-family:var(--f-body);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.svc p{margin:0;color:var(--soft);font-size:15px}
+.svc .pr{text-align:right;font-family:var(--f-head);font-size:24px;white-space:nowrap}
+.svc .pr small{display:block;font-family:var(--f-body);font-size:12px;color:var(--muted);white-space:normal}
+#peek{position:fixed;left:0;top:0;z-index:90;width:220px;aspect-ratio:4/5;pointer-events:none;opacity:0;transition:opacity .4s;overflow:hidden}
+#peek.on{opacity:1}
+#peek img{width:100%;height:100%;object-fit:cover}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);border:1px solid var(--line)}
+.calc .form{padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:36px}
+.calc fieldset{border:0;margin:0;padding:0;min-width:0}
+.calc legend{padding:0;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line);font-size:14px;transition:background .4s,color .4s,border-color .4s}
+.chip input:checked + span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip input:focus-visible + span{outline:1px solid var(--accent);outline-offset:3px}
+.chip:hover span{border-color:rgba(237,232,224,.5)}
+.qty{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.qty input[type=range]{flex:1 1 220px;accent-color:var(--ink);height:32px}
+.qty output{font-family:var(--f-head);font-size:36px;min-width:120px;line-height:1}
+.qty output small{font-family:var(--f-body);font-size:13px;color:var(--muted);margin-left:6px}
+.opt{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--soft);min-height:44px;cursor:pointer}
+.opt input{width:20px;height:20px;accent-color:var(--ink)}
+.calc textarea{width:100%;min-height:96px;background:transparent;border:1px solid var(--line);padding:14px 16px;font-size:15px;resize:vertical}
+.calc textarea:focus{border-color:var(--accent);outline:none}
+.calc label.micro{display:block;margin-bottom:12px}
+.calc .sum{background:var(--bg-2);padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:20px;border-left:1px solid var(--line)}
+.calc .total{font-family:var(--f-head);font-weight:300;font-size:clamp(52px,6vw,88px);line-height:1;font-variant-numeric:tabular-nums}
+.calc .total small{font-size:.4em;color:var(--muted)}
+.calc .line{display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:10px}
+.calc .line b{font-weight:500;color:var(--ink);text-align:right}
+.calc .msg{font-size:13px;color:var(--muted);white-space:pre-line;border:1px dashed var(--line);padding:14px;max-height:180px;overflow:auto}
+.calc .acts{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.calc .acts .btn{width:100%}
+.status{font-size:13px;color:var(--accent);min-height:20px;margin:0}
+
+/* before / after (retouch + idea) */
+.ba-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.ba-wrap{display:flex;flex-direction:column;gap:14px;margin:0}
+.ba-wrap figcaption{font-size:14px;color:var(--soft)}
+.ba{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg-2);--p:50%;user-select:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .before{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--p);width:1px;background:var(--ink);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--p);width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;border:1px solid var(--ink);background:rgba(11,11,12,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.ba .knob svg{width:28px;height:12px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:pan-y}
+.ba input:focus-visible ~ .knob{outline:1px solid var(--accent);outline-offset:4px}
+.ba .tag{position:absolute;top:14px;padding:6px 10px;background:rgba(11,11,12,.6);pointer-events:none}
+.ba .tag.b{left:14px}.ba .tag.a{right:14px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.step{border-top:1px solid var(--line);padding-top:24px}
+.step .k{font-family:var(--f-logo);font-size:13px;color:var(--accent);letter-spacing:.1em}
+.step h3{font-family:var(--f-head);font-weight:400;font-size:32px;margin:14px 0 10px;line-height:1.05}
+.step p{margin:0;color:var(--soft);font-size:15px}
+
+/* journal */
+.jr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.jcard{display:flex;flex-direction:column;gap:16px;text-align:left}
+.jcard .ph{display:block;aspect-ratio:3/2;overflow:hidden;background:var(--bg-2)}
+.jcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.jcard:hover .ph img{transform:scale(1.05)}
+.jcard .h3{display:block;font-family:var(--f-head);font-weight:400;font-size:clamp(26px,2.2vw,32px);line-height:1.1;text-wrap:balance}
+.jcard .ex{display:block;color:var(--soft);font-size:15px}
+.jcard .meta{display:block}
+
+/* contact */
+#contact{min-height:clamp(560px,90svh,900px);display:flex;align-items:flex-end;overflow:hidden}
+#contact .bgimg{position:absolute;inset:0}
+#contact .bgimg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.5}
+#contact .bgimg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 8%,rgba(11,11,12,.55) 55%,rgba(11,11,12,.75))}
+#contact .wrap{position:relative;width:100%;padding-bottom:clamp(48px,7vw,96px)}
+#contact h2{font-size:clamp(52px,9vw,150px);max-width:12ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:28px;padding-bottom:28px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+footer nav a,footer nav button{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+footer nav a:hover,footer nav button:hover{color:var(--ink)}
+
+/* overlays (project, article, photographers) */
+.ov{position:fixed;inset:0;z-index:150;background:radial-gradient(120% 60% at 50% 0%,var(--tint,rgba(0,0,0,0)),rgba(0,0,0,0) 70%),var(--bg);overflow-y:auto;overscroll-behavior:contain;clip-path:inset(100% 0 0 0);visibility:hidden;transition:clip-path 1s var(--ease),visibility 0s linear 1s}
+.ov.open{clip-path:inset(0);visibility:visible;transition:clip-path 1s var(--ease)}
+.ov.fly{clip-path:inset(0);visibility:visible;opacity:0;transition:opacity .8s var(--ease) .25s}
+.ov.fly.open{opacity:1}
+.ov.flying .cover img{opacity:0}
+.ov .bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--gut);background:rgba(11,11,12,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.ov .cover{position:relative;height:clamp(420px,82svh,900px);overflow:hidden}
+.ov .cover img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.ov .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg),rgba(11,11,12,0) 55%)}
+.ov .cover .t{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(24px,4vw,56px);z-index:2}
+.ov .cover h2{font-size:clamp(56px,11vw,180px)}
+.flyer{position:fixed;z-index:165;overflow:hidden;pointer-events:none;transition:left 1s var(--ease),top 1s var(--ease),width 1s var(--ease),height 1s var(--ease),opacity .4s}
+.flyer img{width:100%;height:100%;object-fit:cover}
+.pinfo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px var(--gut);padding:clamp(40px,6vw,80px) 0}
+.pinfo h3{margin:0 0 10px}
+.pinfo p{margin:0;color:var(--soft);max-width:44ch}
+.live{border:1px solid var(--line);padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.2fr) repeat(3,minmax(0,1fr));gap:24px var(--gut);align-items:end;margin-bottom:clamp(48px,7vw,96px)}
+.live h3{font-family:var(--f-head);font-weight:300;font-size:clamp(28px,3vw,44px);margin:0;line-height:1.05;text-wrap:balance}
+.live b{display:block;font-family:var(--f-head);font-weight:300;font-size:clamp(36px,4vw,60px);line-height:1}
+.live span{font-size:13px;color:var(--muted)}
+.ph-val{color:var(--muted)}
+.gal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
+.gal button{overflow:hidden;background:var(--bg-2);aspect-ratio:4/5}
+.gal button:nth-child(5n+1){grid-column:span 4;aspect-ratio:16/10}
+.gal button:nth-child(5n+2){grid-column:span 2;aspect-ratio:auto}
+.gal button:nth-child(5n+3),.gal button:nth-child(5n+4),.gal button:nth-child(5n+5){grid-column:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.gal button:hover img{transform:scale(1.04)}
+.pfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:clamp(48px,7vw,96px) 0}
+.article{max-width:720px;margin:0 auto;padding:clamp(40px,6vw,80px) 0}
+.article p{font-size:18px;line-height:1.75;color:var(--soft);margin:0 0 24px}
+.article h3{font-family:var(--f-head);font-weight:400;font-size:34px;line-height:1.1;margin:48px 0 16px}
+.article .draft{border:1px dashed var(--line);padding:12px 16px;margin-bottom:32px}
+.ptable{border-top:1px solid var(--line);margin:0 0 clamp(48px,6vw,80px);padding:0;list-style:none}
+.ptable li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;gap:16px var(--gut);align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line)}
+.ptable h3{font-family:var(--f-head);font-weight:400;font-size:32px;margin:0;line-height:1.1}
+.ptable p{margin:0;color:var(--soft);font-size:15px}
+.ptable .pr{font-family:var(--f-head);font-size:26px;white-space:nowrap}
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px var(--gut);margin-bottom:clamp(48px,6vw,80px)}
+.terms div{border-top:1px solid var(--line);padding-top:18px}
+.terms b{display:block;font-family:var(--f-head);font-weight:400;font-size:26px;line-height:1.15;margin-bottom:6px}
+.terms span{font-size:14px;color:var(--soft)}
+#lb{position:fixed;inset:0;z-index:170;background:rgba(11,11,12,.97);display:none;align-items:center;justify-content:center;touch-action:pan-y}
+#lb.open{display:flex}
+#lb img{max-width:min(92vw,1100px);max-height:84svh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb .ctl{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+#lb .ctl:hover{border-color:var(--ink)}
+#lb .prev{left:var(--gut)}#lb .next{right:var(--gut)}
+#lb .x{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:var(--gut);transform:none;z-index:2;background:rgba(11,11,12,.6)}
+#lb .cnt{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);margin:0}
+#lb.single .prev,#lb.single .next,#lb.single .cnt{display:none}
+.icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.2}
+
+@media (max-width:1180px){
+  .nav a.l,.nav > .btn{display:none}
+  .menu-btn{display:block}
+}
+@media (max-width:980px){
+  .works,.jr{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .work:nth-child(3n+2){margin-top:0}.work:nth-child(2n){margin-top:clamp(0px,10vw,80px)}
+  .about{grid-template-columns:minmax(0,1fr)}
+  .about .portrait{max-width:520px}
+  .svc li{grid-template-columns:40px minmax(0,1fr)}
+  .svc p,.svc .pr{grid-column:2}
+  .svc .pr{text-align:left}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pinfo,.terms{grid-template-columns:minmax(0,1fr)}
+  .live{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .live > div:first-child{grid-column:1/-1}
+  .sec-head{grid-template-columns:minmax(0,1fr)}
+  .calc{grid-template-columns:minmax(0,1fr)}
+  .calc .sum{border-left:0;border-top:1px solid var(--line)}
+  .ptable li{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .hero-c.tl{top:92px}
+  .hero-c.tr,.hero-c.br{display:none}
+  .hero-c.bl{right:var(--gut);max-width:none}
+  .ba-grid{grid-template-columns:minmax(0,1fr)}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gal button,.gal button:nth-child(n){grid-column:span 1;aspect-ratio:4/5}
+  .gal button:nth-child(3n+1){grid-column:span 2;aspect-ratio:16/11}
+  #lb .prev,#lb .next{top:auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none;background:rgba(11,11,12,.6)}
+  #lb .cnt{bottom:calc(38px + env(safe-area-inset-bottom,0px))}
+  .tools .snd{width:40px}
+}
+@media (max-width:520px){
+  .works,.jr{grid-template-columns:minmax(0,1fr)}
+  .work:nth-child(n){margin-top:0}
+  .steps,.facts,.live{grid-template-columns:minmax(0,1fr)}
+  .top .logo{font-size:17px}
+  .lang button{min-width:40px;padding:9px 6px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+  .rv.pre{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#works" data-i18n="skip">Перейти до робіт</a>
+<div class="grain" id="grain" aria-hidden="true"></div>
+
+<div id="pre" aria-hidden="true">
+  <div class="logo"><span>M</span><span>A</span><span>T</span><span>I</span><span class="e">E<span class="acc"></span></span></div>
+  <div class="bar"><i></i></div>
+</div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a href="#hero" class="logo" aria-label="MATIÉ"><span aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span></a>
+    <nav class="nav" aria-label="Головне меню" data-i18n-aria="navAria">
+      <a class="l" href="#works" data-i18n="nWorks">Роботи</a>
+      <a class="l" href="#services" data-i18n="nServices">Послуги</a>
+      <a class="l" href="#calc" data-i18n="nCalc">Калькулятор</a>
+      <a class="l" href="#journal" data-i18n="nJournal">Журнал</a>
+      <a class="l" href="#photographers" data-i18n="nPhoto">Фотографам</a>
+      <a class="l" href="#contact" data-i18n="nContact">Контакти</a>
+      <div class="tools">
+        <button class="snd" type="button" id="sndBtn" aria-pressed="false" aria-label="Увімкнути звук" data-i18n-aria="sndOn"><i></i><i></i><i></i><i></i></button>
+        <div class="lang" role="group" aria-label="Мова / Language">
+          <button type="button" data-lang="uk" aria-pressed="true">UA</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <a class="btn" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="cta">Написати</a>
+      <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Меню" data-i18n-aria="menu"><i></i><i></i></button>
+    </nav>
+  </div>
+</header>
+<div id="mnav" aria-hidden="true">
+  <a href="#works" data-i18n="nWorks">Роботи</a>
+  <a href="#services" data-i18n="nServices">Послуги</a>
+  <a href="#calc" data-i18n="nCalc">Калькулятор</a>
+  <a href="#journal" data-i18n="nJournal">Журнал</a>
+  <a href="#photographers" data-i18n="nPhoto">Фотографам</a>
+  <a href="#about" data-i18n="nAbout">Про мене</a>
+  <a href="#contact" data-i18n="nContact">Контакти</a>
+  <p class="micro">Telegram · @martamatviykiv</p>
+</div>
+
+<main>
+<section id="hero" aria-labelledby="heroTitle">
+  <h1 id="heroTitle" class="logo hero-word"><span aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span><span class="sr">MATIÉ — AI Visual Studio</span></h1>
+  <div id="stage" role="region" aria-label="3D-сфера з роботами" data-i18n-aria="stageAria"></div>
+  <p class="hero-c tl micro">AI Visual Studio</p>
+  <p class="hero-c tr micro">Marta Matviikiv</p>
+  <div class="hero-c bl">
+    <p data-i18n="heroLede">Рекламні кампанії, фотосесії та відео, створені з AI. Без студії, моделей і тижнів продакшну.</p>
+    <div class="ctas"><a class="btn fill" href="#works" data-i18n="heroBtn">Дивитись роботи</a><a class="btn" href="#calc" data-i18n="heroCalc">Розрахувати ціну</a></div>
+  </div>
+  <p class="hero-c br micro drag-hint"><svg viewBox="0 0 42 12" aria-hidden="true"><path d="M1 6h40M1 6l5-5M1 6l5 5M41 6l-5-5M41 6l-5 5" stroke="currentColor" fill="none" stroke-width="1"/></svg><span data-i18n="drag">Тягніть, щоб роздивитися</span></p>
+</section>
+
+<section id="works" class="sec" aria-labelledby="worksT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" id="worksK"></p>
+      <div><h2 id="worksT" data-i18n-html="worksT">Світи, які <em>не існували</em> до зйомки</h2>
+      <p class="lede" data-i18n="worksL">Натисніть на проєкт, щоб відкрити галерею.</p></div>
+    </div>
+    <div class="works" id="worksGrid"></div>
+  </div>
+</section>
+
+<section id="idea" class="sec tight" aria-labelledby="ideaT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="ideaK">Ідея → кадр</p>
+      <div><h2 id="ideaT" data-i18n-html="ideaT">Від ескізу до <em>кампанії</em></h2>
+      <p class="lede" data-i18n="ideaL">Потягніть повзунок. Зліва те, з чим приходить клієнт: ескіз, референс або фото з телефона. Справа готовий кадр.</p></div>
+    </div>
+    <div class="ba-grid" id="ideaGrid"></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="track" id="marq"></div></div>
+
+<section id="about" class="sec" aria-labelledby="aboutT">
+  <div class="wrap about">
+    <figure class="portrait rv"><img id="aboutImg" alt="" data-i18n-alt="aboutAlt"><figcaption class="micro">Marta Matviikiv</figcaption></figure>
+    <div class="rv">
+      <p class="micro" data-i18n="aboutK">Про мене</p>
+      <h2 id="aboutT" class="big" data-i18n-html="aboutT">Я створюю кадри, які <em>неможливо зняти</em>, або які коштували б цілої знімальної групи.</h2>
+      <p class="body" data-i18n="aboutP1">Мене звати Марта Матвіїків. Я працюю з брендами, блогерами та публічними людьми: від ідеї та образу до готових фото й відео.</p>
+      <p class="body" data-i18n="aboutP2">AI для мене інструмент, а не стиль. Світло, композицію й деталі я вибудовую вручну, а кожен кадр доводжу ретушшю. Окремо працюю з фотографами та всіма, кому потрібна бездоганна ретуш.</p>
+      <div class="facts">
+        <div><b data-i18n="f1b">Без студії</b><span data-i18n="f1s">будь-яка локація та епоха</span></div>
+        <div><b data-i18n="f2b">Без кастингу</b><span data-i18n="f2s">моделі й персонажі під бренд</span></div>
+        <div><b>UA · EN</b><span data-i18n="f3s">працюю з клієнтами з усього світу</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="sec tight" aria-labelledby="svcT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="svcK">Послуги · 09</p>
+      <div><h2 id="svcT" data-i18n-html="svcT">Послуги та <em>ціни</em></h2>
+      <p class="lede" data-i18n="svcL">Ціни орієнтовні. Точну вартість рахую після брифу, залежно від обсягу й термінів.</p>
+      <div class="head-cta"><a class="btn fill" href="#calc" data-i18n="toCalc">Розрахувати вартість</a></div></div>
+    </div>
+    <ul class="svc" id="svcList"></ul>
+  </div>
+</section>
+
+<section id="calc" class="sec tight" aria-labelledby="calcT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="calcK">Калькулятор</p>
+      <div><h2 id="calcT" data-i18n-html="calcT">Порахуйте <em>свій</em> проєкт</h2>
+      <p class="lede" data-i18n="calcL">Оберіть послугу, обсяг і терміни. Готовий запит одразу відкриється в Telegram.</p></div>
+    </div>
+    <form class="calc rv" id="calcForm" novalidate>
+      <div class="form">
+        <fieldset><legend class="micro" data-i18n="cSvc">Послуга</legend><div class="chips" id="cSvc"></div></fieldset>
+        <fieldset><legend class="micro" id="cQtyL" data-i18n="cQty">Обсяг</legend>
+          <div class="qty"><input type="range" id="cQty" aria-labelledby="cQtyL"><output id="cQtyO" for="cQty"></output></div>
+          <label class="opt" id="cHiWrap"><input type="checkbox" id="cHi"><span data-i18n="cHi">High-end ретуш (beauty, обкладинки)</span></label>
+        </fieldset>
+        <fieldset><legend class="micro" data-i18n="cUrg">Терміни</legend><div class="chips" id="cUrg"></div></fieldset>
+        <div><label class="micro" for="cIdea" data-i18n="cIdea">Коротко про ідею (необов’язково)</label><textarea id="cIdea" data-i18n-ph="cIdeaPh" placeholder="Наприклад: зйомка нової колекції, теплі тони, море"></textarea></div>
+      </div>
+      <div class="sum" aria-live="polite">
+        <p class="micro" data-i18n="cTotal">Орієнтовна вартість</p>
+        <div class="total" id="cTotal"></div>
+        <div class="line"><span data-i18n="cSvc">Послуга</span><b id="cL1"></b></div>
+        <div class="line"><span data-i18n="cQty">Обсяг</span><b id="cL2"></b></div>
+        <div class="line"><span data-i18n="cUrg">Терміни</span><b id="cL3"></b></div>
+        <p class="micro" data-i18n="cMsg">Ваше повідомлення</p>
+        <p class="msg" id="cMsgT"></p>
+        <div class="acts">
+          <a class="btn fill" id="cSend" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="cSend">Надіслати в Telegram</a>
+          <button class="btn" type="button" id="cCopy" data-i18n="cCopy">Скопіювати текст</button>
+          <p class="status" id="cStatus" role="status"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="retouch" class="sec" aria-labelledby="baT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="baK">Ретуш</p>
+      <div><h2 id="baT" data-i18n-html="baT">До і <em>після</em></h2>
+      <p class="lede" data-i18n="baL">Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.</p>
+      <div class="head-cta"><a class="btn" href="#photographers" data-i18n="toPhoto">Фотографам: пакетна ретуш</a></div></div>
+    </div>
+    <div class="ba-grid" id="baGrid"></div>
+  </div>
+</section>
+
+<section id="process" class="sec tight" aria-labelledby="prT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="prK">Процес</p>
+      <h2 id="prT" data-i18n-html="prT">Як ми <em>працюємо</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="k">01</span><h3 data-i18n="s1t">Бриф</h3><p data-i18n="s1p">Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.</p></div>
+      <div class="step rv"><span class="k">02</span><h3 data-i18n="s2t">Концепція</h3><p data-i18n="s2p">Мудборд, образи, світло й локації. Затверджуємо до початку роботи.</p></div>
+      <div class="step rv"><span class="k">03</span><h3 data-i18n="s3t">Створення</h3><p data-i18n="s3p">Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.</p></div>
+      <div class="step rv"><span class="k">04</span><h3 data-i18n="s4t">Готові файли</h3><p data-i18n="s4p">Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="journal" class="sec tight" aria-labelledby="jrT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro">Behind the frame</p>
+      <div><h2 id="jrT" data-i18n-html="jrT">Журнал: <em>як зроблено</em> кадр</h2>
+      <p class="lede" data-i18n="jrL">Короткі розбори проєктів: ідея, світло, деталі та ретуш.</p></div>
+    </div>
+    <div class="jr" id="jrGrid"></div>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="ctT">
+  <div class="bgimg" aria-hidden="true"><img id="ctImg" alt=""></div>
+  <div class="wrap">
+    <p class="micro" data-i18n="ctK">Контакти</p>
+    <h2 id="ctT" data-i18n-html="ctT">Створимо щось <em>неймовірне?</em></h2>
+    <p class="lede" style="color:var(--soft)" data-i18n="ctL">Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.</p>
+    <div class="ctas">
+      <a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener">Telegram · @martamatviykiv</a>
+      <a class="btn" id="igBtn" href="#contact" aria-disabled="true" data-i18n="igSoon">Instagram · скоро</a>
+      <a class="btn" href="#calc" data-i18n="toCalc">Розрахувати вартість</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span class="micro">© 2026 MATIÉ · Marta Matviikiv</span>
+    <nav aria-label="Посилання у футері" data-i18n-aria="footAria">
+      <a href="#works" data-i18n="nWorks">Роботи</a>
+      <a href="#journal" data-i18n="nJournal">Журнал</a>
+      <a href="#photographers" data-i18n="nPhoto">Фотографам</a>
+      <a href="#about" data-i18n="nAbout">Про мене</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- project overlay -->
+<div id="proj" class="ov" role="dialog" aria-modal="true" aria-labelledby="pTitle" aria-hidden="true">
+  <div class="bar">
+    <span class="logo" style="font-size:16px;padding-left:.16em" aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span>
+    <button class="btn" type="button" data-close><span data-i18n="close">Закрити</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  </div>
+  <div class="cover"><img id="pCover" alt=""><div class="t"><p class="micro" id="pCat"></p><h2 id="pTitle"></h2></div></div>
+  <div class="wrap">
+    <div class="pinfo">
+      <div><h3 class="micro" data-i18n="pFor">Для чого</h3><p id="pFor"></p></div>
+      <div><h3 class="micro" data-i18n="pTask">Задача</h3><p id="pTask"></p></div>
+      <div><h3 class="micro" data-i18n="pSol">Рішення</h3><p id="pSol"></p></div>
+    </div>
+    <div class="live">
+      <div><p class="micro" data-i18n="liveK">Якби знімати наживо</p><h3 data-i18n="liveT">Те саме без AI коштувало б</h3></div>
+      <div><b class="ph-val" id="pL1">[сума]</b><span data-i18n="live1">грн бюджету зйомки</span></div>
+      <div><b class="ph-val" id="pL2">[N]</b><span data-i18n="live2">людей у команді: фотограф, моделі, стиліст, візажист, декоратор</span></div>
+      <div><b class="ph-val" id="pL3">[N]</b><span data-i18n="live3">днів підготовки та зйомки</span></div>
+    </div>
+    <div class="gal" id="pGal"></div>
+    <div class="pfoot">
+      <a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="want">Хочу так само</a>
+      <button class="btn" type="button" id="pNext"><span data-i18n="next">Наступний проєкт</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h14M11 4l5 5-5 5"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<!-- article overlay -->
+<div id="art" class="ov" role="dialog" aria-modal="true" aria-labelledby="aTitle" aria-hidden="true">
+  <div class="bar">
+    <span class="micro">Behind the frame</span>
+    <button class="btn" type="button" data-close><span data-i18n="close">Закрити</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  </div>
+  <div class="cover"><img id="aCover" alt=""><div class="t"><p class="micro" id="aMeta"></p><h2 id="aTitle" style="font-size:clamp(44px,7vw,110px)"></h2></div></div>
+  <div class="wrap"><div class="article" id="aBody"></div>
+    <div class="pfoot" style="max-width:720px;margin:0 auto"><a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="want">Хочу так само</a><button class="btn" type="button" id="aProj" data-i18n="seeProj">Дивитись проєкт</button></div>
+  </div>
+</div>
+
+<!-- photographers overlay -->
+<div id="pho" class="ov" role="dialog" aria-modal="true" aria-labelledby="phTitle" aria-hidden="true">
+  <div class="bar">
+    <span class="logo" style="font-size:16px;padding-left:.16em" aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span>
+    <button class="btn" type="button" data-close><span data-i18n="close">Закрити</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" style="padding-top:clamp(56px,8vw,120px)">
+      <p class="micro" data-i18n="phK">Фотографам</p>
+      <div><h2 id="phTitle" data-i18n-html="phT">Ретуш, що зберігає <em>ваш стиль</em></h2>
+      <p class="lede" data-i18n="phL">Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.</p></div>
+    </div>
+    <ul class="ptable" id="phTable"></ul>
+    <div class="terms" id="phTerms"></div>
+    <div class="ba-grid" id="phBA" style="margin-bottom:clamp(48px,6vw,80px)"></div>
+    <div class="pfoot" style="padding-top:0"><a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="phCta">Надіслати фото на тест</a><a class="btn" href="#calc" data-close-to="#calc" data-i18n="toCalc">Розрахувати вартість</a></div>
+  </div>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Перегляд фото" data-i18n-aria="lbAria">
+  <button class="ctl x" type="button" id="lbX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  <button class="ctl prev" type="button" id="lbP" aria-label="Попереднє фото" data-i18n-aria="prev"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M16 9H2M7 4L2 9l5 5"/></svg></button>
+  <img id="lbImg" alt="">
+  <button class="ctl next" type="button" id="lbN" aria-label="Наступне фото" data-i18n-aria="nextPh"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h14M11 4l5 5-5 5"/></svg></button>
+  <p class="cnt micro" id="lbC"></p>
+</div>
+<div id="cur" aria-hidden="true"><span></span></div>
+<div id="tip" aria-hidden="true"></div>
+<div id="peek" aria-hidden="true"><img alt=""></div>
+
+<script src="content.js"></script>
+<script>
+(function(){
+"use strict";
+var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+var FINE = window.matchMedia && matchMedia("(hover:hover) and (pointer:fine)").matches;
+var $ = function(s,r){return (r||document).querySelector(s)};
+var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var PROJ = SITE.projects, SVC = SITE.services;
+
+/* ---------- i18n ---------- */
+var T = {
+uk:{skip:"Перейти до робіт",navAria:"Головне меню",footAria:"Посилання у футері",menu:"Меню",nWorks:"Роботи",nServices:"Послуги",nCalc:"Калькулятор",nJournal:"Журнал",nPhoto:"Фотографам",nAbout:"Про мене",nContact:"Контакти",cta:"Написати",sndOn:"Увімкнути звук",sndOff:"Вимкнути звук",
+heroLede:"Рекламні кампанії, фотосесії та відео, створені з AI. Без студії, моделей і тижнів продакшну.",heroBtn:"Дивитись роботи",heroCalc:"Розрахувати ціну",drag:"Тягніть, щоб роздивитися",
+stageAria:"3D-сфера з роботами. Для перегляду з клавіатури використовуйте розділ «Роботи».",
+worksK:"Обрані роботи",worksT:"Світи, які <em>не існували</em> до зйомки",worksL:"Натисніть на проєкт, щоб відкрити галерею.",open:"Відкрити",view:"Дивитись",
+ideaK:"Ідея → кадр",ideaT:"Від ескізу до <em>кампанії</em>",ideaL:"Потягніть повзунок. Зліва те, з чим приходить клієнт: ескіз, референс або фото з телефона. Справа готовий кадр.",
+idea1a:"Ескіз",idea1b:"Готовий кадр",idea1c:"Клієнт приніс ескіз із колонами. Результат: серія для особистого бренду.",idea2a:"Фото з телефона",idea2b:"Кампанія",idea2c:"Звичайне фото продукту на столі. Результат: рекламний кадр для запуску.",
+aboutK:"Про мене",aboutT:"Я створюю кадри, які <em>неможливо зняти</em>, або які коштували б цілої знімальної групи.",
+aboutP1:"Мене звати Марта Матвіїків. Я працюю з брендами, блогерами та публічними людьми: від ідеї та образу до готових фото й відео.",
+aboutP2:"AI для мене інструмент, а не стиль. Світло, композицію й деталі я вибудовую вручну, а кожен кадр доводжу ретушшю. Окремо працюю з фотографами та всіма, кому потрібна бездоганна ретуш.",
+aboutAlt:"Портрет Марти Матвіїків",f1b:"Без студії",f1s:"будь-яка локація та епоха",f2b:"Без кастингу",f2s:"моделі й персонажі під бренд",f3s:"працюю з клієнтами з усього світу",
+svcK:"Послуги · 09",svcT:"Послуги та <em>ціни</em>",svcL:"Ціни орієнтовні. Точну вартість рахую після брифу, залежно від обсягу й термінів.",toCalc:"Розрахувати вартість",
+calcK:"Калькулятор",calcT:"Порахуйте <em>свій</em> проєкт",calcL:"Оберіть послугу, обсяг і терміни. Готовий запит одразу відкриється в Telegram.",cSvc:"Послуга",cQty:"Обсяг",cHi:"High-end ретуш (beauty, обкладинки)",cUrg:"Терміни",cIdea:"Коротко про ідею (необов’язково)",cIdeaPh:"Наприклад: зйомка нової колекції, теплі тони, море",cTotal:"Орієнтовна вартість",cMsg:"Ваше повідомлення",cSend:"Надіслати в Telegram",cCopy:"Скопіювати текст",copied:"Текст скопійовано. Вставте його в Telegram.",copyFail:"Не вдалося скопіювати. Виділіть текст вище вручну.",from:"від",uah:"грн",
+msgHi:"Привіт, Марто! Хочу замовити:",msgPrice:"Орієнтовна ціна з сайту",msgIdea:"Ідея",hiNote:"high-end",
+baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.",before:"До",after:"Після",baAria:"Порівняти до і після",toPhoto:"Фотографам: пакетна ретуш",
+prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
+jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
+ctK:"Контакти",ctT:"Створимо щось <em>неймовірне?</em>",ctL:"Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.",igSoon:"Instagram · скоро",
+close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді: фотограф, моделі, стиліст, візажист, декоратор",live3:"днів підготовки та зйомки",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
+phK:"Фотографам",phT:"Ретуш, що зберігає <em>ваш стиль</em>",phL:"Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.",phCta:"Надіслати фото на тест"},
+en:{skip:"Skip to work",navAria:"Main menu",footAria:"Footer links",menu:"Menu",nWorks:"Work",nServices:"Services",nCalc:"Calculator",nJournal:"Journal",nPhoto:"Photographers",nAbout:"About",nContact:"Contact",cta:"Get in touch",sndOn:"Turn sound on",sndOff:"Turn sound off",
+heroLede:"Ad campaigns, photoshoots and films made with AI. No studio, no casting, no weeks of production.",heroBtn:"View work",heroCalc:"Get a price",drag:"Drag to explore",
+stageAria:"3D sphere of projects. For keyboard browsing, use the Work section.",
+worksK:"Selected work",worksT:"Worlds that <em>didn’t exist</em> before the shoot",worksL:"Click a project to open its gallery.",open:"Open",view:"View",
+ideaK:"Idea → image",ideaT:"From sketch to <em>campaign</em>",ideaL:"Drag the slider. On the left is what a client brings: a sketch, a reference or a phone photo. On the right, the finished image.",
+idea1a:"Sketch",idea1b:"Final image",idea1c:"The client brought a sketch with columns. The result: a personal brand series.",idea2a:"Phone photo",idea2b:"Campaign",idea2c:"An ordinary product photo on a table. The result: a launch ad.",
+aboutK:"About",aboutT:"I create images that are <em>impossible to shoot</em>, or would need an entire film crew.",
+aboutP1:"I’m Marta Matviikiv. I work with brands, creators and public figures, from the idea and the look to finished photos and films.",
+aboutP2:"For me AI is a tool, not a style. I build light, composition and detail by hand and finish every frame with retouching. I also retouch for photographers and anyone who needs a flawless image.",
+aboutAlt:"Portrait of Marta Matviikiv",f1b:"No studio",f1s:"any location, any era",f2b:"No casting",f2s:"models and characters made for your brand",f3s:"working with clients worldwide",
+svcK:"Services · 09",svcT:"Services &amp; <em>pricing</em>",svcL:"Prices are a guide. I quote the exact cost after the brief, based on scope and timing.",toCalc:"Estimate the cost",
+calcK:"Calculator",calcT:"Price <em>your</em> project",calcL:"Choose a service, volume and timing. A ready request opens straight in Telegram.",cSvc:"Service",cQty:"Volume",cHi:"High-end retouching (beauty, covers)",cUrg:"Timing",cIdea:"Your idea in a few words (optional)",cIdeaPh:"E.g. new collection shoot, warm tones, the sea",cTotal:"Estimated cost",cMsg:"Your message",cSend:"Send via Telegram",cCopy:"Copy text",copied:"Copied. Paste it into Telegram.",copyFail:"Couldn’t copy. Select the text above by hand.",from:"from",uah:"UAH",
+msgHi:"Hi Marta! I’d like to order:",msgPrice:"Estimated price from the website",msgIdea:"Idea",hiNote:"high-end",
+baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin stays alive: I keep pores and texture and remove only what distracts.",before:"Before",after:"After",baAria:"Compare before and after",toPhoto:"For photographers: batch retouching",
+prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
+jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
+ctK:"Contact",ctT:"Shall we create something <em>unreal?</em>",ctL:"Message me on Telegram with a short description of the task, and I’ll reply with ideas and a price.",igSoon:"Instagram · soon",
+close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people on set: photographer, models, stylist, make-up artist, set designer",live3:"days of preparation and shooting",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
+phK:"For photographers",phT:"Retouching that keeps <em>your style</em>",phL:"You shoot, I get the frames ready for your client. Batch retouching in your style, on your schedule.",phCta:"Send photos for a test"}
+};
+var lang="uk";
+try{ var sv=localStorage.getItem("matie-lang"); if(sv==="en"||sv==="uk") lang=sv; }catch(e){}
+var L = function(){ return lang==="uk"?0:1; };
+function t(k){ return (T[lang]&&T[lang][k]) || T.uk[k] || ""; }
+var ready=false;
+function applyLang(){
+  document.documentElement.lang = lang==="uk"?"uk":"en";
+  $$("[data-i18n]").forEach(function(el){ el.textContent=t(el.getAttribute("data-i18n")); });
+  $$("[data-i18n-html]").forEach(function(el){ el.innerHTML=t(el.getAttribute("data-i18n-html")); });
+  $$("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label",t(el.getAttribute("data-i18n-aria"))); });
+  $$("[data-i18n-alt]").forEach(function(el){ el.setAttribute("alt",t(el.getAttribute("data-i18n-alt"))); });
+  $$("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder",t(el.getAttribute("data-i18n-ph"))); });
+  $$(".lang button").forEach(function(b){ b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang)); });
+  $("#worksK").textContent = t("worksK")+" · "+String(PROJ.length).padStart(2,"0");
+  sndLabel();
+  if(ready){ renderWorks(); renderSvc(); renderBA(); renderIdea(); renderMarq(); renderJournal(); renderPho(); renderCalc(); if(curP>=0) fillProj(curP,null); if(curA>=0) fillArt(curA); }
+}
+$$(".lang button").forEach(function(b){ b.addEventListener("click",function(){ lang=b.getAttribute("data-lang"); try{localStorage.setItem("matie-lang",lang)}catch(e){} applyLang(); }); });
+(function(){ var igs=SITE.instagram||[]; var ig=$("#igBtn"); if(!igs.length) return; ig.parentNode.removeChild(ig);
+  var box=$("#contact .ctas"), ref=box.children[1]||null;
+  igs.forEach(function(h){ var a=document.createElement("a"); a.className="btn"; a.href="https://instagram.com/"+h; a.target="_blank"; a.rel="noopener"; a.textContent="Instagram · @"+h; box.insertBefore(a,ref); });
+  var mn=$("#mnav .micro"); if(mn) mn.textContent="Telegram · @"+SITE.telegram+"  ·  Instagram · @"+igs[0];
+})();
+
+/* ---------- placeholder art (used only while a project has no real images) ---------- */
+function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var q=Math.imul(seed^seed>>>15,1|seed); q=q+Math.imul(q^q>>>7,61|q)^q; return ((q^q>>>14)>>>0)/4294967296; }; }
+var noiseCv=(function(){ var c=document.createElement("canvas"); c.width=c.height=256; var x=c.getContext("2d"), d=x.createImageData(256,256); for(var i=0;i<d.data.length;i+=4){ var v=Math.random()*255; d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255; } x.putImageData(d,0,0); return c; })();
+$("#grain").style.backgroundImage="url("+noiseCv.toDataURL()+")";
+function rgba(hex,a){ var n=parseInt(hex.slice(1),16); return "rgba("+(n>>16&255)+","+(n>>8&255)+","+(n&255)+","+a+")"; }
+function glow(x,cx,cy,r,col,a){ var g=x.createRadialGradient(cx,cy,0,cx,cy,r); g.addColorStop(0,rgba(col,a)); g.addColorStop(1,rgba(col,0)); x.fillStyle=g; x.fillRect(0,0,x.canvas.width,x.canvas.height); }
+function finish(x,W,H,ga){ x.globalCompositeOperation="overlay"; x.globalAlpha=ga; x.fillStyle=x.createPattern(noiseCv,"repeat"); x.fillRect(0,0,W,H); x.globalAlpha=1; x.globalCompositeOperation="source-over"; var v=x.createRadialGradient(W/2,H/2,Math.min(W,H)*.3,W/2,H/2,Math.max(W,H)*.75); v.addColorStop(0,"rgba(0,0,0,0)"); v.addColorStop(1,"rgba(0,0,0,.55)"); x.fillStyle=v; x.fillRect(0,0,W,H); }
+function figure(x,cx,cy,s,lightCol,darkCol,side){ var g=x.createLinearGradient(cx-s*side,cy,cx+s*side,cy); g.addColorStop(0,lightCol); g.addColorStop(.55,darkCol); g.addColorStop(1,"#000"); x.fillStyle=g; x.beginPath(); x.ellipse(cx,cy,s*.42,s*.55,0,0,Math.PI*2); x.fill(); x.fillRect(cx-s*.17,cy+s*.35,s*.34,s*.5); x.beginPath(); x.moveTo(cx-s*1.5,cy+s*2.6); x.bezierCurveTo(cx-s*1.35,cy+s*1.05,cx-s*.6,cy+s*.85,cx,cy+s*.8); x.bezierCurveTo(cx+s*.6,cy+s*.85,cx+s*1.35,cy+s*1.05,cx+s*1.5,cy+s*2.6); x.closePath(); x.fill(); }
+function art(kind,pal,seed,W,H,opt){
+  opt=opt||{}; var r=rng(seed), c=document.createElement("canvas"); c.width=W; c.height=H; var x=c.getContext("2d");
+  var bg=x.createLinearGradient(0,0,r()*W*.4,H); bg.addColorStop(0,pal[0]); bg.addColorStop(1,pal[1]); x.fillStyle=bg; x.fillRect(0,0,W,H);
+  var i,j;
+  if(kind==="product"){
+    glow(x,W*(.3+r()*.4),H*(.25+r()*.2),W*.8,pal[3],.55);
+    var fy=H*(.66+r()*.08); var fl=x.createLinearGradient(0,fy,0,H); fl.addColorStop(0,rgba(pal[2],.5)); fl.addColorStop(1,rgba(pal[1],1)); x.fillStyle=fl; x.fillRect(0,fy,W,H-fy);
+    var n=1+Math.floor(r()*2);
+    for(i=0;i<n;i++){ var w=W*(.26+r()*.14), h=w*(.62+r()*.5), px=W*(n===1?.5:(.33+i*.36))+(r()-.5)*W*.06, py=fy;
+      x.fillStyle="rgba(0,0,0,.45)"; x.beginPath(); x.ellipse(px,py+4,w*.62,w*.09,0,0,Math.PI*2); x.fill();
+      var bd=x.createLinearGradient(px-w/2,0,px+w/2,0); bd.addColorStop(0,pal[1]); bd.addColorStop(.25,pal[2]); bd.addColorStop(.42,pal[4]); bd.addColorStop(.55,pal[2]); bd.addColorStop(1,"#0a0000");
+      x.fillStyle=bd; x.fillRect(px-w/2,py-h,w,h); x.fillStyle=rgba(pal[4],.18); x.fillRect(px-w/2,py-h,w,h*.08);
+      var lid=x.createLinearGradient(px-w/2,0,px+w/2,0); lid.addColorStop(0,"#222"); lid.addColorStop(.4,"#ddd"); lid.addColorStop(.6,"#888"); lid.addColorStop(1,"#111");
+      x.fillStyle=lid; x.fillRect(px-w*.52,py-h-h*.22,w*1.04,h*.22);
+      x.globalAlpha=.18; x.save(); x.translate(0,py*2); x.scale(1,-1); x.fillStyle=bd; x.fillRect(px-w/2,py-h*.6,w,h*.6); x.restore(); x.globalAlpha=1; }
+  } else if(kind==="columns"){
+    var hz=H*(.6+r()*.12); var sky=x.createLinearGradient(0,0,0,hz); sky.addColorStop(0,pal[1]); sky.addColorStop(1,pal[0]); x.fillStyle=sky; x.fillRect(0,0,W,hz);
+    glow(x,W*(.2+r()*.6),hz-H*.05,W*.6,"#fff1c9",.8); x.fillStyle=pal[3]; x.fillRect(0,hz,W,H-hz); glow(x,W*.5,hz,W*.7,pal[0],.35);
+    var cols=3+Math.floor(r()*4), cw=W/(cols*2.2), off=r()*cw;
+    for(j=0;j<cols;j++){ var cx=off+cw*.8+j*(W/cols), ch=hz*(.55+r()*.35), ct=hz-ch; var cg=x.createLinearGradient(cx-cw/2,0,cx+cw/2,0); cg.addColorStop(0,pal[2]); cg.addColorStop(.6,"#a9875f"); cg.addColorStop(1,pal[4]);
+      x.fillStyle=cg; x.fillRect(cx-cw/2,ct,cw,ch); x.fillRect(cx-cw*.75,ct-cw*.3,cw*1.5,cw*.3); x.fillRect(cx-cw*.7,hz-cw*.2,cw*1.4,cw*.2); x.fillStyle="rgba(0,0,0,.12)"; for(var f=0;f<4;f++) x.fillRect(cx-cw/2+f*cw/4+cw/10,ct,1.5,ch); }
+    if(r()>.35){ var fx=W*(.35+r()*.3); x.fillStyle="#2b130b"; x.beginPath(); x.ellipse(fx,hz-H*.21,W*.022,W*.028,0,0,Math.PI*2); x.fill(); x.beginPath(); x.moveTo(fx-W*.05,hz); x.quadraticCurveTo(fx-W*.04,hz-H*.18,fx,hz-H*.19); x.quadraticCurveTo(fx+W*.05,hz-H*.18,fx+W*.06,hz); x.fill(); x.fillStyle=rgba("#f4f0e6",.85); x.beginPath(); x.moveTo(fx-W*.03,hz-H*.16); x.quadraticCurveTo(fx+W*.09,hz-H*.12,fx+W*.07,hz); x.lineTo(fx-W*.045,hz); x.fill(); }
+  } else if(kind==="portrait"){
+    var side=r()>.5?1:-1; glow(x,W*(.5-side*.35),H*.3,W*.9,pal[3],.35);
+    figure(x,W*(.42+r()*.16),H*(.36+r()*.08),W*(.19+r()*.06),opt.skin||pal[2],opt.mid||"#3a3734",side);
+    if(opt.warm){ glow(x,W*.2,H*.2,W*.8,"#e9b68c",.38); glow(x,W*.5,H*.38,W*.35,"#f6dcc4",.22); }
+  } else if(kind==="fashion"){
+    var hz2=H*(.55+r()*.1); var sk=x.createLinearGradient(0,0,0,hz2); sk.addColorStop(0,pal[2]); sk.addColorStop(1,pal[0]); x.fillStyle=sk; x.fillRect(0,0,W,hz2);
+    for(var d=0;d<4;d++){ var yy=hz2+d*H*.1-H*.04; x.fillStyle=d%2?pal[1]:pal[4]; x.globalAlpha=.75+d*.07; x.beginPath(); x.moveTo(0,H); x.lineTo(0,yy); for(var q=0;q<=W;q+=W/40){ x.lineTo(q,yy+Math.sin(q/W*Math.PI*(1.2+d*.4)+d)*H*.035); } x.lineTo(W,H); x.fill(); }
+    x.globalAlpha=1; glow(x,W*.75,H*.2,W*.6,pal[3],.5);
+    var mx=W*(.4+r()*.2), mt=H*(.24+r()*.06), mh=H*.55; x.fillStyle="#2a1f19"; x.beginPath(); x.ellipse(mx,mt,W*.035,W*.045,0,0,Math.PI*2); x.fill();
+    var coat=x.createLinearGradient(mx-W*.1,0,mx+W*.12,0); coat.addColorStop(0,pal[3]); coat.addColorStop(.5,pal[1]); coat.addColorStop(1,pal[4]);
+    x.fillStyle=coat; x.beginPath(); x.moveTo(mx-W*.05,mt+W*.05); x.lineTo(mx+W*.05,mt+W*.05); x.quadraticCurveTo(mx+W*.2,mt+mh*.6,mx+W*.26,mt+mh); x.lineTo(mx-W*.12,mt+mh); x.quadraticCurveTo(mx-W*.08,mt+mh*.5,mx-W*.05,mt+W*.05); x.fill();
+  } else if(kind==="cartoon"){
+    glow(x,W*.5,H*.3,W*.8,pal[3],.7); x.fillStyle=pal[1]; x.beginPath(); x.ellipse(W*.25,H*1.02,W*.55,H*.28,0,0,Math.PI*2); x.fill(); x.fillStyle=pal[0]; x.beginPath(); x.ellipse(W*.85,H*1.05,W*.55,H*.3,0,0,Math.PI*2); x.fill();
+    var bx=W*(.38+r()*.24), by=H*(.55+r()*.08), br=W*(.18+r()*.06); var bg2=x.createRadialGradient(bx-br*.4,by-br*.4,br*.1,bx,by,br); bg2.addColorStop(0,"#fff"); bg2.addColorStop(.35,pal[2]); bg2.addColorStop(1,"#d45c84");
+    x.fillStyle=bg2; x.beginPath(); x.ellipse(bx,by,br,br*.92,0,0,Math.PI*2); x.fill();
+    [-1,1].forEach(function(s){ x.fillStyle="#fff"; x.beginPath(); x.ellipse(bx+s*br*.35,by-br*.15,br*.2,br*.24,0,0,Math.PI*2); x.fill(); x.fillStyle="#2b2340"; x.beginPath(); x.arc(bx+s*br*.35+br*.04,by-br*.1,br*.1,0,Math.PI*2); x.fill(); x.fillStyle="#fff"; x.beginPath(); x.arc(bx+s*br*.35+br*.07,by-br*.15,br*.035,0,Math.PI*2); x.fill(); x.fillStyle=rgba("#ff6f91",.45); x.beginPath(); x.ellipse(bx+s*br*.6,by+br*.2,br*.12,br*.07,0,0,Math.PI*2); x.fill(); });
+    x.strokeStyle="#2b2340"; x.lineWidth=br*.05; x.lineCap="round"; x.beginPath(); x.arc(bx,by+br*.15,br*.18,.15*Math.PI,.85*Math.PI); x.stroke();
+    for(i=0;i<8;i++){ x.fillStyle=rgba("#ffffff",.6); x.beginPath(); x.arc(r()*W,r()*H*.45,1.5+r()*3,0,Math.PI*2); x.fill(); }
+  } else if(kind==="city"){
+    var hz3=H*(.58+r()*.08); glow(x,W*.5,hz3,W*.9,pal[2],.3);
+    for(var b=0;b<14;b++){ var bw=W*(.06+r()*.1), bh=hz3*(.25+r()*.65), bxx=r()*W; x.fillStyle=b%3?"#070816":"#0d1030"; x.fillRect(bxx,hz3-bh,bw,bh);
+      for(var wy=hz3-bh+8;wy<hz3-6;wy+=10){ for(var wx=bxx+5;wx<bxx+bw-5;wx+=9){ if(r()>.72){ x.fillStyle=r()>.5?pal[2]:(r()>.5?pal[3]:pal[4]); x.globalAlpha=.55+r()*.45; x.fillRect(wx,wy,4,5);} } } x.globalAlpha=1; }
+    var wet=x.createLinearGradient(0,hz3,0,H); wet.addColorStop(0,"#05060f"); wet.addColorStop(1,"#000"); x.fillStyle=wet; x.fillRect(0,hz3,W,H-hz3);
+    x.save(); x.globalAlpha=.35; x.translate(0,hz3*2); x.scale(1,-1); x.drawImage(c,0,0,W,hz3,0,0,W,hz3); x.restore();
+    for(i=0;i<6;i++){ x.fillStyle=rgba(r()>.5?pal[2]:pal[3],.25); x.fillRect(r()*W,hz3+r()*(H-hz3),W*(.05+r()*.2),1.5); }
+  }
+  finish(x,W,H,opt.grain||.12); return c;
+}
+function toURL(c,q){ return c.toDataURL("image/jpeg",q||.84); }
+function derive(src,mode,seed){
+  var W=src.width,H=src.height,c=document.createElement("canvas"); c.width=W; c.height=H; var x=c.getContext("2d"), r=rng(seed);
+  if(mode==="blemish"){ x.filter="saturate(.7) contrast(.86) brightness(.94)"; x.drawImage(src,0,0); x.filter="none";
+    for(var i=0;i<140;i++){ x.fillStyle="rgba("+(150+r()*60|0)+",60,50,"+(.12+r()*.2)+")"; x.beginPath(); x.arc(W*(.32+r()*.36),H*(.22+r()*.3),1+r()*4,0,Math.PI*2); x.fill(); }
+    x.fillStyle="rgba(90,80,70,.18)"; x.fillRect(0,0,W,H); x.globalCompositeOperation="overlay"; x.globalAlpha=.35; x.fillStyle=x.createPattern(noiseCv,"repeat"); x.fillRect(0,0,W,H);
+  } else if(mode==="sketch"){
+    x.fillStyle="#ece4d6"; x.fillRect(0,0,W,H); x.globalCompositeOperation="multiply"; x.filter="grayscale(1) contrast(2.2) brightness(1.35)"; x.drawImage(src,0,0); x.filter="none";
+    x.globalCompositeOperation="source-over"; x.strokeStyle="rgba(40,34,28,.28)"; x.lineWidth=1;
+    for(var k=0;k<160;k++){ var sx=r()*W, sy=r()*H, l=10+r()*30; x.beginPath(); x.moveTo(sx,sy); x.lineTo(sx+l,sy-l*.6); x.stroke(); }
+    x.fillStyle="rgba(236,228,214,.25)"; x.fillRect(0,0,W,H);
+  } else if(mode==="phone"){
+    x.fillStyle="#7d7a74"; x.fillRect(0,0,W,H); x.filter="saturate(.35) brightness(.78) contrast(.75) blur(1.5px)"; x.drawImage(src,0,0); x.filter="none";
+    x.fillStyle="rgba(150,140,120,.22)"; x.fillRect(0,0,W,H); x.globalCompositeOperation="overlay"; x.globalAlpha=.16; x.fillStyle=x.createPattern(noiseCv,"repeat"); x.fillRect(0,0,W,H);
+  }
+  return c;
+}
+
+/* ---------- build images ---------- */
+var BA=[], IDEA=[], SINGLE_URLS=[];
+var bar=$("#pre .bar i");
+function tick(){ return new Promise(function(res){ requestAnimationFrame(function(){ res(); }); }); }
+async function build(){
+  var need=0; PROJ.forEach(function(p){ if(!p.images.length) need+=6; }); need+=SITE.singles.length+8; var done=0;
+  function prog(){ done++; bar.style.transform="scaleX("+Math.min(1,done/need)+")"; }
+  for(var p=0;p<PROJ.length;p++){ if(PROJ[p].images.length) continue;
+    for(var i=0;i<6;i++){ PROJ[p].images.push(toURL(art(PROJ[p].art.k,PROJ[p].art.pal,p*100+i+7,600,750))); prog(); if(i%2) await tick(); } }
+  SITE.singles.forEach(function(s,k){ SINGLE_URLS.push(s.image || toURL(art(s.art.k,s.art.pal,500+k,600,750))); prog(); });
+  var warm=["#2a2420","#0d0b0a","#e4c3a6","#7a5a48"];
+  $("#aboutImg").src=toURL(art("portrait",warm,911,900,1125,{skin:"#f0cfb3",mid:"#5a4234",warm:true,grain:.08}),.86); prog();
+  $("#ctImg").src=toURL(art("portrait",warm,912,1400,1000,{skin:"#e8c6a8",mid:"#4a3428",warm:true,grain:.08}),.8); prog(); await tick();
+  for(var k=0;k<2;k++){ var a=art("portrait",["#3a302b","#120f0e","#f2d3b8","#8a6a56"],930+k,900,1125,{skin:"#f3d2b6",mid:"#6b4a3a",warm:true,grain:.05}); BA.push({after:toURL(a,.86),before:toURL(derive(a,"blemish",40+k),.86)}); prog(); await tick(); }
+  var i1=art("columns",PROJ[1].art.pal,77,900,1125); IDEA.push({before:toURL(derive(i1,"sketch",5),.86),after:toURL(i1,.86),a:"idea1a",b:"idea1b",c:"idea1c"}); prog();
+  var i2=art("product",PROJ[0].art.pal,78,900,1125); IDEA.push({before:toURL(derive(i2,"phone",6),.86),after:toURL(i2,.86),a:"idea2a",b:"idea2b",c:"idea2c"}); prog(); await tick();
+  bar.style.transform="scaleX(1)";
+}
+
+/* ---------- renderers ---------- */
+function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]}); }
+function renderWorks(){
+  var g=$("#worksGrid"); g.innerHTML="";
+  PROJ.forEach(function(p,i){ var d=p[lang]; var b=document.createElement("button"); b.type="button"; b.className="work rv"; b.setAttribute("data-cursor",t("open"));
+    b.innerHTML='<span class="ph"><img src="'+p.images[0]+'" alt=""></span><span class="row"><span><span class="h3">'+esc(d.t)+'</span><span class="cat">'+esc(d.c)+'</span></span><span class="n">'+String(i+1).padStart(2,"0")+'</span></span>';
+    b.setAttribute("aria-label",d.t+". "+d.c);
+    b.addEventListener("click",function(){ openProj(i,b.querySelector("img"),p.images[0],b); });
+    g.appendChild(b); });
+  observe();
+}
+function renderSvc(){
+  var l=$("#svcList"); l.innerHTML="";
+  SVC.forEach(function(s,i){ var d=s[lang], o=s[lang==="uk"?"en":"uk"]; var li=document.createElement("li"); li.className="rv";
+    li.innerHTML='<span class="i">'+String(i+1).padStart(2,"0")+'</span><h3>'+esc(d[0])+'<small lang="'+(lang==="uk"?"en":"uk")+'">'+esc(o[0])+'</small></h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(d[2])+(d[3]?'<small>'+esc(d[3])+'</small>':'')+'</span>';
+    li.setAttribute("data-peek",PROJ[s.peek%PROJ.length].images[(i+2)%PROJ[s.peek%PROJ.length].images.length]); l.appendChild(li); });
+  bindPeek(); observe();
+}
+function baEl(pair,la,lb_,cap){
+  var f=document.createElement("figure"); f.className="ba-wrap rv";
+  f.innerHTML='<div class="ba"><img src="'+pair.after+'" alt=""><img class="before" src="'+pair.before+'" alt=""><span class="tag b micro">'+esc(la)+'</span><span class="tag a micro">'+esc(lb_)+'</span><span class="line"></span><input type="range" min="0" max="100" value="50" aria-label="'+esc(t("baAria")+": "+la+" / "+lb_)+'"><span class="knob"><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h26M1 6l5-5M1 6l5 5M27 6l-5-5M27 6l-5 5" stroke="#EDE8E0" fill="none"/></svg></span></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'');
+  var box=f.querySelector(".ba"), inp=f.querySelector("input"); inp.addEventListener("input",function(){ box.style.setProperty("--p",inp.value+"%"); });
+  return f;
+}
+function renderBA(){ var g=$("#baGrid"); g.innerHTML=""; BA.forEach(function(b){ g.appendChild(baEl(b,t("before"),t("after"))); }); observe(); }
+function renderIdea(){ var g=$("#ideaGrid"); g.innerHTML=""; IDEA.forEach(function(p){ g.appendChild(baEl(p,t(p.a),t(p.b),t(p.c))); }); observe(); }
+function renderMarq(){ var items=SVC.map(function(s){ return s[lang][0]; }); var h=""; for(var k=0;k<2;k++) items.forEach(function(n){ h+='<span>'+esc(n)+'</span><b>✦</b>'; }); $("#marq").innerHTML=h; }
+function renderJournal(){
+  var g=$("#jrGrid"); g.innerHTML="";
+  SITE.journal.forEach(function(a,i){ var d=a[lang], p=PROJ[a.proj]; var b=document.createElement("button"); b.type="button"; b.className="jcard rv"; b.setAttribute("data-cursor",t("read"));
+    b.innerHTML='<span class="ph"><img src="'+p.images[a.img%p.images.length]+'" alt=""></span><span class="meta micro">'+esc(d.m)+'</span><span class="h3">'+esc(d.t)+'</span><span class="ex">'+esc(d.ex)+'</span>';
+    b.addEventListener("click",function(){ openArt(i,b); }); g.appendChild(b); });
+  observe();
+}
+function renderPho(){
+  var P=SITE.photographers, tb=$("#phTable"); tb.innerHTML="";
+  P.prices.forEach(function(r){ var d=r[lang]; var li=document.createElement("li"); li.innerHTML='<h3>'+esc(d[0])+'</h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(d[2])+'</span>'; tb.appendChild(li); });
+  var tm=$("#phTerms"); tm.innerHTML=""; P.terms.forEach(function(r){ var d=r[lang]; var el=document.createElement("div"); el.innerHTML='<b>'+esc(d[0])+'</b><span>'+esc(d[1])+'</span>'; tm.appendChild(el); });
+  var g=$("#phBA"); g.innerHTML=""; BA.forEach(function(b){ var e=baEl(b,t("before"),t("after")); e.classList.remove("rv"); g.appendChild(e); });
+}
+
+/* ---------- calculator ---------- */
+var cState={s:0,q:null,u:0,hi:false};
+function fmt(n){ return Math.round(n).toLocaleString(lang==="uk"?"uk-UA":"en-US").replace(/,/g,lang==="uk"?" ":","); }
+function renderCalc(){
+  var cs=$("#cSvc"); cs.innerHTML="";
+  SVC.forEach(function(s,i){ var lab=document.createElement("label"); lab.className="chip"; lab.innerHTML='<input type="radio" name="csvc" value="'+i+'"'+(i===cState.s?" checked":"")+'><span>'+esc(s[lang][0])+'</span>'; lab.querySelector("input").addEventListener("change",function(){ cState.s=i; cState.q=null; setupQty(); calc(); }); cs.appendChild(lab); });
+  var cu=$("#cUrg"); cu.innerHTML="";
+  SITE.urgency.forEach(function(u,i){ var lab=document.createElement("label"); lab.className="chip"; lab.innerHTML='<input type="radio" name="curg" value="'+i+'"'+(i===cState.u?" checked":"")+'><span>'+esc(u[lang][0])+' · '+esc(u[lang][1])+'</span>'; lab.querySelector("input").addEventListener("change",function(){ cState.u=i; calc(); }); cu.appendChild(lab); });
+  setupQty(); calc();
+}
+function setupQty(){ var c=SVC[cState.s].calc, r=$("#cQty"); r.min=c.min; r.max=c.max; r.step=c.step; if(cState.q===null) cState.q=c.incl||c.min; r.value=cState.q; $("#cHiWrap").style.display=c.perHi?"flex":"none"; if(!c.perHi) cState.hi=false; $("#cHi").checked=cState.hi; }
+$("#cQty").addEventListener("input",function(e){ cState.q=+e.target.value; calc(); });
+$("#cHi").addEventListener("change",function(e){ cState.hi=e.target.checked; calc(); });
+$("#cIdea").addEventListener("input",function(){ calc(); });
+function calc(){
+  var s=SVC[cState.s], c=s.calc, q=cState.q, u=SITE.urgency[cState.u], unit=c.unit[L()], disc=1;
+  var base = c.per ? q*(cState.hi&&c.perHi?c.perHi:c.per) : c.base + Math.max(0,q-c.incl)*c.extra;
+  (c.bulk||[]).forEach(function(b){ if(q>=b[0]) disc=b[1]; }); base*=disc;
+  var total = Math.round(base*u.k/50)*50;
+  $("#cQtyO").innerHTML = q+'<small>'+esc(unit)+'</small>';
+  $("#cTotal").innerHTML = '<small>'+t("from")+' </small>'+fmt(total)+' <small>'+t("uah")+'</small>';
+  var svcName = s[lang][0]+(cState.hi?" ("+t("hiNote")+")":"");
+  $("#cL1").textContent=svcName; $("#cL2").textContent=q+" "+unit+(disc<1?" (−"+Math.round((1-disc)*100)+"%)":""); $("#cL3").textContent=u[lang][0]+" · "+u[lang][1];
+  var idea=$("#cIdea").value.trim();
+  var msg = t("msgHi")+"\n— "+svcName+", "+q+" "+unit+"\n— "+u[lang][0]+" ("+u[lang][1]+")\n— "+t("msgPrice")+": "+t("from")+" "+fmt(total)+" "+t("uah")+(idea?"\n— "+t("msgIdea")+": "+idea:"");
+  $("#cMsgT").textContent=msg;
+  $("#cSend").href="https://t.me/"+SITE.telegram+"?text="+encodeURIComponent(msg);
+}
+$("#cCopy").addEventListener("click",function(){ var m=$("#cMsgT").textContent, st=$("#cStatus");
+  try{ navigator.clipboard.writeText(m).then(function(){ st.textContent=t("copied"); },function(){ st.textContent=t("copyFail"); }); }catch(e){ st.textContent=t("copyFail"); } });
+$("#calcForm").addEventListener("submit",function(e){ e.preventDefault(); });
+
+/* ---------- reveal ---------- */
+var io=("IntersectionObserver" in window && !RM)?new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target);} }); },{rootMargin:"0px 0px -8% 0px"}):null;
+function observe(){ if(!io) return; $$(".rv").forEach(function(el){ if(el.dataset.obs) return; el.dataset.obs="1"; var r=el.getBoundingClientRect(); if(r.top>innerHeight*.92){ el.classList.add("pre"); io.observe(el);} }); }
+
+/* ---------- sound (Web Audio, off by default) ---------- */
+var snd={on:false,ac:null,master:null};
+function sndLabel(){ var b=$("#sndBtn"); b.setAttribute("aria-label",t(snd.on?"sndOff":"sndOn")); b.setAttribute("aria-pressed",String(snd.on)); }
+function startAmb(){
+  var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+  if(!snd.ac){ snd.ac=new AC(); var ac=snd.ac; snd.master=ac.createGain(); snd.master.gain.value=0; snd.master.connect(ac.destination);
+    var lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=700; lp.Q.value=.6; lp.connect(snd.master);
+    [[55,"sine",.5],[82.4,"sine",.35],[110.3,"triangle",.18],[164.6,"sine",.08]].forEach(function(v){ var o=ac.createOscillator(), g=ac.createGain(); o.type=v[1]; o.frequency.value=v[0]; o.detune.value=(Math.random()-.5)*8; g.gain.value=v[2]; o.connect(g); g.connect(lp); o.start(); });
+    var lfo=ac.createOscillator(), lg=ac.createGain(); lfo.frequency.value=.06; lg.gain.value=260; lfo.connect(lg); lg.connect(lp.frequency); lfo.start(); }
+  if(snd.ac.state==="suspended") snd.ac.resume();
+  snd.master.gain.cancelScheduledValues(snd.ac.currentTime); snd.master.gain.setTargetAtTime(.05,snd.ac.currentTime,1.2); return true;
+}
+function stopAmb(){ if(snd.ac){ snd.master.gain.cancelScheduledValues(snd.ac.currentTime); snd.master.gain.setTargetAtTime(0,snd.ac.currentTime,.4); } }
+function blip(f){ if(!snd.on||!snd.ac) return; var ac=snd.ac, o=ac.createOscillator(), g=ac.createGain(), n=ac.currentTime; o.type="sine"; o.frequency.setValueAtTime(f||740,n); o.frequency.exponentialRampToValueAtTime((f||740)/2,n+.12); g.gain.setValueAtTime(0,n); g.gain.linearRampToValueAtTime(.05,n+.01); g.gain.exponentialRampToValueAtTime(.0001,n+.25); o.connect(g); g.connect(ac.destination); o.start(n); o.stop(n+.3); }
+$("#sndBtn").addEventListener("click",function(){ try{ if(!snd.on){ if(startAmb()){ snd.on=true; blip(880); } } else { snd.on=false; stopAmb(); } }catch(e){ snd.on=false; } sndLabel(); });
+document.addEventListener("click",function(e){ if(e.target.closest && e.target.closest("button,a,.chip,.card") && !e.target.closest("#sndBtn")) blip(620); },true);
+
+/* ---------- sphere ---------- */
+var stage=$("#stage"), cards=[], pts=[], rotX=-.18, rotY=0, vx=0, vy=0, drag=false, hover=false, intro=0, W=0,H=0,R=0,cw=0,chh=0, cardBoost=1, lastX=0,lastY=0,moved=0,downCard=null, heroVisible=true;
+function layout(){ W=stage.clientWidth; H=stage.clientHeight; var m=Math.min(W,H), mob=W<760; R=m*(mob?.40:.33); cw=(mob?Math.max(60,W*.15):Math.min(132,Math.max(88,W*.075)))*cardBoost; chh=cw*1.25; cards.forEach(function(c){ c.style.width=cw+"px"; c.style.height=chh+"px"; }); }
+function sphereItems(){
+  var sources=PROJ.map(function(p,i){ return p.images.map(function(u){ return {p:i,u:u}; }); });
+  SINGLE_URLS.forEach(function(u,k){ sources.push([{s:k,u:u}]); });
+  var all=[], maxLen=Math.max.apply(null,sources.map(function(s){ return s.length; }));
+  for(var j=0;j<maxLen;j++) sources.forEach(function(s){ if(s[j]) all.push(s[j]); });
+  if(all.length>60) all=all.slice(0,60);
+  var N=Math.max(all.length,24), list=[];
+  cardBoost = all.length<24 ? 1.15 : 1;
+  for(var k=0;k<N;k++) list.push(all[k%all.length]);
+  return list;
+}
+function buildSphere(){
+  var list=sphereItems(), N=list.length, ga=Math.PI*(3-Math.sqrt(5));
+  list.forEach(function(it,i){ var y=1-(i/(N-1))*2, rr=Math.sqrt(1-y*y), th=i*ga; pts.push([Math.cos(th)*rr,y,Math.sin(th)*rr]);
+    var b=document.createElement("button"); b.type="button"; b.className="card"; b.tabIndex=-1; b.setAttribute("aria-hidden","true");
+    b.innerHTML='<img src="'+it.u+'" alt="" draggable="false">'; b._it=it; stage.appendChild(b); cards.push(b);
+    b.addEventListener("pointerenter",function(){ hover=true; showTip(it.p!==undefined?PROJ[it.p][lang].t:""); setCursor(t(it.p!==undefined?"open":"view")); });
+    b.addEventListener("pointerleave",function(){ hover=false; showTip(""); setCursor(""); });
+  });
+  layout();
+}
+function frame(){
+  if(heroVisible){
+    if(!drag){ var auto=RM?0:(hover?0:.0016); vy+=(auto-vy)*.03; vx*=.94; }
+    rotY+=vy; rotX+=vx; rotX=Math.max(-.9,Math.min(.9,rotX));
+    var cy=Math.cos(rotY), sy=Math.sin(rotY), cx=Math.cos(rotX), sx=Math.sin(rotX), rr=R*intro, D=R*2.6, mx=W/2, my=H/2;
+    for(var i=0;i<cards.length;i++){ var p=pts[i], x1=p[0]*cy+p[2]*sy, z1=-p[0]*sy+p[2]*cy, y2=p[1]*cx-z1*sx, z2=p[1]*sx+z1*cx;
+      var ps=D/(D-z2*rr), X=mx+x1*rr*ps-cw/2, Y=my+y2*rr*ps-chh/2, sc=ps*(.4+.6*intro), c=cards[i];
+      c.style.transform="translate3d("+X.toFixed(1)+"px,"+Y.toFixed(1)+"px,0) scale("+sc.toFixed(3)+")"; c.style.opacity=(.18+.82*((z2+1)/2)).toFixed(3); c.style.zIndex=Math.round((z2+1)*50); }
+  }
+  requestAnimationFrame(frame);
+}
+stage.addEventListener("pointerdown",function(e){ drag=true; moved=0; lastX=e.clientX; lastY=e.clientY; downCard=e.target.closest(".card"); stage.classList.add("drag"); if(e.pointerType!=="touch"){ try{stage.setPointerCapture(e.pointerId);}catch(_){} } });
+stage.addEventListener("pointermove",function(e){ if(!drag) return; var dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY; moved+=Math.abs(dx)+Math.abs(dy); vy=dx*.0045; vx=-dy*.0045; });
+function endDrag(){ if(!drag) return; drag=false; stage.classList.remove("drag"); if(moved<6 && downCard){ var it=downCard._it, img=downCard.querySelector("img"); if(it.p!==undefined) openProj(it.p,img,it.u,null); else openLb([it.u],0,null); blip(520); } downCard=null; }
+stage.addEventListener("pointerup",endDrag); stage.addEventListener("pointercancel",function(){ drag=false; stage.classList.remove("drag"); downCard=null; });
+if("IntersectionObserver" in window){ new IntersectionObserver(function(es){ heroVisible=es[0].isIntersecting; }).observe($("#hero")); }
+addEventListener("resize",layout);
+
+/* ---------- cursor, tip, peek ---------- */
+var curEl=$("#cur"), tipEl=$("#tip"), pk=$("#peek"), mxp=-200,myp=-200,cxp=-200,cyp=-200,px=-200,py=-200;
+addEventListener("pointermove",function(e){ mxp=e.clientX; myp=e.clientY; tipEl.style.transform="translate("+(mxp+22)+"px,"+(myp+18)+"px)"; },{passive:true});
+if(FINE){ (function loop(){ cxp+=(mxp-cxp)*.22; cyp+=(myp-cyp)*.22; px+=(mxp-px)*.12; py+=(myp-py)*.12; curEl.style.transform="translate("+cxp+"px,"+cyp+"px)"; pk.style.transform="translate("+(px-110)+"px,"+(py-137)+"px) rotate(-4deg)"; requestAnimationFrame(loop); })(); }
+function setCursor(label){ curEl.classList.toggle("big",!!label); curEl.firstChild.textContent=label||""; }
+function showTip(s){ tipEl.textContent=s; tipEl.style.opacity=s?1:0; }
+document.addEventListener("pointerover",function(e){ var el=e.target.closest&&e.target.closest("[data-cursor]"); if(el) setCursor(el.getAttribute("data-cursor")); });
+document.addEventListener("pointerout",function(e){ var el=e.target.closest&&e.target.closest("[data-cursor]"); if(el && !el.contains(e.relatedTarget)) setCursor(""); });
+function bindPeek(){ if(!FINE) return; var im=pk.querySelector("img"); $$("#svcList li").forEach(function(li){ li.addEventListener("pointerenter",function(){ im.src=li.getAttribute("data-peek"); pk.classList.add("on"); }); li.addEventListener("pointerleave",function(){ pk.classList.remove("on"); }); }); }
+
+/* ---------- header / menu / scroll ---------- */
+addEventListener("scroll",function(){ $("#top").classList.toggle("solid",scrollY>40); var img=$("#aboutImg"); if(!RM&&img){ var r=img.parentNode.getBoundingClientRect(); img.style.transform="translateY("+(-(r.top/innerHeight)*8)+"%)"; } },{passive:true});
+var mb=$("#menuBtn"), mn=$("#mnav");
+function setMenu(o){ document.body.classList.toggle("menu-open",o); mb.setAttribute("aria-expanded",String(o)); mn.setAttribute("aria-hidden",String(!o)); document.body.classList.toggle("locked",o||!!openStack.length); }
+mb.addEventListener("click",function(){ setMenu(!document.body.classList.contains("menu-open")); });
+
+/* ---------- overlays ---------- */
+var openStack=[], curP=-1, curA=-1;
+function anyOpen(){ return openStack.length>0; }
+function showOv(el,from){ el._from=from||document.activeElement; if(openStack.indexOf(el)<0) openStack.push(el); el.setAttribute("aria-hidden","false"); el.scrollTop=0; document.body.classList.add("locked"); setCursor(""); showTip(""); }
+function hideOv(el){ el.classList.remove("open","fly","flying"); el.setAttribute("aria-hidden","true"); openStack=openStack.filter(function(x){ return x!==el; }); if(!anyOpen() && !document.body.classList.contains("menu-open")) document.body.classList.remove("locked"); if(el===pj){ curP=-1; } if(el===artEl){ curA=-1; } if(el===phoEl && location.hash==="#photographers"){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} } var f=el._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
+$$("[data-close]").forEach(function(b){ b.addEventListener("click",function(){ hideOv(b.closest(".ov")); }); });
+
+var pj=$("#proj");
+function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover").src=coverUrl; $("#pTitle").textContent=d.t; $("#pCat").textContent=d.c; $("#pFor").textContent=d.f; $("#pTask").textContent=d.k; $("#pSol").textContent=d.s;
+  var lv=p.live||[]; ["#pL1","#pL2","#pL3"].forEach(function(id,k){ var el=$(id); if(lv[k]!=null){ el.textContent=lv[k]; el.classList.remove("ph-val"); } else { el.textContent=k===0?(lang==="uk"?"[сума]":"[amount]"):"[N]"; el.classList.add("ph-val"); } });
+  pj.style.setProperty("--tint",rgba(p.tint||"#000000",.16));
+  var g=$("#pGal"); g.innerHTML=""; p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML='<img src="'+u+'" alt="">'; b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
+function openProj(i,srcImg,url,from){
+  curP=i; fillProj(i,url||PROJ[i].images[0]); showOv(pj,from);
+  if(srcImg && !RM){
+    var r=srcImg.getBoundingClientRect(); pj.classList.add("fly","flying"); void pj.offsetWidth;
+    var fl=document.createElement("div"); fl.className="flyer"; fl.style.cssText="left:"+r.left+"px;top:"+r.top+"px;width:"+r.width+"px;height:"+r.height+"px"; fl.innerHTML='<img src="'+(url||PROJ[i].images[0])+'" alt="">'; document.body.appendChild(fl);
+    var cv=pj.querySelector(".cover").getBoundingClientRect(); void fl.offsetWidth;
+    pj.classList.add("open");
+    requestAnimationFrame(function(){ fl.style.left=cv.left+"px"; fl.style.top=cv.top+"px"; fl.style.width=cv.width+"px"; fl.style.height=cv.height+"px"; });
+    setTimeout(function(){ pj.classList.remove("flying"); fl.style.opacity="0"; setTimeout(function(){ fl.remove(); },420); },1050);
+  } else { pj.classList.add("open"); }
+  setTimeout(function(){ var c=pj.querySelector("[data-close]"); if(c) c.focus({preventScroll:true}); },60);
+}
+$("#pNext").addEventListener("click",function(){ var n=(curP+1)%PROJ.length; pj.classList.remove("open","fly"); setTimeout(function(){ curP=n; fillProj(n,PROJ[n].images[0]); pj.scrollTop=0; pj.classList.add("open"); pj.querySelector("[data-close]").focus({preventScroll:true}); },RM?0:500); });
+
+var artEl=$("#art");
+function fillArt(i){ var a=SITE.journal[i], d=a[lang], p=PROJ[a.proj]; $("#aCover").src=p.images[a.img%p.images.length]; $("#aTitle").textContent=d.t; $("#aMeta").textContent=d.m;
+  $("#aBody").innerHTML=d.b.map(function(x){ return x.indexOf("<h3>")===0?x:"<p>"+esc(x)+"</p>"; }).join(""); artEl.style.setProperty("--tint",rgba(p.tint||"#000000",.12)); }
+function openArt(i,from){ curA=i; fillArt(i); showOv(artEl,from); artEl.classList.add("open"); setTimeout(function(){ artEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
+$("#aProj").addEventListener("click",function(){ var p=SITE.journal[curA].proj; hideOv(artEl); openProj(p,null,null,null); });
+
+var phoEl=$("#pho");
+function openPho(from){ showOv(phoEl,from); phoEl.classList.add("open"); setTimeout(function(){ phoEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
+document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return; var h=a.getAttribute("href");
+  if(document.body.classList.contains("menu-open")) setMenu(false);
+  if(h==="#photographers"){ e.preventDefault(); openPho(a); return; }
+  var ov=a.closest(".ov"); if(ov && h!=="#"+ov.id){ e.preventDefault(); hideOv(ov); var tg=$(h); if(tg) setTimeout(function(){ tg.scrollIntoView({behavior:RM?"auto":"smooth"}); },RM?0:400); }
+});
+
+/* lightbox */
+var lb=$("#lb"), lbList=[], gi=0;
+function showLb(){ $("#lbImg").src=lbList[gi]; $("#lbC").textContent=(gi+1)+" / "+lbList.length; }
+function openLb(list,j,from){ lbList=list; gi=j; lb._from=from||document.activeElement; lb.classList.toggle("single",list.length<2); showLb(); lb.classList.add("open"); document.body.classList.add("locked"); $("#lbX").focus(); }
+function closeLb(){ lb.classList.remove("open"); if(!anyOpen()) document.body.classList.remove("locked"); var f=lb._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
+function step(d){ gi=(gi+d+lbList.length)%lbList.length; showLb(); }
+$("#lbX").addEventListener("click",closeLb); $("#lbP").addEventListener("click",function(){ step(-1); }); $("#lbN").addEventListener("click",function(){ step(1); });
+var sx0=null; lb.addEventListener("pointerdown",function(e){ sx0=e.clientX; }); lb.addEventListener("pointerup",function(e){ if(sx0===null) return; var dx=e.clientX-sx0; sx0=null; if(Math.abs(dx)>50 && lbList.length>1) step(dx<0?1:-1); });
+
+document.addEventListener("keydown",function(e){
+  if(lb.classList.contains("open")){ if(e.key==="Escape") closeLb(); else if(e.key==="ArrowRight") step(1); else if(e.key==="ArrowLeft") step(-1); else if(e.key==="Tab") trap(e,lb); return; }
+  if(anyOpen()){ var top=openStack[openStack.length-1]; if(e.key==="Escape") hideOv(top); else if(e.key==="Tab") trap(e,top); return; }
+  if(document.body.classList.contains("menu-open")){ if(e.key==="Escape"){ setMenu(false); mb.focus(); } else if(e.key==="Tab") trap(e,document.body,[mb].concat($$("#mnav a"))); }
+});
+function trap(e,root,list){ var f=list||$$("button,a[href],input,textarea",root).filter(function(el){ return el.offsetParent!==null && !el.closest('[aria-hidden="true"]'); }); if(!f.length) return; var a=f[0], z=f[f.length-1]; if(e.shiftKey && document.activeElement===a){ e.preventDefault(); z.focus(); } else if(!e.shiftKey && document.activeElement===z){ e.preventDefault(); a.focus(); } }
+
+/* ---------- boot ---------- */
+var pre=$("#pre"); requestAnimationFrame(function(){ pre.classList.add("go"); });
+var t0=performance.now();
+build().then(function(){
+  ready=true; applyLang(); buildSphere(); requestAnimationFrame(frame);
+  if(location.hash==="#photographers") openPho(null);
+  var wait=Math.max(0,(RM?200:1900)-(performance.now()-t0));
+  setTimeout(function(){
+    pre.classList.add("out"); pre.addEventListener("transitionend",function(){ pre.style.display="none"; },{once:true});
+    if(RM){ intro=1; return; }
+    vy=.03; var s=performance.now(); (function grow(now){ var k=Math.min(1,(now-s)/1600); intro=1-Math.pow(1-k,4); if(k<1) requestAnimationFrame(grow); })(s);
+  },wait);
+});
+})();
+</script>
+</body>
+</html>
