@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://matie.vercel.app/sitemap.xml
+Sitemap: https://matie-puce.vercel.app/sitemap.xml
