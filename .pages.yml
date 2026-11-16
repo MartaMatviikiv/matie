@@ -1,0 +1,355 @@
+# Адмінка MATIÉ — app.pagescms.org
+media:
+  input: images
+  output: /images
+content:
+- name: site
+  label: Сайт MATIÉ
+  type: file
+  path: content.json
+  fields:
+  - name: contacts
+    label: Контакти
+    type: object
+    fields:
+    - name: telegram
+      label: Telegram (без @)
+      type: string
+    - name: instagram_main
+      label: Instagram основний (без @)
+      type: string
+    - name: instagram_second
+      label: Instagram другий (без @, можна порожньо)
+      type: string
+  - name: photos
+    label: Мої фото
+    type: object
+    fields:
+    - name: about
+      label: Портрет для «Про мене»
+      type: image
+    - name: contact
+      label: Фото для фону «Контакти» (горизонтальне)
+      type: image
+  - name: projects
+    label: Проєкти (порядок = порядок на сайті)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title_uk}'
+    fields:
+    - name: id
+      label: ID латиницею без пробілів (напр. rouge)
+      type: string
+    - name: images
+      label: Фото (перше — обкладинка). Порожньо = заглушка
+      type: image
+      options:
+        multiple:
+          max: 30
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+    - name: title_uk
+      label: Назва (UA)
+      type: string
+    - name: category_uk
+      label: Категорія (UA), напр. Рекламна кампанія · косметика
+      type: string
+    - name: for_uk
+      label: Для чого (UA)
+      type: text
+    - name: task_uk
+      label: Задача (UA)
+      type: text
+    - name: solution_uk
+      label: Рішення (UA)
+      type: text
+    - name: title_en
+      label: Назва (EN)
+      type: string
+    - name: category_en
+      label: Категорія (EN)
+      type: string
+    - name: for_en
+      label: Для чого (EN)
+      type: text
+    - name: task_en
+      label: Задача (EN)
+      type: text
+    - name: solution_en
+      label: Рішення (EN)
+      type: text
+    - name: live_budget
+      label: 'Якби знімати наживо: бюджет, грн (напр. 45 000)'
+      type: string
+    - name: live_people
+      label: 'Якби знімати наживо: людей у команді'
+      type: string
+    - name: live_days
+      label: 'Якби знімати наживо: днів'
+      type: string
+    - name: tint
+      label: 'Колір відтінку сторінки проєкту (напр. #c1121f)'
+      type: string
+    - name: placeholder
+      label: Заглушка, поки немає фото
+      type: select
+      options:
+        values:
+        - product
+        - columns
+        - portrait
+        - fashion
+        - cartoon
+        - city
+  - name: singles
+    label: Окремі кадри (тільки для сфери)
+    type: object
+    list: true
+    fields:
+    - name: image
+      label: Фото
+      type: image
+    - name: placeholder
+      label: Заглушка, поки немає фото
+      type: select
+      options:
+        values:
+        - product
+        - columns
+        - portrait
+        - fashion
+        - cartoon
+        - city
+  - name: services
+    label: Послуги
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name_uk} — {price_uk}'
+    fields:
+    - name: id
+      label: ID латиницею
+      type: string
+    - name: name_uk
+      label: Назва (UA)
+      type: string
+    - name: desc_uk
+      label: Опис (UA)
+      type: text
+    - name: price_uk
+      label: Ціна, як показати (UA), напр. від 1 800 грн
+      type: string
+    - name: note_uk
+      label: Примітка під ціною (UA)
+      type: string
+    - name: name_en
+      label: Назва (EN)
+      type: string
+    - name: desc_en
+      label: Опис (EN)
+      type: text
+    - name: price_en
+      label: Ціна (EN), напр. from 1,800 UAH
+      type: string
+    - name: note_en
+      label: Примітка (EN)
+      type: string
+    - name: preview_project
+      label: ID проєкту для фото при наведенні
+      type: string
+    - name: calc_type
+      label: 'Калькулятор: тип ціни'
+      type: select
+      options:
+        values:
+        - package
+        - per
+    - name: package_price
+      label: 'Пакет: ціна пакета, грн'
+      type: number
+    - name: package_qty
+      label: 'Пакет: скільки одиниць входить'
+      type: number
+    - name: extra_price
+      label: 'Пакет: ціна кожної наступної одиниці, грн'
+      type: number
+    - name: unit_price
+      label: 'За одиницю: ціна, грн'
+      type: number
+    - name: unit_price_hi
+      label: 'За одиницю: ціна high-end (0 = немає опції)'
+      type: number
+    - name: qty_min
+      label: 'Повзунок: мінімум'
+      type: number
+    - name: qty_max
+      label: 'Повзунок: максимум'
+      type: number
+    - name: qty_step
+      label: 'Повзунок: крок'
+      type: number
+    - name: unit_uk
+      label: Одиниця (UA), напр. фото
+      type: string
+    - name: unit_en
+      label: Одиниця (EN)
+      type: string
+    - name: discounts
+      label: Знижки за обсяг
+      type: object
+      list: true
+      fields:
+      - name: from_qty
+        label: Від кількості
+        type: number
+      - name: percent
+        label: Знижка, %
+        type: number
+  - name: urgency
+    label: Терміни (калькулятор)
+    type: object
+    list: true
+    fields:
+    - name: name_uk
+      label: Назва (UA)
+      type: string
+    - name: time_uk
+      label: Термін (UA)
+      type: string
+    - name: name_en
+      label: Назва (EN)
+      type: string
+    - name: time_en
+      label: Термін (EN)
+      type: string
+    - name: extra_percent
+      label: Націнка, %
+      type: number
+  - name: retouch
+    label: 'Ретуш: пари до/після (порожньо = заглушки). Фото однакового розміру!'
+    type: object
+    list: true
+    fields:
+    - name: before
+      label: До
+      type: image
+    - name: after
+      label: Після
+      type: image
+  - name: idea
+    label: 'Ідея → кадр: пари (порожньо = заглушки)'
+    type: object
+    list: true
+    fields:
+    - name: before
+      label: Зліва (ескіз / референс / фото клієнта)
+      type: image
+    - name: after
+      label: Справа (готовий кадр)
+      type: image
+    - name: label_before_uk
+      label: Підпис зліва (UA), напр. Ескіз
+      type: string
+    - name: label_after_uk
+      label: Підпис справа (UA)
+      type: string
+    - name: caption_uk
+      label: Опис під слайдером (UA)
+      type: string
+    - name: label_before_en
+      label: Підпис зліва (EN)
+      type: string
+    - name: label_after_en
+      label: Підпис справа (EN)
+      type: string
+    - name: caption_en
+      label: Опис (EN)
+      type: string
+  - name: journal
+    label: 'Статті. У тексті: порожній рядок = новий абзац, «## » на початку = підзаголовок'
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title_uk}'
+    fields:
+    - name: project
+      label: ID проєкту, до якого стаття
+      type: string
+    - name: cover
+      label: Обкладинка (порожньо = фото проєкту)
+      type: image
+    - name: title_uk
+      label: Заголовок (UA)
+      type: string
+    - name: meta_uk
+      label: Мітка (UA), напр. Розбір · 3 хв
+      type: string
+    - name: excerpt_uk
+      label: Короткий опис (UA)
+      type: text
+    - name: body_uk
+      label: Текст (UA)
+      type: text
+    - name: title_en
+      label: Заголовок (EN)
+      type: string
+    - name: meta_en
+      label: Мітка (EN)
+      type: string
+    - name: excerpt_en
+      label: Короткий опис (EN)
+      type: text
+    - name: body_en
+      label: Текст (EN)
+      type: text
+  - name: photographers
+    label: Фотографам
+    type: object
+    fields:
+    - name: prices
+      label: Ціни
+      type: object
+      list: true
+      fields:
+      - name: name_uk
+        label: Назва (UA)
+        type: string
+      - name: desc_uk
+        label: Опис (UA)
+        type: string
+      - name: price_uk
+        label: Ціна (UA)
+        type: string
+      - name: name_en
+        label: Назва (EN)
+        type: string
+      - name: desc_en
+        label: Опис (EN)
+        type: string
+      - name: price_en
+        label: Ціна (EN)
+        type: string
+    - name: terms
+      label: Умови
+      type: object
+      list: true
+      fields:
+      - name: title_uk
+        label: Заголовок (UA)
+        type: string
+      - name: text_uk
+        label: Текст (UA)
+        type: string
+      - name: title_en
+        label: Заголовок (EN)
+        type: string
+      - name: text_en
+        label: Текст (EN)
+        type: string
