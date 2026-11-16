@@ -98,6 +98,12 @@ content:
     - name: live_note_en
       label: 'Розшифровка суми (EN), той самий формат'
       type: text
+    - name: my_price_uk
+      label: 'Та сама робота зі мною (UA), напр. 3 200 грн. Економію сайт порахує сам'
+      type: string
+    - name: my_price_en
+      label: 'Та сама робота зі мною (EN), напр. 3,200 UAH'
+      type: string
     - name: tint
       label: 'Колір відтінку сторінки проєкту (напр. #c1121f)'
       type: string

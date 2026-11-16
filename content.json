@@ -5,19 +5,22 @@
     "instagram_second": "marta.matviykiv"
   },
   "photos": {
-    "contact": "/images/hf_20260926_181224_6c8fef1f-475d-4294-984e-754c3ab91368.png"
+    "about": "",
+    "contact": ""
   },
   "projects": [
     {
       "id": "same-light",
+      "placeholder": "portrait",
+      "tint": "#b98a6a",
       "images": [
-        "/images/01.jpg",
-        "/images/02.jpg",
-        "/images/03.jpg",
-        "/images/04.jpg",
-        "/images/05-1.jpg",
-        "/images/06.jpg",
-        "/images/07-1.jpg"
+        "/images/same-light/01.jpg",
+        "/images/same-light/02.jpg",
+        "/images/same-light/03.jpg",
+        "/images/same-light/04.jpg",
+        "/images/same-light/05.jpg",
+        "/images/same-light/06.jpg",
+        "/images/same-light/07.jpg"
       ],
       "title_uk": "Same Light",
       "category_uk": "Beauty-концепт · шкіра",
@@ -27,18 +30,21 @@
       "title_en": "Same Light",
       "category_en": "Beauty concept · skin",
       "for_en": "An original concept for beauty and skincare brands: what a campaign could look like when the hero is the skin itself.",
-      "task_en": "Show the beauty of skin across tones with no product, no make-up in focus and no cliché of “different faces in a row”. Diversity had to be felt, not declared.",
+      "task_en": "Show the beauty of skin across tones with no product, no make-up in focus and no cliché of \"different faces in a row\". Diversity had to be felt, not declared.",
       "solution_en": "One light for everyone. A warm soft backdrop and identical lighting on every tone reveal that all skin glows equally beautifully, from porcelain to the deepest shades. Close crops, touch and real texture: pores, lip lines, hair on the arm. The frames read like film photography for a glossy magazine.",
       "live_budget": "35 000",
       "live_people": "9",
       "live_days": "4",
       "live_note_uk": "Гонорари 6 моделей — 15 000 грн\nФотограф, 3 години — 8 000 грн\nВізаж і зачіски для 6 моделей — 6 000 грн\nОренда студії, 4 години — 4 500 грн\nРетуш 7 кадрів — 1 500 грн\nОрієнтовно, за середніми цінами в Україні у 2026 році.",
       "live_note_en": "Fees for 6 models — 15,000 UAH\nPhotographer, 3 hours — 8,000 UAH\nMake-up and hair for 6 models — 6,000 UAH\nStudio rental, 4 hours — 4,500 UAH\nRetouching, 7 frames — 1,500 UAH\nEstimate based on average prices in Ukraine, 2026.",
-      "tint": "#b98a6a",
-      "placeholder": "product"
+      "my_price_uk": "3 200 грн",
+      "my_price_en": "3,200 UAH"
     },
     {
       "id": "elysium",
+      "placeholder": "columns",
+      "tint": "#e08a3c",
+      "images": [],
       "title_uk": "Elysium",
       "category_uk": "Фотосесія · блогерка",
       "for_uk": "Особистий бренд блогерки: аватар, обкладинки, серія постів.",
@@ -49,11 +55,19 @@
       "for_en": "A creator’s personal brand: avatar, covers, a post series.",
       "task_en": "Place her in ancient Greece: marble, golden light, fabric in motion.",
       "solution_en": "Warm evening light, true architectural proportions and painterly composition in the manner of the old masters.",
-      "tint": "#e08a3c",
-      "placeholder": "columns"
+      "live_budget": "",
+      "live_people": "",
+      "live_days": "",
+      "live_note_uk": "",
+      "live_note_en": "",
+      "my_price_uk": "",
+      "my_price_en": ""
     },
     {
       "id": "noir",
+      "placeholder": "portrait",
+      "tint": "#9a958e",
+      "images": [],
       "title_uk": "Noir",
       "category_uk": "Портретна серія · публічна людина",
       "for_uk": "Фото для інтерв’ю, обкладинки подкасту та преси.",
@@ -64,11 +78,19 @@
       "for_en": "Images for interviews, a podcast cover and press.",
       "task_en": "A restrained black-and-white look that shows character without excess gloss.",
       "solution_en": "Hard side light, deep shadows, visible skin texture. Retouching that keeps the personality.",
-      "tint": "#9a958e",
-      "placeholder": "portrait"
+      "live_budget": "",
+      "live_people": "",
+      "live_days": "",
+      "live_note_uk": "",
+      "live_note_en": "",
+      "my_price_uk": "",
+      "my_price_en": ""
     },
     {
       "id": "dune",
+      "placeholder": "fashion",
+      "tint": "#3f9f97",
+      "images": [],
       "title_uk": "Dune",
       "category_uk": "Лукбук · бренд одягу",
       "for_uk": "Нова колекція бренду одягу для сайту та маркетплейсів.",
@@ -79,11 +101,19 @@
       "for_en": "A new collection for a fashion brand’s website and marketplaces.",
       "task_en": "Shoot the collection in the desert without sending a crew or weeks of prep.",
       "solution_en": "Sand, turquoise sky, models in motion. Fabrics keep their texture and colours match the real garments.",
-      "tint": "#3f9f97",
-      "placeholder": "fashion"
+      "live_budget": "",
+      "live_people": "",
+      "live_days": "",
+      "live_note_uk": "",
+      "live_note_en": "",
+      "my_price_uk": "",
+      "my_price_en": ""
     },
     {
       "id": "soft-world",
+      "placeholder": "cartoon",
+      "tint": "#ff8fab",
+      "images": [],
       "title_uk": "Soft World",
       "category_uk": "AI-мультфільм · дитячий бренд",
       "for_uk": "Рекламний мультфільм і персонаж для дитячого бренду.",
@@ -94,11 +124,19 @@
       "for_en": "An animated ad and a mascot for a children’s brand.",
       "task_en": "Create a hero and a short story kids will want to watch again.",
       "solution_en": "Soft shapes, a pastel palette and a warm narrator. The character stays consistent in every scene.",
-      "tint": "#ff8fab",
-      "placeholder": "cartoon"
+      "live_budget": "",
+      "live_people": "",
+      "live_days": "",
+      "live_note_uk": "",
+      "live_note_en": "",
+      "my_price_uk": "",
+      "my_price_en": ""
     },
     {
       "id": "neon-night",
+      "placeholder": "city",
+      "tint": "#ff2fd1",
+      "images": [],
       "title_uk": "Neon Night",
       "category_uk": "AI-відео · музичний реліз",
       "for_uk": "Тизер і обкладинка синглу для музиканта.",
@@ -109,15 +147,22 @@
       "for_en": "A teaser and single cover for a musician.",
       "task_en": "Build a visual world for the release that holds attention from the first frame.",
       "solution_en": "A night city, neon reflections on wet asphalt, cuts timed to the beat.",
-      "tint": "#ff2fd1",
-      "placeholder": "city"
+      "live_budget": "",
+      "live_people": "",
+      "live_days": "",
+      "live_note_uk": "",
+      "live_note_en": "",
+      "my_price_uk": "",
+      "my_price_en": ""
     }
   ],
   "singles": [
     {
+      "image": "",
       "placeholder": "columns"
     },
     {
+      "image": "",
       "placeholder": "product"
     }
   ],
@@ -127,10 +172,12 @@
       "name_uk": "AI-фотосесія",
       "desc_uk": "Персональна зйомка для блогерів і публічних людей: концепція, образи, локації, 10 фото у високій якості з повною схожістю.",
       "price_uk": "від 1 800 грн",
+      "note_uk": "",
       "name_en": "AI Photoshoot",
       "desc_en": "A personal shoot for creators and public figures: concept, looks, locations, 10 high-resolution photos with a true likeness.",
       "price_en": "from 1,800 UAH",
-      "preview_project": "rouge",
+      "note_en": "",
+      "preview_project": "same-light",
       "calc_type": "package",
       "package_price": 1800,
       "package_qty": 10,
@@ -141,17 +188,20 @@
       "qty_max": 50,
       "qty_step": 5,
       "unit_uk": "фото",
-      "unit_en": "photos"
+      "unit_en": "photos",
+      "discounts": []
     },
     {
       "id": "brand",
       "name_uk": "AI-контент для бренду",
       "desc_uk": "Предметна та рекламна зйомка продукту, лукбуки, кадри для соцмереж, сайту й маркетплейсів. 10 кадрів.",
       "price_uk": "від 3 200 грн",
+      "note_uk": "",
       "name_en": "AI Brand Content",
       "desc_en": "Product and advertising shots, lookbooks, images for social, web and marketplaces. 10 frames.",
       "price_en": "from 3,200 UAH",
-      "preview_project": "rouge",
+      "note_en": "",
+      "preview_project": "same-light",
       "calc_type": "package",
       "package_price": 3200,
       "package_qty": 10,
@@ -162,16 +212,19 @@
       "qty_max": 60,
       "qty_step": 5,
       "unit_uk": "кадрів",
-      "unit_en": "frames"
+      "unit_en": "frames",
+      "discounts": []
     },
     {
       "id": "identity",
       "name_uk": "AI-візуал під бренд",
       "desc_uk": "Власний візуальний стиль бренду: постійна AI-модель або персонаж, кольори, світло. Кампанія від 20 візуалів.",
       "price_uk": "від 9 500 грн",
+      "note_uk": "",
       "name_en": "AI Brand Visual Identity",
       "desc_en": "Your brand’s own visual language: a recurring AI model or character, colour, light. A campaign of 20+ visuals.",
       "price_en": "from 9,500 UAH",
+      "note_en": "",
       "preview_project": "dune",
       "calc_type": "package",
       "package_price": 9500,
@@ -183,7 +236,8 @@
       "qty_max": 80,
       "qty_step": 5,
       "unit_uk": "візуалів",
-      "unit_en": "visuals"
+      "unit_en": "visuals",
+      "discounts": []
     },
     {
       "id": "illus",
@@ -235,16 +289,19 @@
       "qty_max": 10,
       "qty_step": 1,
       "unit_uk": "ролик(ів)",
-      "unit_en": "video(s)"
+      "unit_en": "video(s)",
+      "discounts": []
     },
     {
       "id": "anim",
       "name_uk": "AI-мультфільм",
       "desc_uk": "Анімаційна історія від ідеї до готового фільму: сценарій, персонажі, озвучка, музика.",
       "price_uk": "від 5 000 грн / хв",
+      "note_uk": "",
       "name_en": "AI Animation",
       "desc_en": "An animated story from idea to finished film: script, characters, voice, music.",
       "price_en": "from 5,000 UAH / min",
+      "note_en": "",
       "preview_project": "soft-world",
       "calc_type": "per",
       "package_price": 0,
@@ -256,7 +313,8 @@
       "qty_max": 10,
       "qty_step": 1,
       "unit_uk": "хв",
-      "unit_en": "min"
+      "unit_en": "min",
+      "discounts": []
     },
     {
       "id": "voice",
@@ -279,7 +337,8 @@
       "qty_max": 20,
       "qty_step": 1,
       "unit_uk": "ролик(ів)",
-      "unit_en": "clip(s)"
+      "unit_en": "clip(s)",
+      "discounts": []
     },
     {
       "id": "edit",
@@ -302,7 +361,8 @@
       "qty_max": 20,
       "qty_step": 1,
       "unit_uk": "Reels",
-      "unit_en": "Reels"
+      "unit_en": "Reels",
+      "discounts": []
     },
     {
       "id": "retouch",
@@ -340,41 +400,43 @@
   ],
   "urgency": [
     {
+      "extra_percent": 0,
       "name_uk": "Стандарт",
       "time_uk": "5–7 робочих днів",
       "name_en": "Standard",
-      "time_en": "5–7 working days",
-      "extra_percent": 0
+      "time_en": "5–7 working days"
     },
     {
+      "extra_percent": 30,
       "name_uk": "Швидко",
       "time_uk": "2–3 дні",
       "name_en": "Fast",
-      "time_en": "2–3 days",
-      "extra_percent": 30
+      "time_en": "2–3 days"
     },
     {
+      "extra_percent": 60,
       "name_uk": "Терміново",
       "time_uk": "24–48 годин",
       "name_en": "Urgent",
-      "time_en": "24–48 hours",
-      "extra_percent": 60
+      "time_en": "24–48 hours"
     }
   ],
   "journal": [
     {
-      "project": "rouge",
-      "title_uk": "Як зібрати світло для кадру Rouge",
+      "project": "same-light",
+      "cover": "",
+      "title_uk": "Одне світло для всіх: як зроблено Same Light",
       "meta_uk": "Розбір · 3 хв",
-      "excerpt_uk": "Чому червоний виглядає дорого лише з правильними тінями, і як скло стає головним героєм.",
-      "body_uk": "Задача була проста на словах: зробити крем схожим на прикрасу. На практиці це означало боротьбу з червоним, який легко стає дешевим і пластиковим.\n\n## Світло першим\n\nЯ почала не з продукту, а зі світла: один жорсткий контровий промінь і м’яке заповнення з боку камери. Так скло отримує тонкий блік по краю, а банка не зливається з фоном.\n\n## Менше деталей\n\nКожен кадр має одну ідею. Якщо в композиції з’являлася зайва гілка чи крапля, я прибирала її, навіть коли вона була красивою.\n\n## Ретуш\n\nФінально вирівнюю відтінок червоного в усій серії, щоб у стрічці кадри виглядали як одна кампанія.",
-      "title_en": "Building the light for Rouge",
+      "excerpt_uk": "Чому однакове світло на різних тонах шкіри говорить про різноманіття сильніше за будь-який слоган.",
+      "body_uk": "Ідея проста: не вирівнювати людей, а вирівняти світло. Якщо кожен тон шкіри освітлений однаково, глядач сам бачить, що краса не залежить від відтінку.\n\n## Світло\n\nТеплий м'який фон, одне велике джерело збоку і легке заповнення. Та сама схема для кожного кадру, щоб серія читалась як одна історія.\n\n## Текстура\n\nЯ свідомо залишала пори, складки губ і волоски на руці. Саме вони роблять кадр живим і відрізняють його від глянцевої AI-картинки.\n\n## Дотик\n\nРуки, щоки, губи поруч. Близькість замість пози в ряд — так різноманіття відчувається, а не декларується.",
+      "title_en": "One light for everyone: making Same Light",
       "meta_en": "Breakdown · 3 min",
-      "excerpt_en": "Why red only looks expensive with the right shadows, and how glass becomes the hero.",
-      "body_en": "The brief sounded simple: make a cream look like jewellery. In practice it meant fighting a red that easily turns cheap and plastic.\n\n## Light first\n\nI started with the light, not the product: one hard rim light and soft fill from the camera side. The glass gets a thin edge highlight and the jar never melts into the background.\n\n## Fewer details\n\nEach frame holds one idea. If an extra branch or droplet appeared, it went, even when it was pretty.\n\n## Retouching\n\nFinally I match the exact red across the series so the frames read as one campaign in the feed."
+      "excerpt_en": "Why identical light across skin tones says more about diversity than any slogan.",
+      "body_en": "The idea is simple: don't even out the people, even out the light. When every skin tone is lit the same way, viewers see for themselves that beauty doesn't depend on shade.\n\n## Light\n\nA warm soft backdrop, one large source from the side and gentle fill. The same setup for every frame, so the series reads as one story.\n\n## Texture\n\nI deliberately kept pores, lip lines and hair on the arm. They make the frame alive and set it apart from a glossy AI picture.\n\n## Touch\n\nHands, cheeks and lips side by side. Closeness instead of a line-up: diversity felt, not declared."
     },
     {
       "project": "elysium",
+      "cover": "",
       "title_uk": "Античність без виїзду: Elysium",
       "meta_uk": "Розбір · 4 хв",
       "excerpt_uk": "Як перенести людину в Грецію й не загубити її впізнаваність.",
@@ -386,6 +448,7 @@
     },
     {
       "project": "noir",
+      "cover": "",
       "title_uk": "Чому ретуш не повинна стирати шкіру",
       "meta_uk": "Думка · 2 хв",
       "excerpt_uk": "Про пори, текстуру й портрети, яким хочеться вірити.",
@@ -396,6 +459,8 @@
       "body_en": "Perfectly smooth skin reads as a mask. Viewers can’t say why, but they stop trusting the image.\n\n## What I remove\n\nThe temporary: irritation, signs of fatigue, stray hairs, glare. Things that wouldn’t be there on a good day.\n\n## What I keep\n\nPores, smile lines, moles. That is the character people recognise."
     }
   ],
+  "retouch": [],
+  "idea": [],
   "photographers": {
     "prices": [
       {

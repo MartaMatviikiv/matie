@@ -268,19 +268,27 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .ov .bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--gut);background:rgba(11,11,12,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .ov .cover{position:relative;height:clamp(420px,82svh,900px);overflow:hidden}
 .ov .cover img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
-.ov .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg),rgba(11,11,12,0) 55%)}
+.ov .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 2%,rgba(11,11,12,.55) 30%,rgba(11,11,12,0) 60%)}
 .ov .cover .t{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(24px,4vw,56px);z-index:2}
+.ov .cover .t .micro{color:var(--ink);opacity:.9;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.ov .cover h2{text-shadow:0 4px 40px rgba(0,0,0,.35)}
 .ov .cover h2{font-size:clamp(56px,11vw,180px)}
 .flyer{position:fixed;z-index:165;overflow:hidden;pointer-events:none;transition:left 1s var(--ease),top 1s var(--ease),width 1s var(--ease),height 1s var(--ease),opacity .4s}
 .flyer img{width:100%;height:100%;object-fit:cover}
 .pinfo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px var(--gut);padding:clamp(40px,6vw,80px) 0}
 .pinfo h3{margin:0 0 10px}
 .pinfo p{margin:0;color:var(--soft);max-width:44ch}
-.live{border:1px solid var(--line);padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.2fr) repeat(3,minmax(0,1fr));gap:24px var(--gut);align-items:end;margin-bottom:clamp(48px,7vw,96px)}
+.live{border:1px solid var(--line);padding:clamp(24px,4vw,48px);margin-top:clamp(48px,7vw,96px);display:grid;grid-template-columns:minmax(0,1.2fr) repeat(3,minmax(0,1fr));gap:24px var(--gut);align-items:end;margin-bottom:clamp(48px,7vw,96px)}
 .live h3{font-family:var(--f-head);font-weight:300;font-size:clamp(28px,3vw,44px);margin:0;line-height:1.05;text-wrap:balance}
 .live b{display:block;font-family:var(--f-head);font-weight:300;font-size:clamp(36px,4vw,60px);line-height:1}
 .live span{font-size:13px;color:var(--muted)}
 .ph-val{color:var(--muted)}
+.mine{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;border-top:1px solid var(--accent);padding-top:24px}
+.mine[hidden]{display:none}
+.live .mine b{color:var(--accent)}
+.mine .save{text-align:right}
+.mine .save b{color:var(--ink)!important}
+@media (max-width:520px){.mine .save{text-align:left}}
 .live-note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px;margin:0}
 .live-note[hidden]{display:none}
 .live-note ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--gut)}
@@ -588,14 +596,15 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
       <div><h3 class="micro" data-i18n="pTask">Задача</h3><p id="pTask"></p></div>
       <div><h3 class="micro" data-i18n="pSol">Рішення</h3><p id="pSol"></p></div>
     </div>
+    <div class="gal" id="pGal"></div>
     <div class="live">
       <div><p class="micro" data-i18n="liveK">Якби знімати наживо</p><h3 data-i18n="liveT">Те саме без AI коштувало б</h3></div>
       <div><b class="ph-val" id="pL1">[сума]</b><span data-i18n="live1">грн бюджету зйомки</span></div>
       <div><b class="ph-val" id="pL2">[N]</b><span data-i18n="live2">людей у команді</span></div>
       <div><b class="ph-val" id="pL3">[N]</b><span data-i18n="live3">днів підготовки та зйомки</span></div>
       <div class="live-note" id="pNote" hidden><p class="micro" data-i18n="liveNoteK" style="margin:0 0 6px">З чого складається сума</p><ul id="pNoteL"></ul><p id="pNoteP"></p></div>
+      <div class="mine" id="pMine" hidden><div><p class="micro" data-i18n="mineK" style="margin:0 0 10px">Та сама робота зі мною</p><b id="pMineV"></b></div><div class="save" id="pSave"><p class="micro" data-i18n="saveK" style="margin:0 0 10px">Ваша економія</p><b id="pSaveV"></b><span id="pSaveP"></span></div></div>
     </div>
-    <div class="gal" id="pGal"></div>
     <div class="pfoot">
       <a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener" data-i18n="want">Хочу так само</a>
       <button class="btn" type="button" id="pNext"><span data-i18n="next">Наступний проєкт</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h14M11 4l5 5-5 5"/></svg></button>
@@ -658,7 +667,7 @@ function fromCMS(j){
   var img=function(v){ v=str(v); return v; };
   var projects=(j.projects||[]).map(function(p,i){ var k=ART[p.placeholder]?p.placeholder:"portrait";
     return {id:p.id||("p"+i), tint:p.tint||"#888888", images:(p.images||[]).map(img).filter(Boolean),
-      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, art:{k:k,pal:ART[k]},
+      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, mine:{uk:str(p.my_price_uk),en:str(p.my_price_en)||str(p.my_price_uk)}, art:{k:k,pal:ART[k]},
       uk:{t:p.title_uk,c:p.category_uk,f:p.for_uk,k:p.task_uk,s:p.solution_uk},
       en:{t:p.title_en||p.title_uk,c:p.category_en||p.category_uk,f:p.for_en||p.for_uk,k:p.task_en||p.task_uk,s:p.solution_en||p.solution_uk}}; });
   var pidx=function(id){ for(var i=0;i<projects.length;i++) if(projects[i].id===id) return i; return 0; };
@@ -712,7 +721,7 @@ baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть по�
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
 ctK:"Контакти",ctT:"Створимо щось <em>неймовірне?</em>",ctL:"Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.",igSoon:"Instagram · скоро",
-close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",liveNoteK:"З чого складається сума",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
+close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",liveNoteK:"З чого складається сума",mineK:"Та сама робота зі мною",saveK:"Ваша економія",cheaper:"дешевше",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
 phK:"Фотографам",phT:"Ретуш, що зберігає <em>ваш стиль</em>",phL:"Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.",phCta:"Надіслати фото на тест"},
 en:{skip:"Skip to work",navAria:"Main menu",footAria:"Footer links",menu:"Menu",nWorks:"Work",nServices:"Services",nCalc:"Calculator",nJournal:"Journal",nPhoto:"Photographers",nAbout:"About",nContact:"Contact",cta:"Get in touch",sndOn:"Turn sound on",sndOff:"Turn sound off",
 heroLede:"Ad campaigns, photoshoots and films made with AI. No studio, no casting, no weeks of production.",heroBtn:"View work",heroCalc:"Get a price",drag:"Drag to explore",
@@ -731,7 +740,7 @@ baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin st
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
 ctK:"Contact",ctT:"Shall we create something <em>unreal?</em>",ctL:"Message me on Telegram with a short description of the task, and I’ll reply with ideas and a price.",igSoon:"Instagram · soon",
-close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",liveNoteK:"How the amount adds up",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
+close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",liveNoteK:"How the amount adds up",mineK:"The same work with me",saveK:"You save",cheaper:"less",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
 phK:"For photographers",phT:"Retouching that keeps <em>your style</em>",phL:"You shoot, I get the frames ready for your client. Batch retouching in your style, on your schedule.",phCta:"Send photos for a test"}
 };
 var lang="uk";
@@ -935,19 +944,13 @@ function observe(){ if(!io) return; $$(".rv").forEach(function(el){ if(el.datase
 /* ---------- sound (Web Audio, off by default) ---------- */
 var snd={on:false,ac:null,master:null};
 function sndLabel(){ var b=$("#sndBtn"); b.setAttribute("aria-label",t(snd.on?"sndOff":"sndOn")); b.setAttribute("aria-pressed",String(snd.on)); }
-function startAmb(){
-  var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
-  if(!snd.ac){ snd.ac=new AC(); var ac=snd.ac; snd.master=ac.createGain(); snd.master.gain.value=0; snd.master.connect(ac.destination);
-    var lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=700; lp.Q.value=.6; lp.connect(snd.master);
-    [[55,"sine",.5],[82.4,"sine",.35],[110.3,"triangle",.18],[164.6,"sine",.08]].forEach(function(v){ var o=ac.createOscillator(), g=ac.createGain(); o.type=v[1]; o.frequency.value=v[0]; o.detune.value=(Math.random()-.5)*8; g.gain.value=v[2]; o.connect(g); g.connect(lp); o.start(); });
-    var lfo=ac.createOscillator(), lg=ac.createGain(); lfo.frequency.value=.06; lg.gain.value=260; lfo.connect(lg); lg.connect(lp.frequency); lfo.start(); }
-  if(snd.ac.state==="suspended") snd.ac.resume();
-  snd.master.gain.cancelScheduledValues(snd.ac.currentTime); snd.master.gain.setTargetAtTime(.05,snd.ac.currentTime,1.2); return true;
-}
-function stopAmb(){ if(snd.ac){ snd.master.gain.cancelScheduledValues(snd.ac.currentTime); snd.master.gain.setTargetAtTime(0,snd.ac.currentTime,.4); } }
-function blip(f){ if(!snd.on||!snd.ac) return; var ac=snd.ac, o=ac.createOscillator(), g=ac.createGain(), n=ac.currentTime; o.type="sine"; o.frequency.setValueAtTime(f||740,n); o.frequency.exponentialRampToValueAtTime((f||740)/2,n+.12); g.gain.setValueAtTime(0,n); g.gain.linearRampToValueAtTime(.05,n+.01); g.gain.exponentialRampToValueAtTime(.0001,n+.25); o.connect(g); g.connect(ac.destination); o.start(n); o.stop(n+.3); }
-$("#sndBtn").addEventListener("click",function(){ try{ if(!snd.on){ if(startAmb()){ snd.on=true; blip(880); } } else { snd.on=false; stopAmb(); } }catch(e){ snd.on=false; } sndLabel(); });
-document.addEventListener("click",function(e){ if(e.target.closest && e.target.closest("button,a,.chip,.card") && !e.target.closest("#sndBtn")) blip(620); },true);
+function ctx(){ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null; if(!snd.ac) snd.ac=new AC(); if(snd.ac.state==="suspended") snd.ac.resume(); return snd.ac; }
+function blip(f){ if(!snd.on) return; var ac=ctx(); if(!ac) return; var n=ac.currentTime, o=ac.createOscillator(), g=ac.createGain(), hp=ac.createBiquadFilter();
+  hp.type="highpass"; hp.frequency.value=700; o.type="sine"; o.frequency.setValueAtTime(f||1900,n); o.frequency.exponentialRampToValueAtTime((f||1900)*.72,n+.035);
+  g.gain.setValueAtTime(0,n); g.gain.linearRampToValueAtTime(.06,n+.003); g.gain.exponentialRampToValueAtTime(.0001,n+.07);
+  o.connect(hp); hp.connect(g); g.connect(ac.destination); o.start(n); o.stop(n+.09); }
+$("#sndBtn").addEventListener("click",function(){ try{ snd.on=!snd.on; if(snd.on){ ctx(); blip(2200); } }catch(e){ snd.on=false; } sndLabel(); });
+document.addEventListener("click",function(e){ if(e.target.closest && e.target.closest("button,a,.chip,.card") && !e.target.closest("#sndBtn")) blip(1900); },true);
 
 /* ---------- sphere ---------- */
 var stage=$("#stage"), cards=[], pts=[], rotX=-.18, rotY=0, vx=0, vy=0, drag=false, hover=false, intro=0, W=0,H=0,R=0,cw=0,chh=0, cardBoost=1, lastX=0,lastY=0,moved=0,downCard=null, heroVisible=true;
@@ -986,7 +989,7 @@ function frame(){
 }
 stage.addEventListener("pointerdown",function(e){ drag=true; moved=0; lastX=e.clientX; lastY=e.clientY; downCard=e.target.closest(".card"); stage.classList.add("drag"); if(e.pointerType!=="touch"){ try{stage.setPointerCapture(e.pointerId);}catch(_){} } });
 stage.addEventListener("pointermove",function(e){ if(!drag) return; var dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY; moved+=Math.abs(dx)+Math.abs(dy); vy=dx*.0045; vx=-dy*.0045; });
-function endDrag(){ if(!drag) return; drag=false; stage.classList.remove("drag"); if(moved<6 && downCard){ var it=downCard._it, img=downCard.querySelector("img"); if(it.p!==undefined) openProj(it.p,img,it.u,null); else openLb([it.u],0,null); blip(520); } downCard=null; }
+function endDrag(){ if(!drag) return; drag=false; stage.classList.remove("drag"); if(moved<6 && downCard){ var it=downCard._it, img=downCard.querySelector("img"); if(it.p!==undefined) openProj(it.p,img,it.u,null); else openLb([it.u],0,null); } downCard=null; }
 stage.addEventListener("pointerup",endDrag); stage.addEventListener("pointercancel",function(){ drag=false; stage.classList.remove("drag"); downCard=null; });
 if("IntersectionObserver" in window){ new IntersectionObserver(function(es){ heroVisible=es[0].isIntersecting; }).observe($("#hero")); }
 addEventListener("resize",layout);
@@ -1021,6 +1024,10 @@ function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover
   nt.split(/\n/).map(function(x){ return x.trim(); }).filter(Boolean).forEach(function(line){ var m=line.split(/\s+[—–-]\s+(?=[^—–-]*$)/);
     if(m.length===2){ var li=document.createElement("li"); li.innerHTML="<span>"+esc(m[0])+"</span><b>"+esc(m[1])+"</b>"; nl.appendChild(li); } else { np.textContent+=(np.textContent?" ":"")+line; } });
   $("#pNote").hidden=!nt;
+  var num=function(v){ var d=String(v||"").replace(/[^\d]/g,""); return d?+d:0; };
+  var mv=(p.mine&&p.mine[lang])||"", bud=num(lv[0]), my=num(mv);
+  $("#pMine").hidden=!mv; $("#pMineV").textContent=mv;
+  if(mv && bud && my && bud>my){ var sv=bud-my; $("#pSave").hidden=false; $("#pSaveV").textContent=(lang==="uk"?sv.toLocaleString("uk-UA").replace(/\u00a0/g," ")+" грн":sv.toLocaleString("en-US")+" UAH"); $("#pSaveP").textContent=Math.round(sv/bud*100)+"% "+t("cheaper"); } else { $("#pSave").hidden=true; }
   pj.style.setProperty("--tint",rgba(p.tint||"#000000",.16));
   var g=$("#pGal"); g.innerHTML=""; p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML='<img src="'+u+'" alt="">'; b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
 function openProj(i,srcImg,url,from){
