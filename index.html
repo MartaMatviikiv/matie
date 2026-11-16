@@ -281,6 +281,13 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .live b{display:block;font-family:var(--f-head);font-weight:300;font-size:clamp(36px,4vw,60px);line-height:1}
 .live span{font-size:13px;color:var(--muted)}
 .ph-val{color:var(--muted)}
+.live-note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px;margin:0}
+.live-note[hidden]{display:none}
+.live-note ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--gut)}
+.live-note li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--soft)}
+.live .live-note li b{display:inline;font-family:var(--f-body);font-size:15px;line-height:1.4;font-weight:500;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.live-note p{margin:12px 0 0;font-size:13px;color:var(--muted)}
+@media (max-width:760px){.live-note ul{grid-template-columns:minmax(0,1fr)}}
 .gal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
 .gal button{overflow:hidden;background:var(--bg-2);aspect-ratio:4/5}
 .gal button:nth-child(5n+1){grid-column:span 4;aspect-ratio:16/10}
@@ -584,8 +591,9 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
     <div class="live">
       <div><p class="micro" data-i18n="liveK">Якби знімати наживо</p><h3 data-i18n="liveT">Те саме без AI коштувало б</h3></div>
       <div><b class="ph-val" id="pL1">[сума]</b><span data-i18n="live1">грн бюджету зйомки</span></div>
-      <div><b class="ph-val" id="pL2">[N]</b><span data-i18n="live2">людей у команді: фотограф, моделі, стиліст, візажист, декоратор</span></div>
+      <div><b class="ph-val" id="pL2">[N]</b><span data-i18n="live2">людей у команді</span></div>
       <div><b class="ph-val" id="pL3">[N]</b><span data-i18n="live3">днів підготовки та зйомки</span></div>
+      <div class="live-note" id="pNote" hidden><p class="micro" data-i18n="liveNoteK" style="margin:0 0 6px">З чого складається сума</p><ul id="pNoteL"></ul><p id="pNoteP"></p></div>
     </div>
     <div class="gal" id="pGal"></div>
     <div class="pfoot">
@@ -650,7 +658,7 @@ function fromCMS(j){
   var img=function(v){ v=str(v); return v; };
   var projects=(j.projects||[]).map(function(p,i){ var k=ART[p.placeholder]?p.placeholder:"portrait";
     return {id:p.id||("p"+i), tint:p.tint||"#888888", images:(p.images||[]).map(img).filter(Boolean),
-      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], art:{k:k,pal:ART[k]},
+      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, art:{k:k,pal:ART[k]},
       uk:{t:p.title_uk,c:p.category_uk,f:p.for_uk,k:p.task_uk,s:p.solution_uk},
       en:{t:p.title_en||p.title_uk,c:p.category_en||p.category_uk,f:p.for_en||p.for_uk,k:p.task_en||p.task_uk,s:p.solution_en||p.solution_uk}}; });
   var pidx=function(id){ for(var i=0;i<projects.length;i++) if(projects[i].id===id) return i; return 0; };
@@ -704,7 +712,7 @@ baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть по�
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
 ctK:"Контакти",ctT:"Створимо щось <em>неймовірне?</em>",ctL:"Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.",igSoon:"Instagram · скоро",
-close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді: фотограф, моделі, стиліст, візажист, декоратор",live3:"днів підготовки та зйомки",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
+close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",liveNoteK:"З чого складається сума",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
 phK:"Фотографам",phT:"Ретуш, що зберігає <em>ваш стиль</em>",phL:"Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.",phCta:"Надіслати фото на тест"},
 en:{skip:"Skip to work",navAria:"Main menu",footAria:"Footer links",menu:"Menu",nWorks:"Work",nServices:"Services",nCalc:"Calculator",nJournal:"Journal",nPhoto:"Photographers",nAbout:"About",nContact:"Contact",cta:"Get in touch",sndOn:"Turn sound on",sndOff:"Turn sound off",
 heroLede:"Ad campaigns, photoshoots and films made with AI. No studio, no casting, no weeks of production.",heroBtn:"View work",heroCalc:"Get a price",drag:"Drag to explore",
@@ -723,7 +731,7 @@ baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin st
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
 ctK:"Contact",ctT:"Shall we create something <em>unreal?</em>",ctL:"Message me on Telegram with a short description of the task, and I’ll reply with ideas and a price.",igSoon:"Instagram · soon",
-close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people on set: photographer, models, stylist, make-up artist, set designer",live3:"days of preparation and shooting",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
+close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",liveNoteK:"How the amount adds up",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
 phK:"For photographers",phT:"Retouching that keeps <em>your style</em>",phL:"You shoot, I get the frames ready for your client. Batch retouching in your style, on your schedule.",phCta:"Send photos for a test"}
 };
 var lang="uk";
@@ -1009,6 +1017,10 @@ $$("[data-close]").forEach(function(b){ b.addEventListener("click",function(){ h
 var pj=$("#proj");
 function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover").src=coverUrl; $("#pTitle").textContent=d.t; $("#pCat").textContent=d.c; $("#pFor").textContent=d.f; $("#pTask").textContent=d.k; $("#pSol").textContent=d.s;
   var lv=p.live||[]; ["#pL1","#pL2","#pL3"].forEach(function(id,k){ var el=$(id); if(lv[k]!=null){ el.textContent=lv[k]; el.classList.remove("ph-val"); } else { el.textContent=k===0?(lang==="uk"?"[сума]":"[amount]"):"[N]"; el.classList.add("ph-val"); } });
+  var nt=(p.note&&p.note[lang])||"", nl=$("#pNoteL"), np=$("#pNoteP"); nl.innerHTML=""; np.textContent="";
+  nt.split(/\n/).map(function(x){ return x.trim(); }).filter(Boolean).forEach(function(line){ var m=line.split(/\s+[—–-]\s+(?=[^—–-]*$)/);
+    if(m.length===2){ var li=document.createElement("li"); li.innerHTML="<span>"+esc(m[0])+"</span><b>"+esc(m[1])+"</b>"; nl.appendChild(li); } else { np.textContent+=(np.textContent?" ":"")+line; } });
+  $("#pNote").hidden=!nt;
   pj.style.setProperty("--tint",rgba(p.tint||"#000000",.16));
   var g=$("#pGal"); g.innerHTML=""; p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML='<img src="'+u+'" alt="">'; b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
 function openProj(i,srcImg,url,from){

@@ -92,6 +92,12 @@ content:
     - name: live_days
       label: 'Якби знімати наживо: днів'
       type: string
+    - name: live_note_uk
+      label: 'Розшифровка суми (UA): кожен пункт з нового рядка у форматі «Що — сума». Рядок без тире = примітка'
+      type: text
+    - name: live_note_en
+      label: 'Розшифровка суми (EN), той самий формат'
+      type: text
     - name: tint
       label: 'Колір відтінку сторінки проєкту (напр. #c1121f)'
       type: string
