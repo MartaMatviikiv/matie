@@ -330,6 +330,28 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .article p{font-size:18px;line-height:1.75;color:var(--soft);margin:0 0 24px}
 .article h3{font-family:var(--f-head);font-weight:400;font-size:34px;line-height:1.1;margin:48px 0 16px}
 .article .draft{border:1px dashed var(--line);padding:12px 16px;margin-bottom:32px}
+.rt-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 clamp(28px,4vw,48px)}
+.rt-chips button{padding:10px 18px;border:1px solid var(--line);color:var(--soft);font:500 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;transition:color .3s,border-color .3s,background .3s}
+.rt-chips button:hover{color:var(--ink);border-color:var(--ink)}
+.rt-chips button[aria-pressed="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.rt-chips sup{font-size:9px;margin-left:4px;opacity:.7}
+.rt-grid{columns:2;column-gap:clamp(16px,2vw,28px);margin-bottom:clamp(48px,6vw,80px)}
+.rt-grid .ba-wrap{break-inside:avoid;margin:0 0 clamp(28px,3.4vw,48px);display:flex}
+.rt-grid .ba-wrap[hidden]{display:none}
+.rt-grid .ba{aspect-ratio:var(--ar,4/5)}
+.rt-grid figcaption{display:flex;flex-direction:column;gap:4px}
+.rt-grid figcaption b{font-family:var(--f-head);font-weight:400;font-size:24px;color:var(--ink);line-height:1.15}
+.rt-grid figcaption .micro{color:var(--accent)}
+.rt-set{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rt-set button{display:block;padding:0;overflow:hidden;background:var(--bg-2);aspect-ratio:4/5;cursor:zoom-in}
+.rt-set button.wide{grid-column:1/-1;aspect-ratio:3/2}
+.rt-set img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.rt-set button:hover img{transform:scale(1.04)}
+.ba-wrap .rt-set{margin-top:6px}
+.rt-more{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rt-cta{display:flex;flex-wrap:wrap;gap:12px;padding-bottom:clamp(64px,8vw,120px)}
+.head-cta{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:700px){.rt-grid{columns:1}}
 .ptable{border-top:1px solid var(--line);margin:0 0 clamp(48px,6vw,80px);padding:0;list-style:none}
 .ptable li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;gap:16px var(--gut);align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line)}
 .ptable h3{font-family:var(--f-head);font-weight:400;font-size:32px;margin:0;line-height:1.1}
@@ -430,7 +452,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
       <a class="l" href="#services" data-i18n="nServices">Послуги</a>
       <a class="l" href="#calc" data-i18n="nCalc">Калькулятор</a>
       <a class="l" href="#journal" data-i18n="nJournal">Журнал</a>
-      <a class="l" href="#photographers" data-i18n="nPhoto">Фотографам</a>
+      <a class="l" href="#retouching" data-i18n="nRetouch">Ретуш</a>
       <a class="l" href="#contact" data-i18n="nContact">Контакти</a>
       <div class="tools">
         <button class="snd" type="button" id="sndBtn" aria-pressed="false" aria-label="Увімкнути звук" data-i18n-aria="sndOn"><i></i><i></i><i></i><i></i></button>
@@ -449,6 +471,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   <a href="#services" data-i18n="nServices">Послуги</a>
   <a href="#calc" data-i18n="nCalc">Калькулятор</a>
   <a href="#journal" data-i18n="nJournal">Журнал</a>
+  <a href="#retouching" data-i18n="nRetouch">Ретуш</a>
   <a href="#photographers" data-i18n="nPhoto">Фотографам</a>
   <a href="#about" data-i18n="nAbout">Про мене</a>
   <a href="#contact" data-i18n="nContact">Контакти</a>
@@ -562,7 +585,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
       <p class="micro" data-i18n="baK">Ретуш</p>
       <div><h2 id="baT" data-i18n-html="baT">До і <em>після</em></h2>
       <p class="lede" data-i18n="baL">Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.</p>
-      <div class="head-cta"><a class="btn" href="#photographers" data-i18n="toPhoto">Фотографам: пакетна ретуш</a></div></div>
+      <div class="head-cta"><a class="btn fill" href="#retouching" id="rtAll" hidden><span data-i18n="rtAll">Усі роботи з ретуші</span> <sup id="rtCnt"></sup></a><a class="btn" href="#photographers" data-i18n="toPhoto">Фотографам: пакетна ретуш</a></div></div>
     </div>
     <div class="ba-grid" id="baGrid"></div>
   </div>
@@ -703,6 +726,23 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   </div>
 </div>
 
+<div id="rt" class="ov" role="dialog" aria-modal="true" aria-labelledby="rtTitle" aria-hidden="true">
+  <div class="bar">
+    <span class="logo" style="font-size:16px;padding-left:.16em" aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span>
+    <button class="btn" type="button" data-close><span data-i18n="close">Закрити</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" style="padding-top:clamp(56px,8vw,120px)">
+      <p class="micro" data-i18n="rtK">Обробка і ретуш</p>
+      <div><h2 id="rtTitle" data-i18n-html="rtT">Ретуш, якій <em>вірять</em></h2>
+      <p class="lede" data-i18n="rtL">Портретна, beauty, предметна та fashion-ретуш. Потягніть повзунок: зліва вихідний кадр, справа після обробки. Шкіра лишається живою, а кадр — природним.</p></div>
+    </div>
+    <div class="rt-chips" id="rtF" role="group" aria-label="Фільтр" data-i18n-aria="rtFilter"></div>
+    <div class="rt-grid" id="rtG"></div>
+    <div class="rt-cta"><a class="btn fill tglink" href="#contact" target="_blank" rel="noopener" data-i18n="phCta">Надіслати фото на тест</a><a class="btn" href="#photographers" data-i18n="rtPho">Ціни для фотографів</a><a class="btn" href="#calc" data-i18n="toCalc">Розрахувати вартість</a></div>
+  </div>
+</div>
+
 <div id="reel" role="dialog" aria-modal="true" aria-label="Шоурил" data-i18n-aria="reelBtn">
   <button class="x" type="button" id="reelX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
   <video id="reelV" controls playsinline preload="none"></video>
@@ -754,7 +794,9 @@ function fromCMS(j){
         uk:[x.name_uk,x.desc_uk,x.price_uk,str(x.note_uk)||undefined], en:[x.name_en||x.name_uk,x.desc_en||x.desc_uk,x.price_en||x.price_uk,str(x.note_en)||undefined]}; }),
     urgency:(j.urgency||[]).map(function(u){ return {k:1+(+u.extra_percent||0)/100,uk:[u.name_uk,u.time_uk],en:[u.name_en||u.name_uk,u.time_en||u.time_uk]}; }),
     journal:(j.journal||[]).map(function(a){ return {proj:pidx(a.project),img:1,cover:img(a.cover),uk:{t:a.title_uk,m:a.meta_uk,ex:a.excerpt_uk,b:body(a.body_uk)},en:{t:a.title_en||a.title_uk,m:a.meta_en||a.meta_uk,ex:a.excerpt_en||a.excerpt_uk,b:body(a.body_en||a.body_uk)}}; }),
-    retouch:(j.retouch||[]).filter(function(r){ return str(r.before)&&str(r.after); }).map(function(r){ return {before:img(r.before),after:img(r.after)}; }),
+    retouch:(j.retouch||[]).filter(function(r){ return (str(r.before)&&str(r.after)) || (r.gallery&&r.gallery.length); }).map(function(r){ var pr=!!(str(r.before)&&str(r.after)); return {pair:pr,before:pr?img(r.before):"",after:pr?img(r.after):"",gal:(r.gallery||[]).map(function(g){ return img(typeof g==="object"&&g?g.image:g); }).filter(Boolean),cat:str(r.category).trim(),home:!!r.home,
+      t:{uk:str(r.title_uk),en:str(r.title_en)||str(r.title_uk)}, n:{uk:str(r.note_uk),en:str(r.note_en)||str(r.note_uk)},
+      la:{uk:str(r.label_before_uk),en:str(r.label_before_en)||str(r.label_before_uk)}, lb:{uk:str(r.label_after_uk),en:str(r.label_after_en)||str(r.label_after_uk)}}; }),
     idea:(j.idea||[]).filter(function(r){ return str(r.before)&&str(r.after); }).map(function(r){ return {before:img(r.before),after:img(r.after),la:lab(r.label_before_uk,r.label_before_en),lb:lab(r.label_after_uk,r.label_after_en),lc:lab(r.caption_uk,r.caption_en)}; }),
     photographers:{prices:((j.photographers||{}).prices||[]).map(function(r){ return {uk:[r.name_uk,r.desc_uk,r.price_uk],en:[r.name_en||r.name_uk,r.desc_en||r.desc_uk,r.price_en||r.price_uk]}; }),
       terms:((j.photographers||{}).terms||[]).map(function(r){ return {uk:[r.title_uk,r.text_uk],en:[r.title_en||r.title_uk,r.text_en||r.text_uk]}; })}
@@ -789,7 +831,8 @@ msgHi:"Привіт, Марто! Хочу замовити:",msgPrice:"Оріє�
 baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.",before:"До",after:"Після",baAria:"Порівняти до і після",toPhoto:"Фотографам: пакетна ретуш",
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
-reelBtn:"Шоурил",dlK:"Що ви отримаєте",dlT:"Що <em>входить</em> у роботу",
+reelBtn:"Шоурил",nRetouch:"Ретуш",rtAll:"Усі роботи з ретуші",rtK:"Обробка і ретуш",rtT:"Ретуш, якій <em>вірять</em>",rtL:"Портретна, beauty, предметна та fashion-ретуш. Потягніть повзунок: зліва вихідний кадр, справа після обробки. Шкіра лишається живою, а кадр — природним.",rtPho:"Ціни для фотографів",rtFilter:"Фільтр",rtAllF:"Усі",rtSet:"Готові кадри з зйомки",rtSetN:"фото",
+cat_beauty:"Beauty",cat_portrait:"Портрет",cat_product:"Предметна",cat_fashion:"Fashion",cat_wedding:"Весільна",cat_body:"Тіло",cat_restore:"Реставрація фото",cat_color:"Кольорокорекція",cat_other:"Інше",dlK:"Що ви отримаєте",dlT:"Що <em>входить</em> у роботу",
 d1t:"Файли",d1p:"Фото у високій роздільності (JPEG або PNG, до 4K) і відео MP4 у 1080p або 4K. Передаю посиланням на Google Диск.",
 d2t:"Формати",d2p:"4:5 і 1:1 для стрічки Instagram, 9:16 для Stories, Reels і TikTok, 16:9 для сайту та YouTube. Версії для друку — за запитом.",
 d3t:"Права",d3p:"Повне комерційне використання: реклама, соцмережі, сайт, маркетплейси, друк. Без обмежень у часі.",
@@ -818,7 +861,8 @@ msgHi:"Hi Marta! I’d like to order:",msgPrice:"Estimated price from the websit
 baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin stays alive: I keep pores and texture and remove only what distracts.",before:"Before",after:"After",baAria:"Compare before and after",toPhoto:"For photographers: batch retouching",
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
-reelBtn:"Showreel",dlK:"What you get",dlT:"What's <em>included</em>",
+reelBtn:"Showreel",nRetouch:"Retouching",rtAll:"All retouching work",rtK:"Editing & retouching",rtT:"Retouching you can <em>believe</em>",rtL:"Portrait, beauty, product and fashion retouching. Drag the slider: the original on the left, the edit on the right. Skin stays alive and the image stays natural.",rtPho:"Prices for photographers",rtFilter:"Filter",rtAllF:"All",rtSet:"Final images from the shoot",rtSetN:"photos",
+cat_beauty:"Beauty",cat_portrait:"Portrait",cat_product:"Product",cat_fashion:"Fashion",cat_wedding:"Wedding",cat_body:"Body",cat_restore:"Photo restoration",cat_color:"Colour grading",cat_other:"Other",dlK:"What you get",dlT:"What's <em>included</em>",
 d1t:"Files",d1p:"High-resolution photos (JPEG or PNG, up to 4K) and MP4 video in 1080p or 4K, delivered via a Google Drive link.",
 d2t:"Formats",d2p:"4:5 and 1:1 for the Instagram feed, 9:16 for Stories, Reels and TikTok, 16:9 for websites and YouTube. Print versions on request.",
 d3t:"Usage rights",d3p:"Full commercial use: advertising, social media, website, marketplaces, print. No time limit.",
@@ -995,7 +1039,34 @@ function baEl(pair,la,lb_,cap){
   var box=f.querySelector(".ba"), inp=f.querySelector("input"); inp.addEventListener("input",function(){ box.style.setProperty("--p",inp.value+"%"); });
   return f;
 }
-function renderBA(){ var g=$("#baGrid"); g.innerHTML=""; BA.forEach(function(b){ g.appendChild(baEl(b,t("before"),t("after"))); }); observe(); }
+function baLab(b,k,def){ return (b[k]&&b[k][lang])||t(def); }
+function renderBA(){ var g=$("#baGrid"); g.innerHTML=""; var list=BA, real=SITE.retouch.length>0;
+  if(real){ var pairs=BA.filter(function(b){ return b.pair; }), fe=pairs.filter(function(b){ return b.home; }); list=(fe.length?fe:pairs).slice(0,4); }
+  list.forEach(function(b){ g.appendChild(baEl(b,baLab(b,"la","before"),baLab(b,"lb","after"))); });
+  var all=$("#rtAll"); all.hidden=!real; $("#rtCnt").textContent=real?BA.length:""; observe(); renderRt(); }
+var rtCat="all";
+function renderRt(){ var g=$("#rtG"), f=$("#rtF"); if(!g) return; g.innerHTML=""; f.innerHTML="";
+  var cats=[]; BA.forEach(function(b){ if(b.cat && cats.indexOf(b.cat)<0) cats.push(b.cat); });
+  if(rtCat!=="all" && cats.indexOf(rtCat)<0) rtCat="all";
+  BA.forEach(function(b){ var cap=""; var cn=b.cat?t("cat_"+b.cat)||b.cat:""; var tt=b.t&&b.t[lang], nn=b.n&&b.n[lang];
+    if(cn||tt||nn) cap=(cn?'<span class="micro">'+esc(cn)+'</span>':"")+(tt?'<b>'+esc(tt)+'</b>':"")+(nn?'<span>'+esc(nn)+'</span>':"");
+    var e, hasPair=b.pair!==false;
+    if(hasPair){ e=baEl(b,baLab(b,"la","before"),baLab(b,"lb","after")); e.classList.remove("rv");
+      var im=e.querySelector("img"); (function(im,e){ var setAr=function(){ if(im.naturalWidth) e.querySelector(".ba").style.setProperty("--ar",im.naturalWidth+"/"+im.naturalHeight); }; if(im.complete) setAr(); else im.addEventListener("load",setAr); })(im,e); }
+    else { e=document.createElement("figure"); e.className="ba-wrap"; }
+    e.dataset.cat=b.cat||"";
+    if(b.gal&&b.gal.length){ var set=document.createElement("div"); set.className="rt-set"; var ttl=(tt||cn||"MATIÉ")+" — "+t("rtSet").toLowerCase();
+      if(hasPair){ var mm=document.createElement("span"); mm.className="rt-more"; mm.textContent=t("rtSet")+" · "+b.gal.length+" "+t("rtSetN"); e.appendChild(mm); }
+      b.gal.forEach(function(u,j){ var bt=document.createElement("button"); bt.type="button"; if(b.gal.length%2===1 && j===0) bt.className="wide"; bt.innerHTML=oimg(u,828,ttl+" "+(j+1)); bt.addEventListener("click",function(){ openLb(b.gal,j,bt,ttl); }); set.appendChild(bt); });
+      e.appendChild(set); }
+    if(cap){ var fc=document.createElement("figcaption"); fc.innerHTML=cap; e.appendChild(fc); }
+    e.hidden=rtCat!=="all" && b.cat!==rtCat; g.appendChild(e); });
+  if(cats.length>1){ ["all"].concat(cats).forEach(function(c){ var bt=document.createElement("button"); bt.type="button"; var n=c==="all"?BA.length:BA.filter(function(b){ return b.cat===c; }).length;
+      bt.innerHTML=esc(c==="all"?t("rtAllF"):(t("cat_"+c)||c))+"<sup>"+n+"</sup>"; bt.setAttribute("aria-pressed",String(c===rtCat));
+      bt.addEventListener("click",function(){ rtCat=c; $$("button",f).forEach(function(x){ x.setAttribute("aria-pressed",String(x===bt)); }); $$(".ba-wrap",g).forEach(function(w){ w.hidden=c!=="all" && w.dataset.cat!==c; }); });
+      f.appendChild(bt); }); }
+  f.hidden=cats.length<2;
+}
 function renderIdea(){ var g=$("#ideaGrid"); g.innerHTML=""; IDEA.forEach(function(p){ g.appendChild(p.la?baEl(p,p.la[lang],p.lb[lang],p.lc[lang]):baEl(p,t(p.a),t(p.b),t(p.c))); }); observe(); }
 function renderMarq(){ var items=SVC.map(function(s){ return s[lang][0]; }); var h=""; for(var k=0;k<2;k++) items.forEach(function(n){ h+='<span>'+esc(n)+'</span><b>✦</b>'; }); $("#marq").innerHTML=h; }
 function renderJournal(){
@@ -1179,11 +1250,13 @@ function fillArt(i){ var a=SITE.journal[i], d=a[lang], p=PROJ[a.proj]; $("#aCove
 function openArt(i,from){ curA=i; fillArt(i); showOv(artEl,from); artEl.classList.add("open"); setTimeout(function(){ artEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
 $("#aProj").addEventListener("click",function(){ var p=SITE.journal[curA].proj; hideOv(artEl); openProj(p,null,null,null); });
 
-var phoEl=$("#pho");
+var phoEl=$("#pho"), rtEl=$("#rt");
+function openRt(from){ showOv(rtEl,from); rtEl.classList.add("open"); setTimeout(function(){ rtEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
 function openPho(from){ showOv(phoEl,from); phoEl.classList.add("open"); setTimeout(function(){ phoEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
 document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return; var h=a.getAttribute("href");
   if(document.body.classList.contains("menu-open")) setMenu(false);
   if(h==="#photographers"){ e.preventDefault(); openPho(a); return; }
+  if(h==="#retouching"){ e.preventDefault(); var po=a.closest(".ov"); if(po) hideOv(po); openRt(a); return; }
   var ov=a.closest(".ov"); if(ov && h!=="#"+ov.id){ e.preventDefault(); hideOv(ov); var tg=$(h); if(tg) setTimeout(function(){ tg.scrollIntoView({behavior:RM?"auto":"smooth"}); },RM?0:400); }
 });
 
@@ -1210,6 +1283,7 @@ var t0=performance.now();
 build().then(function(){
   ready=true; applyLang(); buildSphere(); requestAnimationFrame(frame);
   if(location.hash==="#photographers") openPho(null);
+  if(location.hash==="#retouching") openRt(null);
   var wait=Math.max(0,(RM?200:1900)-(performance.now()-t0));
   setTimeout(function(){
     pre.classList.add("out"); pre.addEventListener("transitionend",function(){ pre.style.display="none"; },{once:true});

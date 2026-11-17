@@ -302,16 +302,70 @@ content:
       label: Націнка, %
       type: number
   - name: retouch
-    label: 'Ретуш: пари до/після (порожньо = заглушки). Фото однакового розміру!'
+    label: 'Ретуш: роботи для сторінки «Ретуш» — пара RAW → фінал, серія готових кадрів, або обидва (порожньо = заглушки)'
     type: object
     list: true
     fields:
     - name: before
-      label: До
+      label: 'До (RAW / вихідне фото). Можна лишити порожнім, якщо це просто серія готових кадрів'
       type: image
     - name: after
-      label: Після
+      label: Після (фінал)
       type: image
+    - name: gallery
+      label: 'Готові кадри з цієї зйомки (необов''язково): серія без «до/після», відкриваються на весь екран'
+      type: image
+      list: true
+    - name: category
+      label: Категорія (для фільтра)
+      type: select
+      options:
+        values:
+        - value: beauty
+          label: Beauty
+        - value: portrait
+          label: Портрет
+        - value: product
+          label: Предметна
+        - value: fashion
+          label: Fashion
+        - value: wedding
+          label: Весільна
+        - value: body
+          label: Тіло
+        - value: restore
+          label: Реставрація фото
+        - value: color
+          label: Кольорокорекція
+        - value: other
+          label: Інше
+    - name: home
+      label: Показувати на головній (до 4 пар; якщо ніде не відмічено — перші 4)
+      type: boolean
+    - name: title_uk
+      label: Назва (UA), необов'язково, напр. Beauty-портрет
+      type: string
+    - name: note_uk
+      label: Що зроблено (UA), необов'язково, напр. Шкіра, світло, колір, волосся
+      type: string
+    - name: title_en
+      label: Назва (EN)
+      type: string
+    - name: note_en
+      label: Що зроблено (EN)
+      type: string
+    - name: label_before_uk
+      label: Підпис зліва (UA). Порожньо = «До»
+      type: string
+    - name: label_after_uk
+      label: Підпис справа (UA). Порожньо = «Після»
+      type: string
+    - name: label_before_en
+      label: Підпис зліва (EN)
+      type: string
+    - name: label_after_en
+      label: Підпис справа (EN)
+      type: string
   - name: idea
     label: 'Ідея → кадр: пари (порожньо = заглушки)'
     type: object
