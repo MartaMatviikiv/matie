@@ -548,6 +548,13 @@
       "extra_percent": 60
     }
   ],
+  "retouch": [
+    {
+      "before": "/images/rt-01-raw.jpg",
+      "after": "/images/rt-01.jpg",
+      "home": false
+    }
+  ],
   "idea": [
     {
       "before": "/images/bordeaux-sketch-2.jpg",
