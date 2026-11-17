@@ -128,16 +128,40 @@ content:
       type: file
       list: true
     - name: compare
-      label: 'До і після (необов''язково): пари «сира генерація → фінал». Фото в парі мають бути однакового розміру'
+      label: 'До і після (необов''язково): пари «до → після», напр. генерація → фінал або ескіз → кадр. Фото в парі мають бути однакового розміру'
       type: object
       list: true
       fields:
       - name: before
-        label: 'До (сира генерація)'
+        label: 'До (зліва)'
         type: image
       - name: after
-        label: 'Після (фінал)'
+        label: 'Після (справа)'
         type: image
+      - name: label_before_uk
+        label: 'Підпис зліва (UA), напр. Ескіз клієнта. Порожньо = «Генерація»'
+        type: string
+      - name: label_after_uk
+        label: 'Підпис справа (UA), напр. Готовий кадр. Порожньо = «Після ретуші»'
+        type: string
+      - name: label_before_en
+        label: Підпис зліва (EN)
+        type: string
+      - name: label_after_en
+        label: Підпис справа (EN)
+        type: string
+    - name: compare_title_uk
+      label: 'Заголовок блоку «до і після» (UA), напр. Ескіз → готовий кадр. Порожньо = «Сира генерація → фінальний кадр»'
+      type: string
+    - name: compare_title_en
+      label: Заголовок блоку «до і після» (EN)
+      type: string
+    - name: compare_text_uk
+      label: Пояснення під заголовком блоку «до і після» (UA). Порожньо = стандартний текст
+      type: string
+    - name: compare_text_en
+      label: Пояснення під заголовком блоку «до і після» (EN)
+      type: string
     - name: tint
       label: 'Колір відтінку сторінки проєкту (напр. #c1121f)'
       type: string
