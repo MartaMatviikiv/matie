@@ -14,7 +14,7 @@
 <meta property="og:title" content="MATIÉ — AI Visual Studio by Marta Matviikiv">
 <meta property="og:description" content="AI-фотосесії, контент для брендів, AI-відео, мультфільми та ретуш.">
 <meta property="og:url" content="https://matie-puce.vercel.app/">
-<meta property="og:image" content="https://matie-puce.vercel.app/og.jpg">
+<meta property="og:image" content="https://matie-puce.vercel.app/og.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -348,6 +348,21 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 #lb .x{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:var(--gut);transform:none;z-index:2;background:rgba(11,11,12,.6)}
 #lb .cnt{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);margin:0}
 #lb.single .prev,#lb.single .next,#lb.single .cnt{display:none}
+#reel{position:fixed;inset:0;z-index:175;background:rgba(5,5,6,.97);display:none;align-items:center;justify-content:center}
+#reel.open{display:flex}
+#reel video{width:min(92vw,calc(84svh*16/9));max-height:84svh;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#reel .x{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:var(--gut);width:56px;height:56px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:rgba(11,11,12,.6)}
+#reel .x:hover{border-color:var(--ink)}
+.btn .play{width:9px;height:10px;fill:currentColor}
+.dlv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.dlv div{border-top:1px solid var(--line);padding-top:22px}
+.dlv h3{font-family:var(--f-head);font-weight:400;font-size:26px;margin:0 0 10px;line-height:1.1}
+.dlv p{margin:0;color:var(--soft);font-size:15px}
+.dlv-cta{margin:clamp(36px,5vw,56px) 0 0;color:var(--soft);font-size:16px}
+.dlv-cta a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+.dlv-cta a:hover{color:var(--accent)}
+@media (max-width:1000px){.dlv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.dlv{grid-template-columns:1fr}}
 .icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.2}
 
 @media (max-width:1180px){
@@ -448,7 +463,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   <p class="hero-c tr micro">Marta Matviikiv</p>
   <div class="hero-c bl">
     <p data-i18n="heroLede">Рекламні кампанії, фотосесії та відео, створені з AI. Без студії, моделей і тижнів продакшну.</p>
-    <div class="ctas"><a class="btn fill" href="#works" data-i18n="heroBtn">Дивитись роботи</a><a class="btn" href="#calc" data-i18n="heroCalc">Розрахувати ціну</a></div>
+    <div class="ctas"><a class="btn fill" href="#works" data-i18n="heroBtn">Дивитись роботи</a><a class="btn" href="#calc" data-i18n="heroCalc">Розрахувати ціну</a><button class="btn" type="button" id="reelBtn" hidden><svg class="play" viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span data-i18n="reelBtn">Шоурил</span></button></div>
   </div>
   <p class="hero-c br micro drag-hint"><svg viewBox="0 0 42 12" aria-hidden="true"><path d="M1 6h40M1 6l5-5M1 6l5 5M41 6l-5-5M41 6l-5 5" stroke="currentColor" fill="none" stroke-width="1"/></svg><span data-i18n="drag">Тягніть, щоб роздивитися</span></p>
 </section>
@@ -568,6 +583,26 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   </div>
 </section>
 
+<section id="deliver" class="sec tight" aria-labelledby="dlT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="micro" data-i18n="dlK">Що ви отримаєте</p>
+      <h2 id="dlT" data-i18n-html="dlT">Що <em>входить</em> у роботу</h2>
+    </div>
+    <div class="dlv">
+      <div class="rv"><h3 data-i18n="d1t"></h3><p data-i18n="d1p"></p></div>
+      <div class="rv"><h3 data-i18n="d2t"></h3><p data-i18n="d2p"></p></div>
+      <div class="rv"><h3 data-i18n="d3t"></h3><p data-i18n="d3p"></p></div>
+      <div class="rv"><h3 data-i18n="d4t"></h3><p data-i18n="d4p"></p></div>
+      <div class="rv"><h3 data-i18n="d5t"></h3><p data-i18n="d5p"></p></div>
+      <div class="rv"><h3 data-i18n="d6t"></h3><p data-i18n="d6p"></p></div>
+      <div class="rv"><h3 data-i18n="d7t"></h3><p data-i18n="d7p"></p></div>
+      <div class="rv"><h3 data-i18n="d8t"></h3><p data-i18n="d8p"></p></div>
+    </div>
+    <p class="dlv-cta rv"><span class="mailwrap"><span data-i18n="dlQ">Залишилися питання? Напишіть на</span> <a class="mailto" href="#contact"></a> <span data-i18n="dlOr">або в</span></span><span class="nomail" data-i18n="dlQ2" hidden>Залишилися питання? Напишіть у</span> <a class="tglink" href="#contact" target="_blank" rel="noopener">Telegram</a>.</p>
+  </div>
+</section>
+
 <section id="journal" class="sec tight" aria-labelledby="jrT">
   <div class="wrap">
     <div class="sec-head rv">
@@ -588,6 +623,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
     <div class="ctas">
       <a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener">Telegram · @martamatviykiv</a>
       <a class="btn" id="igBtn" href="#contact" aria-disabled="true" data-i18n="igSoon">Instagram · скоро</a>
+      <a class="btn mailto" id="mailBtn" href="#contact" hidden></a>
       <a class="btn" href="#calc" data-i18n="toCalc">Розрахувати вартість</a>
     </div>
   </div>
@@ -667,6 +703,10 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   </div>
 </div>
 
+<div id="reel" role="dialog" aria-modal="true" aria-label="Шоурил" data-i18n-aria="reelBtn">
+  <button class="x" type="button" id="reelX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  <video id="reelV" controls playsinline preload="none"></video>
+</div>
 <div id="lb" role="dialog" aria-modal="true" aria-label="Перегляд фото" data-i18n-aria="lbAria">
   <button class="ctl x" type="button" id="lbX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
   <button class="ctl prev" type="button" id="lbP" aria-label="Попереднє фото" data-i18n-aria="prev"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M16 9H2M7 4L2 9l5 5"/></svg></button>
@@ -702,6 +742,8 @@ function fromCMS(j){
   return {
     telegram:str(c.telegram).replace(/^@/,"")||"martamatviykiv",
     instagram:[c.instagram_main,c.instagram_second].map(function(x){ return str(x).replace(/^@/,""); }).filter(Boolean),
+    email:str(c.email).trim(),
+    reel:{video:str((j.showreel||{}).video), poster:img((j.showreel||{}).poster)},
     photos:{about:img((j.photos||{}).about),contact:img((j.photos||{}).contact)},
     projects:projects,
     singles:(j.singles||[]).map(function(x){ var k=ART[x.placeholder]?x.placeholder:"columns"; return {image:img(x.image)||null,art:{k:k,pal:ART[k]}}; }),
@@ -719,6 +761,9 @@ function fromCMS(j){
   };
 }
 function MATIE(SITE){
+var FX={usd:1/41.5,eur:1/48};
+try{ var fc=JSON.parse(localStorage.getItem("matie_fx")||"null"); if(fc&&fc.usd&&fc.eur){ FX.usd=fc.usd; FX.eur=fc.eur; if(Date.now()-fc.t<12*3600e3) FX.fresh=1; } }catch(e){}
+
 "use strict";
 var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 var FINE = window.matchMedia && matchMedia("(hover:hover) and (pointer:fine)").matches;
@@ -744,6 +789,16 @@ msgHi:"Привіт, Марто! Хочу замовити:",msgPrice:"Оріє�
 baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.",before:"До",after:"Після",baAria:"Порівняти до і після",toPhoto:"Фотографам: пакетна ретуш",
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
+reelBtn:"Шоурил",dlK:"Що ви отримаєте",dlT:"Що <em>входить</em> у роботу",
+d1t:"Файли",d1p:"Фото у високій роздільності (JPEG або PNG, до 4K) і відео MP4 у 1080p або 4K. Передаю посиланням на Google Диск.",
+d2t:"Формати",d2p:"4:5 і 1:1 для стрічки Instagram, 9:16 для Stories, Reels і TikTok, 16:9 для сайту та YouTube. Версії для друку — за запитом.",
+d3t:"Права",d3p:"Повне комерційне використання: реклама, соцмережі, сайт, маркетплейси, друк. Без обмежень у часі.",
+d4t:"Правки",d4p:"Одне коло правок входить у вартість. Додаткові — за домовленістю.",
+d5t:"Терміни",d5p:"Стандарт — 5–7 робочих днів. Швидко — 2–3 дні (+30%), терміново — 24–48 годин (+60%).",
+d6t:"Оплата",d6p:"50% передоплата, решта після затвердження фінальних кадрів. Оплата на картку або за рахунком.",
+d7t:"Від вас",d7p:"Бриф і референси. Для фотосесії — 10–20 чітких фото обличчя, для продукту — фото товару з різних боків.",
+d8t:"Конфіденційність",d8p:"Не публікую роботи без вашої згоди. За потреби підписую NDA.",
+dlQ:"Залишилися питання? Напишіть на",dlOr:"або в",dlQ2:"Залишилися питання? Напишіть у",
 ctK:"Контакти",ctT:"Створимо щось <em>неймовірне?</em>",ctL:"Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.",igSoon:"Instagram · скоро",
 close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",vidK:"У русі",vidT:"Персонаж <em>оживає</em>",sndOn:"Увімкнути звук",sndOff:"Вимкнути звук",cmpK:"До і після",cmpT:"Сира генерація → <em>фінальний кадр</em>",cmpL:"Потягніть повзунок: зліва те, що видала нейромережа, справа кадр після ретуші й кольорокорекції.",rawL:"Генерація",finL:"Після ретуші",liveNoteK:"З чого складається сума",mineK:"Та сама робота зі мною",saveL:"Ви економите",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
 phK:"Фотографам",phT:"Ретуш, що зберігає <em>ваш стиль</em>",phL:"Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.",phCta:"Надіслати фото на тест"},
@@ -757,14 +812,24 @@ aboutK:"About",aboutT:"I create images that are <em>impossible to shoot</em>, or
 aboutP1:"I’m Marta Matviikiv. I work with brands, creators and public figures, from the idea and the look to finished photos and films.",
 aboutP2:"For me AI is a tool, not a style. I build light, composition and detail by hand and finish every frame with retouching. I also retouch for photographers and anyone who needs a flawless image.",
 aboutAlt:"Portrait of Marta Matviikiv",f1b:"No studio",f1s:"any location, any era",f2b:"No casting",f2s:"models and characters made for your brand",f3s:"working with clients worldwide",
-svcK:"Services · 09",svcT:"Services &amp; <em>pricing</em>",svcL:"Prices are a guide. I quote the exact cost after the brief, based on scope and timing.",toCalc:"Estimate the cost",
+svcK:"Services · 09",svcT:"Services &amp; <em>pricing</em>",svcL:"Prices are a guide, converted from UAH at today's exchange rate. I quote the exact cost after the brief, based on scope and timing.",toCalc:"Estimate the cost",
 calcK:"Calculator",calcT:"Price <em>your</em> project",calcL:"Choose a service, volume and timing. A ready request opens straight in Telegram.",cSvc:"Service",cQty:"Volume",cHi:"High-end retouching (beauty, covers)",cUrg:"Timing",cIdea:"Your idea in a few words (optional)",cIdeaPh:"E.g. new collection shoot, warm tones, the sea",cTotal:"Estimated cost",cMsg:"Your message",cSend:"Send via Telegram",cCopy:"Copy text",copied:"Copied. Paste it into Telegram.",copyFail:"Couldn’t copy. Select the text above by hand.",from:"from",uah:"UAH",
 msgHi:"Hi Marta! I’d like to order:",msgPrice:"Estimated price from the website",msgIdea:"Idea",hiNote:"high-end",
 baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin stays alive: I keep pores and texture and remove only what distracts.",before:"Before",after:"After",baAria:"Compare before and after",toPhoto:"For photographers: batch retouching",
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
+reelBtn:"Showreel",dlK:"What you get",dlT:"What's <em>included</em>",
+d1t:"Files",d1p:"High-resolution photos (JPEG or PNG, up to 4K) and MP4 video in 1080p or 4K, delivered via a Google Drive link.",
+d2t:"Formats",d2p:"4:5 and 1:1 for the Instagram feed, 9:16 for Stories, Reels and TikTok, 16:9 for websites and YouTube. Print versions on request.",
+d3t:"Usage rights",d3p:"Full commercial use: advertising, social media, website, marketplaces, print. No time limit.",
+d4t:"Revisions",d4p:"One round of revisions is included. Further rounds by arrangement.",
+d5t:"Turnaround",d5p:"Standard: 5–7 working days. Fast: 2–3 days (+30%). Urgent: 24–48 hours (+60%).",
+d6t:"Payment",d6p:"50% upfront, the rest after you approve the final images. Card transfer or invoice; international payments welcome.",
+d7t:"From you",d7p:"A brief and references. For a photoshoot, 10–20 clear photos of the face; for a product, photos from several angles.",
+d8t:"Confidentiality",d8p:"I never publish work without your consent. Happy to sign an NDA.",
+dlQ:"Any questions? Email me at",dlOr:"or message me on",dlQ2:"Any questions? Message me on",
 ctK:"Contact",ctT:"Shall we create something <em>unreal?</em>",ctL:"Message me on Telegram with a short description of the task, and I’ll reply with ideas and a price.",igSoon:"Instagram · soon",
-close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",vidK:"In motion",vidT:"The character <em>comes alive</em>",sndOn:"Turn sound on",sndOff:"Turn sound off",cmpK:"Before and after",cmpT:"Raw generation → <em>final image</em>",cmpL:"Drag the slider: on the left is what the AI produced, on the right the image after retouching and colour grading.",rawL:"Raw",finL:"Final",liveNoteK:"How the amount adds up",mineK:"The same work with me",saveL:"You save",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
+close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"production budget",live2:"people in the team",live3:"days of preparation and shooting",vidK:"In motion",vidT:"The character <em>comes alive</em>",sndOn:"Turn sound on",sndOff:"Turn sound off",cmpK:"Before and after",cmpT:"Raw generation → <em>final image</em>",cmpL:"Drag the slider: on the left is what the AI produced, on the right the image after retouching and colour grading.",rawL:"Raw",finL:"Final",liveNoteK:"How the amount adds up",mineK:"The same work with me",saveL:"You save",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
 phK:"For photographers",phT:"Retouching that keeps <em>your style</em>",phL:"You shoot, I get the frames ready for your client. Batch retouching in your style, on your schedule.",phCta:"Send photos for a test"}
 };
 var lang="uk";
@@ -785,6 +850,21 @@ function applyLang(){
   if(ready){ renderWorks(); renderSvc(); renderBA(); renderIdea(); renderMarq(); renderJournal(); renderPho(); renderCalc(); if(curP>=0) fillProj(curP,null); if(curA>=0) fillArt(curA); }
 }
 $$(".lang button").forEach(function(b){ b.addEventListener("click",function(){ lang=b.getAttribute("data-lang"); try{localStorage.setItem("matie-lang",lang)}catch(e){} applyLang(); }); });
+/* ---------- email, showreel, exchange rates ---------- */
+(function(){ var em=SITE.email||"", tg="https://t.me/"+SITE.telegram;
+  $$(".tglink").forEach(function(a){ a.href=tg; });
+  $$(".mailwrap").forEach(function(x){ x.hidden=!em; }); $$(".nomail").forEach(function(x){ x.hidden=!!em; });
+  if(em){ $$("a.mailto").forEach(function(a){ a.href="mailto:"+em; a.textContent=a.id==="mailBtn"?"Email · "+em:em; a.hidden=false; }); }
+  var rv=SITE.reel||{}, rb=$("#reelBtn"), ro=$("#reel"), vd=$("#reelV");
+  if(rv.video){ rb.hidden=false;
+    var openReel=function(){ if(!vd.getAttribute("src")){ if(rv.poster) vd.poster=rv.poster; vd.src=rv.video; } ro.classList.add("open"); document.body.classList.add("locked"); var pr=vd.play(); if(pr&&pr.catch) pr.catch(function(){}); $("#reelX").focus(); };
+    var closeReel=function(){ vd.pause(); ro.classList.remove("open"); if(!anyOpen()&&!lb.classList.contains("open")) document.body.classList.remove("locked"); rb.focus(); };
+    rb.addEventListener("click",openReel); $("#reelX").addEventListener("click",closeReel);
+    ro.addEventListener("click",function(e){ if(e.target===ro) closeReel(); });
+    addEventListener("keydown",function(e){ if(ro.classList.contains("open")&&e.key==="Escape"){ e.stopImmediatePropagation(); closeReel(); } },true);
+  }
+  loadFX(function(){ if(lang==="en") applyLang(); });
+})();
 (function(){ var igs=SITE.instagram||[]; var ig=$("#igBtn"); if(!igs.length) return; ig.parentNode.removeChild(ig);
   var box=$("#contact .ctas"), ref=box.children[1]||null;
   igs.forEach(function(h){ var a=document.createElement("a"); a.className="btn"; a.href="https://instagram.com/"+h; a.target="_blank"; a.rel="noopener"; a.textContent="Instagram · @"+h; box.insertBefore(a,ref); });
@@ -891,12 +971,12 @@ async function build(){
 /* ---------- renderers ---------- */
 var OPT=!/^(localhost|127\.|192\.168\.)/.test(location.hostname) && location.protocol!=='file:';
 function opt(u,w){ return (OPT && /^\/[^\/]/.test(u) && /\.(jpe?g|png|webp)$/i.test(u)) ? '/_vercel/image?url='+encodeURIComponent(u)+'&w='+w+'&q=78' : u; }
-function oimg(u,w){ var o=opt(u,w); return '<img src="'+o+'"'+(o!==u?' data-o="'+u+'" onerror="this.onerror=null;this.src=this.dataset.o"':'')+' alt="" decoding="async">'; }
+function oimg(u,w,alt){ var o=opt(u,w); return '<img src="'+o+'"'+(o!==u?' data-o="'+u+'" onerror="this.onerror=null;this.src=this.dataset.o"':'')+' alt="'+esc(alt||"")+'" decoding="async">'; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]}); }
 function renderWorks(){
   var g=$("#worksGrid"); g.innerHTML="";
   PROJ.forEach(function(p,i){ var d=p[lang]; var b=document.createElement("button"); b.type="button"; b.className="work rv"; b.setAttribute("data-cursor",t("open"));
-    b.innerHTML='<span class="ph">'+oimg(p.images[0],828)+'</span><span class="row"><span><span class="h3">'+esc(d.t)+'</span><span class="cat">'+esc(d.c)+'</span></span><span class="n">'+String(i+1).padStart(2,"0")+'</span></span>';
+    b.innerHTML='<span class="ph">'+oimg(p.images[0],828,p[lang].t+" — "+p[lang].c+" · MATIÉ")+'</span><span class="row"><span><span class="h3">'+esc(d.t)+'</span><span class="cat">'+esc(d.c)+'</span></span><span class="n">'+String(i+1).padStart(2,"0")+'</span></span>';
     b.setAttribute("aria-label",d.t+". "+d.c);
     b.addEventListener("click",function(){ openProj(i,b.querySelector("img"),p.images[0],b); });
     g.appendChild(b); });
@@ -905,13 +985,13 @@ function renderWorks(){
 function renderSvc(){
   var l=$("#svcList"); l.innerHTML="";
   SVC.forEach(function(s,i){ var d=s[lang], o=s[lang==="uk"?"en":"uk"]; var li=document.createElement("li"); li.className="rv";
-    li.innerHTML='<span class="i">'+String(i+1).padStart(2,"0")+'</span><h3>'+esc(d[0])+'<small lang="'+(lang==="uk"?"en":"uk")+'">'+esc(o[0])+'</small></h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(d[2])+(d[3]?'<small>'+esc(d[3])+'</small>':'')+'</span>';
+    li.innerHTML='<span class="i">'+String(i+1).padStart(2,"0")+'</span><h3>'+esc(d[0])+'<small lang="'+(lang==="uk"?"en":"uk")+'">'+esc(o[0])+'</small></h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(fxStr(d[2]))+(d[3]?'<small>'+esc(fxStr(d[3]))+'</small>':'')+'</span>';
     li.setAttribute("data-peek",PROJ[s.peek%PROJ.length].images[(i+2)%PROJ[s.peek%PROJ.length].images.length]); l.appendChild(li); });
   bindPeek(); observe();
 }
 function baEl(pair,la,lb_,cap){
   var f=document.createElement("figure"); f.className="ba-wrap rv";
-  f.innerHTML='<div class="ba"><img src="'+pair.after+'" alt=""><img class="before" src="'+pair.before+'" alt=""><span class="tag b micro">'+esc(la)+'</span><span class="tag a micro">'+esc(lb_)+'</span><span class="line"></span><input type="range" min="0" max="100" value="50" aria-label="'+esc(t("baAria")+": "+la+" / "+lb_)+'"><span class="knob"><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h26M1 6l5-5M1 6l5 5M27 6l-5-5M27 6l-5 5" stroke="#EDE8E0" fill="none"/></svg></span></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'');
+  f.innerHTML='<div class="ba"><img src="'+pair.after+'" alt="'+esc(lb_+" — MATIÉ")+'"><img class="before" src="'+pair.before+'" alt="'+esc(la+" — MATIÉ")+'"><span class="tag b micro">'+esc(la)+'</span><span class="tag a micro">'+esc(lb_)+'</span><span class="line"></span><input type="range" min="0" max="100" value="50" aria-label="'+esc(t("baAria")+": "+la+" / "+lb_)+'"><span class="knob"><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h26M1 6l5-5M1 6l5 5M27 6l-5-5M27 6l-5 5" stroke="#EDE8E0" fill="none"/></svg></span></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'');
   var box=f.querySelector(".ba"), inp=f.querySelector("input"); inp.addEventListener("input",function(){ box.style.setProperty("--p",inp.value+"%"); });
   return f;
 }
@@ -927,7 +1007,7 @@ function renderJournal(){
 }
 function renderPho(){
   var P=SITE.photographers, tb=$("#phTable"); tb.innerHTML="";
-  P.prices.forEach(function(r){ var d=r[lang]; var li=document.createElement("li"); li.innerHTML='<h3>'+esc(d[0])+'</h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(d[2])+'</span>'; tb.appendChild(li); });
+  P.prices.forEach(function(r){ var d=r[lang]; var li=document.createElement("li"); li.innerHTML='<h3>'+esc(d[0])+'</h3><p>'+esc(d[1])+'</p><span class="pr">'+esc(fxStr(d[2]))+'</span>'; tb.appendChild(li); });
   var tm=$("#phTerms"); tm.innerHTML=""; P.terms.forEach(function(r){ var d=r[lang]; var el=document.createElement("div"); el.innerHTML='<b>'+esc(d[0])+'</b><span>'+esc(d[1])+'</span>'; tm.appendChild(el); });
   var g=$("#phBA"); g.innerHTML=""; BA.forEach(function(b){ var e=baEl(b,t("before"),t("after")); e.classList.remove("rv"); g.appendChild(e); });
 }
@@ -935,6 +1015,10 @@ function renderPho(){
 /* ---------- calculator ---------- */
 var cState={s:0,q:null,u:0,hi:false};
 function fmt(n){ return Math.round(n).toLocaleString(lang==="uk"?"uk-UA":"en-US").replace(/,/g,lang==="uk"?" ":","); }
+function fxRound(v){ return v<100?Math.round(v):v<1000?Math.round(v/5)*5:Math.round(v/10)*10; }
+function money(n){ n=+n||0; if(lang!=="en") return fmt(n)+" грн"; return "$"+fxRound(n*FX.usd).toLocaleString("en-US")+" · €"+fxRound(n*FX.eur).toLocaleString("en-US"); }
+function fxStr(s){ s=String(s||""); if(lang!=="en") return s; return s.replace(/(\d[\d,.\s]*\d|\d)\s*(UAH|грн)/gi,function(m,a){ return money(+a.replace(/[^\d]/g,"")); }); }
+function loadFX(cb){ if(FX.fresh) return; try{ fetch("https://open.er-api.com/v6/latest/UAH").then(function(r){ return r.json(); }).then(function(j){ var r=j&&j.rates; if(r&&r.USD&&r.EUR){ FX.usd=r.USD; FX.eur=r.EUR; FX.fresh=1; try{ localStorage.setItem("matie_fx",JSON.stringify({t:Date.now(),usd:r.USD,eur:r.EUR})); }catch(e){} if(cb) cb(); } }).catch(function(){}); }catch(e){} }
 function renderCalc(){
   var cs=$("#cSvc"); cs.innerHTML="";
   SVC.forEach(function(s,i){ var lab=document.createElement("label"); lab.className="chip"; lab.innerHTML='<input type="radio" name="csvc" value="'+i+'"'+(i===cState.s?" checked":"")+'><span>'+esc(s[lang][0])+'</span>'; lab.querySelector("input").addEventListener("change",function(){ cState.s=i; cState.q=null; setupQty(); calc(); }); cs.appendChild(lab); });
@@ -952,11 +1036,11 @@ function calc(){
   (c.bulk||[]).forEach(function(b){ if(q>=b[0]) disc=b[1]; }); base*=disc;
   var total = Math.round(base*u.k/50)*50;
   $("#cQtyO").innerHTML = q+'<small>'+esc(unit)+'</small>';
-  $("#cTotal").innerHTML = '<small>'+t("from")+' </small>'+fmt(total)+' <small>'+t("uah")+'</small>';
+  $("#cTotal").innerHTML = lang==="en" ? '<small>'+t("from")+' </small>$'+fxRound(total*FX.usd).toLocaleString("en-US")+' <small>· €'+fxRound(total*FX.eur).toLocaleString("en-US")+'</small>' : '<small>'+t("from")+' </small>'+fmt(total)+' <small>'+t("uah")+'</small>';
   var svcName = s[lang][0]+(cState.hi?" ("+t("hiNote")+")":"");
   $("#cL1").textContent=svcName; $("#cL2").textContent=q+" "+unit+(disc<1?" (−"+Math.round((1-disc)*100)+"%)":""); $("#cL3").textContent=u[lang][0]+" · "+u[lang][1];
   var idea=$("#cIdea").value.trim();
-  var msg = t("msgHi")+"\n— "+svcName+", "+q+" "+unit+"\n— "+u[lang][0]+" ("+u[lang][1]+")\n— "+t("msgPrice")+": "+t("from")+" "+fmt(total)+" "+t("uah")+(idea?"\n— "+t("msgIdea")+": "+idea:"");
+  var msg = t("msgHi")+"\n— "+svcName+", "+q+" "+unit+"\n— "+u[lang][0]+" ("+u[lang][1]+")\n— "+t("msgPrice")+": "+t("from")+" "+(lang==="en"?money(total)+" ("+fmt(total)+" UAH)":fmt(total)+" "+t("uah"))+(idea?"\n— "+t("msgIdea")+": "+idea:"");
   $("#cMsgT").textContent=msg;
   $("#cSend").href="https://t.me/"+SITE.telegram+"?text="+encodeURIComponent(msg);
 }
@@ -1008,7 +1092,7 @@ function buildSphere(){
   var list=sphereItems(), N=list.length, ga=Math.PI*(3-Math.sqrt(5));
   list.forEach(function(it,i){ var y=1-(i/(N-1))*2, rr=Math.sqrt(1-y*y), th=i*ga; pts.push([Math.cos(th)*rr,y,Math.sin(th)*rr]);
     var b=document.createElement("button"); b.type="button"; b.className="card"; b.tabIndex=-1; b.setAttribute("aria-hidden","true");
-    b.innerHTML='<img alt="" draggable="false">'; b._it=it; stage.appendChild(b); cards.push(b); var im=b.querySelector("img"); thumb(it.u,function(t){ im.onload=function(){ im.classList.add("ok"); }; im.src=t; });
+    b.innerHTML='<img alt="'+esc(it.p!==undefined?PROJ[it.p][lang].t+" — MATIÉ":"MATIÉ — AI visual")+'" draggable="false">'; b._it=it; stage.appendChild(b); cards.push(b); var im=b.querySelector("img"); thumb(it.u,function(t){ im.onload=function(){ im.classList.add("ok"); }; im.src=t; });
     b.addEventListener("pointerenter",function(){ hover=true; showTip(it.p!==undefined?PROJ[it.p][lang].t:""); setCursor(t(it.p!==undefined?"open":"view")); });
     b.addEventListener("pointerleave",function(){ hover=false; showTip(""); setCursor(""); });
   });
@@ -1057,24 +1141,23 @@ $$("[data-close]").forEach(function(b){ b.addEventListener("click",function(){ h
 
 var pj=$("#proj");
 function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover").src=coverUrl; $("#pTitle").textContent=d.t; $("#pCat").textContent=d.c; $("#pFor").textContent=d.f; $("#pTask").textContent=d.k; $("#pSol").textContent=d.s;
-  var lv=p.live||[]; ["#pL1","#pL2","#pL3"].forEach(function(id,k){ var el=$(id); if(lv[k]!=null){ el.textContent=lv[k]; el.classList.remove("ph-val"); } else { el.textContent=k===0?(lang==="uk"?"[сума]":"[amount]"):"[N]"; el.classList.add("ph-val"); } });
+  var lv=p.live||[]; ["#pL1","#pL2","#pL3"].forEach(function(id,k){ var el=$(id); if(lv[k]!=null){ el.textContent=(k===0&&lang==="en"&&/^[\d\s.,]+$/.test(String(lv[k]).trim()))?money(+String(lv[k]).replace(/[^\d]/g,"")):lv[k]; el.classList.remove("ph-val"); } else { el.textContent=k===0?(lang==="uk"?"[сума]":"[amount]"):"[N]"; el.classList.add("ph-val"); } });
   var nt=(p.note&&p.note[lang])||"", nl=$("#pNoteL"), np=$("#pNoteP"); nl.innerHTML=""; np.textContent="";
   nt.split(/\n/).map(function(x){ return x.trim(); }).filter(Boolean).forEach(function(line){ var m=line.split(/\s+[—–-]\s+(?=[^—–-]*$)/);
-    if(m.length===2){ var li=document.createElement("li"); li.innerHTML="<span>"+esc(m[0])+"</span><b>"+esc(m[1])+"</b>"; nl.appendChild(li); } else { np.textContent+=(np.textContent?" ":"")+line; } });
+    if(m.length===2){ var li=document.createElement("li"); li.innerHTML="<span>"+esc(m[0])+"</span><b>"+esc(fxStr(m[1]))+"</b>"; nl.appendChild(li); } else { np.textContent+=(np.textContent?" ":"")+line; } });
   $("#pNote").hidden=!nt;
   var num=function(v){ var d=String(v||"").replace(/[^\d]/g,""); return d?+d:0; };
   var mv=(p.mine&&p.mine[lang])||"", bud=num(lv[0]), my=num(mv);
   $("#pMine").hidden=!mv;
-  var cur=lang==="uk"?" грн":" UAH", fmtN=function(n){ return lang==="uk"?n.toLocaleString("uk-UA").replace(/\u00a0/g," "):n.toLocaleString("en-US"); };
-  $("#pMineV").textContent=/^[\d\s.,]+$/.test(mv.trim())&&my?fmtN(my)+cur:mv.trim();
-  if(mv && bud && my && bud>my){ var sv=bud-my; $("#pOld").textContent=fmtN(bud)+cur; $("#pPct").textContent="−"+Math.round(sv/bud*100)+"%"; $("#pSaveL").innerHTML=esc(t("saveL"))+" <b>"+esc(fmtN(sv)+cur)+"</b>"; }
+  $("#pMineV").textContent=/^[\d\s.,]+$/.test(mv.trim())&&my?money(my):fxStr(mv.trim());
+  if(mv && bud && my && bud>my){ var sv=bud-my; $("#pOld").textContent=money(bud); $("#pPct").textContent="−"+Math.round(sv/bud*100)+"%"; $("#pSaveL").innerHTML=esc(t("saveL"))+" <b>"+esc(money(sv))+"</b>"; }
   else { $("#pOld").textContent=""; $("#pPct").textContent=""; $("#pSaveL").textContent=""; }
   var cw=$("#pCmp"); cw.innerHTML=""; (p.compare||[]).forEach(function(c){ var e=baEl(c,t("rawL"),t("finL")); e.classList.remove("rv"); cw.appendChild(e); }); $("#pCmpW").hidden=!(p.compare&&p.compare.length);
   pj.style.setProperty("--tint",rgba(p.tint||"#000000",.16));
   var vw=$("#pVid"); vw.querySelectorAll("video").forEach(function(v){ v.pause(); }); vw.innerHTML=""; (p.videos||[]).forEach(function(u){ var c=document.createElement("div"); c.className="vcard"; c.innerHTML='<video src="'+u+'#t=0.1" muted loop playsinline preload="metadata"></video><button type="button" class="snd" aria-label="'+esc(t("sndOn"))+'"><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/></svg></button>'; var v=c.querySelector("video"), b=c.querySelector(".snd");
     b.addEventListener("click",function(){ var on=v.muted; vw.querySelectorAll(".vcard").forEach(function(o){ var ov=o.querySelector("video"); if(ov!==v){ ov.muted=true; o.classList.remove("sound"); o.querySelector(".snd").setAttribute("aria-label",t("sndOn")); } }); v.muted=!on; c.classList.toggle("sound",on); b.setAttribute("aria-label",t(on?"sndOff":"sndOn")); if(on) v.play().catch(function(){}); });
     if(vio) vio.observe(v); else if(!RM) v.play().catch(function(){}); vw.appendChild(c); }); $("#pVidW").hidden=!(p.videos&&p.videos.length);
-  var g=$("#pGal"); g.innerHTML=""; g.classList.toggle("full",!!p.full); p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML=oimg(u,p.full?1920:1200); b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
+  var g=$("#pGal"); g.innerHTML=""; g.classList.toggle("full",!!p.full); p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML=oimg(u,p.full?1920:1200,p[lang].t+" — "+p[lang].c+", "+t("photo").toLowerCase()+" "+(j+1)); b.addEventListener("click",function(){ openLb(p.images,j,b,p[lang].t); }); g.appendChild(b); }); }
 var vio=("IntersectionObserver" in window)?new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target; if(e.isIntersecting && !RM){ v.play().catch(function(){}); } else { v.pause(); } }); },{threshold:.35}):null;
 function openProj(i,srcImg,url,from){
   curP=i; fillProj(i,url||PROJ[i].images[0]); showOv(pj,from);
@@ -1106,8 +1189,9 @@ document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.
 
 /* lightbox */
 var lb=$("#lb"), lbList=[], gi=0;
-function showLb(){ $("#lbImg").src=lbList[gi]; $("#lbC").textContent=(gi+1)+" / "+lbList.length; }
-function openLb(list,j,from){ lbList=list; gi=j; lb._from=from||document.activeElement; lb.classList.toggle("single",list.length<2); showLb(); lb.classList.add("open"); document.body.classList.add("locked"); $("#lbX").focus(); }
+var lbTitle="";
+function showLb(){ var im=$("#lbImg"); im.src=lbList[gi]; im.alt=(lbTitle||"MATIÉ — AI visual")+" · "+(gi+1)+" / "+lbList.length; $("#lbC").textContent=(gi+1)+" / "+lbList.length; }
+function openLb(list,j,from,title){ lbTitle=title||""; lbList=list; gi=j; lb._from=from||document.activeElement; lb.classList.toggle("single",list.length<2); showLb(); lb.classList.add("open"); document.body.classList.add("locked"); $("#lbX").focus(); }
 function closeLb(){ lb.classList.remove("open"); if(!anyOpen()) document.body.classList.remove("locked"); var f=lb._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
 function step(d){ gi=(gi+d+lbList.length)%lbList.length; showLb(); }
 $("#lbX").addEventListener("click",closeLb); $("#lbP").addEventListener("click",function(){ step(-1); }); $("#lbN").addEventListener("click",function(){ step(1); });

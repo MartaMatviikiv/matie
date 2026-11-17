@@ -21,6 +21,19 @@ content:
     - name: instagram_second
       label: Instagram другий (без @, можна порожньо)
       type: string
+    - name: email
+      label: Email (з'являється в контактах і в блоці «Що ви отримаєте»; порожньо = сховати)
+      type: string
+  - name: showreel
+    label: Шоурил (кнопка на головному екрані з'явиться, коли додано відео)
+    type: object
+    fields:
+    - name: video
+      label: 'Відео MP4, 16:9, до ~20 МБ. Велике відео краще завантажити через GitHub у images/ і тут натиснути Select'
+      type: file
+    - name: poster
+      label: Обкладинка відео (кадр, який видно до запуску)
+      type: image
   - name: photos
     label: Мої фото
     type: object
