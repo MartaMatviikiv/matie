@@ -37,6 +37,7 @@
       "live_note_en": "Fees for 6 models — 15,000 UAH\nPhotographer, 3 hours — 8,000 UAH\nMake-up and hair for 6 models — 6,000 UAH\nStudio rental, 4 hours — 4,500 UAH\nRetouching, 7 frames — 1,500 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "2240",
       "my_price_en": "2240",
+      "sphere_hide": "4,6",
       "gallery_full": false,
       "tint": "#b98a6a",
       "placeholder": "portrait"
@@ -65,6 +66,7 @@
       "live_note_en": "Photographer, 2 hours — 3,000 UAH\nStudio rental, 2 hours — 2,200 UAH\nMake-up and hair — 1,000 UAH\nRetouching, 10 photos — 2,000 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "1 800 ",
       "my_price_en": "1 800 ",
+      "sphere_hide": "3",
       "gallery_full": false,
       "compare": [
         {
@@ -144,6 +146,7 @@
       "live_note_en": "Product photographer, 3 hours — 4,500 UAH\nModel for the skin shot, 1 hour — 1,500 UAH\nStudio rental, 3 hours — 3,300 UAH\nFlowers, satin, props — 1,200 UAH\nRetouching, 7 frames — 1,500 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "2240",
       "my_price_en": "2240",
+      "sphere_hide": "5,6,7",
       "gallery_full": false,
       "tint": "#8e0f1a",
       "placeholder": "product"
