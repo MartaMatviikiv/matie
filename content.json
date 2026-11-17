@@ -568,6 +568,11 @@
         "/images/rt-03-c.jpg"
       ],
       "home": false
+    },
+    {
+      "before": "/images/rt-02-raw.jpg",
+      "after": "/images/rt-02.jpg",
+      "home": false
     }
   ],
   "idea": [
