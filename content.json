@@ -224,10 +224,33 @@
   ],
   "singles": [
     {
+      "image": "/images/s01.jpg",
       "placeholder": "columns"
     },
     {
+      "image": "/images/s02.jpg",
       "placeholder": "product"
+    },
+    {
+      "image": "/images/s04.jpg"
+    },
+    {
+      "image": "/images/s08.jpg"
+    },
+    {
+      "image": "/images/s09.jpg"
+    },
+    {
+      "image": "/images/s11.jpg"
+    },
+    {
+      "image": "/images/s10.jpg"
+    },
+    {
+      "image": "/images/s14.jpg"
+    },
+    {
+      "image": "/images/s13.jpg"
     }
   ],
   "services": [
