@@ -36,6 +36,7 @@
       "live_note_en": "Fees for 6 models — 15,000 UAH\nPhotographer, 3 hours — 8,000 UAH\nMake-up and hair for 6 models — 6,000 UAH\nStudio rental, 4 hours — 4,500 UAH\nRetouching, 7 frames — 1,500 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "2240",
       "my_price_en": "2240",
+      "gallery_full": false,
       "tint": "#b98a6a",
       "placeholder": "portrait"
     },
@@ -63,6 +64,7 @@
       "live_note_en": "Photographer, 2 hours — 3,000 UAH\nStudio rental, 2 hours — 2,200 UAH\nMake-up and hair — 1,000 UAH\nRetouching, 10 photos — 2,000 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "1 800 ",
       "my_price_en": "1 800 ",
+      "gallery_full": false,
       "compare": [
         {
           "before": "/images/02-raw.jpg",
@@ -109,6 +111,7 @@
       "live_note_en": "Product photographer, 4 hours — 6,000 UAH\nBartender-stylist, 6 cocktails — 2,500 UAH\nStudio with colour backdrops, 4 hours — 4,400 UAH\nFaux fur, plinths, props — 3,000 UAH\nMaking leopard paw props — 3,500 UAH\nRetouching, 8 frames — 1,600 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "2560",
       "my_price_en": "2560",
+      "gallery_full": false,
       "tint": "#d6336c",
       "placeholder": "portrait"
     },
@@ -140,6 +143,7 @@
       "live_note_en": "Product photographer, 3 hours — 4,500 UAH\nModel for the skin shot, 1 hour — 1,500 UAH\nStudio rental, 3 hours — 3,300 UAH\nFlowers, satin, props — 1,200 UAH\nRetouching, 7 frames — 1,500 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "2240",
       "my_price_en": "2240",
+      "gallery_full": false,
       "tint": "#8e0f1a",
       "placeholder": "product"
     },
@@ -169,23 +173,52 @@
       "live_note_en": "Photographer, 4 hours — 6,000 UAH\nModel, 3 hours — 3,000 UAH\nMake-up and hair — 1,000 UAH\nHistoric interior location rental, 4 hours — 6,000 UAH\nRetouching, 5 frames — 1,000 UAH\nEstimate based on average prices in Ukraine, 2026.",
       "my_price_uk": "1 600",
       "my_price_en": "1 600",
+      "gallery_full": false,
       "tint": "#b08d57",
       "placeholder": "fashion"
     },
     {
-      "id": "neon-night",
-      "title_uk": "Neon Night",
-      "category_uk": "AI-відео · музичний реліз",
-      "for_uk": "Тизер і обкладинка синглу для музиканта.",
-      "task_uk": "Створити візуальний світ релізу, який тримає увагу з першого кадру.",
-      "solution_uk": "Нічне місто, неонові відблиски на мокрому асфальті, кадри змонтовані під ритм треку.",
-      "title_en": "Neon Night",
-      "category_en": "AI video · music release",
-      "for_en": "A teaser and single cover for a musician.",
-      "task_en": "Build a visual world for the release that holds attention from the first frame.",
-      "solution_en": "A night city, neon reflections on wet asphalt, cuts timed to the beat.",
-      "tint": "#ff2fd1",
-      "placeholder": "city"
+      "id": "cartoon",
+      "images": [
+        "/images/01.jpg",
+        "/images/02.jpg",
+        "/images/03.jpg",
+        "/images/04.jpg",
+        "/images/05.jpg",
+        "/images/06.jpg",
+        "/images/07.jpg",
+        "/images/08-1.jpg"
+      ],
+      "title_uk": "Moody",
+      "category_uk": "3D-персонаж · анімація",
+      "for_uk": "Персонаж-маскот для соцмереж бренду: серії Reels, стікери, впізнаване обличчя.",
+      "task_uk": "Створити 3D-персонажа з характером за запитом і зберегти його однаковим у будь-яких ракурсах, образах та історіях.",
+      "solution_uk": "Сира генерація дала лише основу, тож я вручну довела обличчя, пропорції та емоції до запиту. Потім зібрала розкадровку: ракурси, зачіски, образи на кожен день. Персонаж лишається собою в кожному кадрі, а у двох коротких історіях він уже живе своїм життям.",
+      "title_en": "Moody",
+      "category_en": "3D character · animation",
+      "for_en": "A mascot character for a brand’s social media: Reels series, stickers, a recognisable face.",
+      "task_en": "Create a 3D character with personality to brief and keep it identical across angles, outfits and stories.",
+      "solution_en": "The raw generation was only a starting point, so I refined the face, proportions and emotions by hand to match the brief. Then I built a character sheet with angles, hairstyles and everyday looks. She stays herself in every frame, and in two short stories she comes to life.",
+      "live_budget": "31 000",
+      "live_people": "3",
+      "live_days": "21",
+      "live_note_uk": "3D-модель персонажа — 8 000 грн\nАркуші ракурсів, емоцій та образів — 3 000 грн\n3D-анімація 2 роликів (~1,5 хв) — 18 000 грн\nЗвук і монтаж — 2 000 грн\nМінімальні ставки фрилансерів в Україні, 2026.",
+      "live_note_en": "3D character model — 8,000 UAH\nAngle, emotion and outfit sheets — 3,000 UAH\n3D animation, 2 clips (~1.5 min) — 18,000 UAH\nSound and editing — 2,000 UAH\nMinimum freelance rates in Ukraine, 2026.",
+      "my_price_uk": "9 400 грн",
+      "my_price_en": "9,400 UAH",
+      "gallery_full": true,
+      "videos": [
+        "/images/moon.mp4",
+        "/images/grandma.mp4"
+      ],
+      "compare": [
+        {
+          "before": "/images/02-raw-1.jpg",
+          "after": "/images/02-7.jpg"
+        }
+      ],
+      "tint": "#c98a9b",
+      "placeholder": "cartoon"
     }
   ],
   "singles": [
