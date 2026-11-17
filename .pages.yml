@@ -104,6 +104,13 @@ content:
     - name: my_price_en
       label: 'Та сама робота зі мною (EN), напр. 3,200 UAH'
       type: string
+    - name: gallery_full
+      label: 'Показувати фото цілими, без обрізання (для широких аркушів, розкадровок)'
+      type: boolean
+    - name: videos
+      label: 'Відео (необов''язково): вертикальні MP4 до ~20 МБ. Великі файли краще завантажити через GitHub у images/<проєкт>/ і тут натиснути Select'
+      type: file
+      list: true
     - name: compare
       label: 'До і після (необов''язково): пари «сира генерація → фінал». Фото в парі мають бути однакового розміру'
       type: object

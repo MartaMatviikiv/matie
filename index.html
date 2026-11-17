@@ -309,6 +309,19 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .gal button:nth-child(5n+2){grid-column:span 2;aspect-ratio:auto}
 .gal button:nth-child(5n+3),.gal button:nth-child(5n+4),.gal button:nth-child(5n+5){grid-column:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.gal.full{grid-template-columns:1fr}
+.gal.full button,.gal.full button:nth-child(n){grid-column:auto;aspect-ratio:auto}
+.gal.full img{height:auto;display:block}
+.gal.full button:hover img{transform:scale(1.015)}
+.pvid{margin:0 0 clamp(48px,7vw,96px)}
+.vgrid{display:flex;gap:clamp(12px,1.6vw,24px);justify-content:center;flex-wrap:wrap}
+.vcard{position:relative;flex:0 1 min(380px,100%);aspect-ratio:9/16;background:var(--bg-2);overflow:hidden}
+.vcard video{width:100%;height:100%;object-fit:cover;display:block}
+.vcard .snd{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(237,232,224,.35);background:rgba(11,11,12,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .3s}
+.vcard .snd:hover{background:rgba(11,11,12,.8)}
+.vcard .snd svg{width:18px;height:18px}
+.vcard .snd .on{display:none}.vcard.sound .snd .on{display:block}.vcard.sound .snd .off{display:none}
+@media (max-width:700px){.vgrid{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;justify-content:flex-start;margin:0 calc(-1*var(--pad,20px));padding:0 var(--pad,20px)}.vcard{flex:0 0 78%;scroll-snap-align:center}}
 .gal button:hover img{transform:scale(1.04)}
 .pfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:clamp(48px,7vw,96px) 0}
 .article{max-width:720px;margin:0 auto;padding:clamp(40px,6vw,80px) 0}
@@ -603,6 +616,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
       <div><h3 class="micro" data-i18n="pTask">Задача</h3><p id="pTask"></p></div>
       <div><h3 class="micro" data-i18n="pSol">Рішення</h3><p id="pSol"></p></div>
     </div>
+    <div class="pvid" id="pVidW" hidden><div class="sec-head" style="margin:0 0 clamp(24px,3vw,40px)"><p class="micro" data-i18n="vidK">У русі</p><div><h3 class="big" style="margin:0" data-i18n-html="vidT">Персонаж <em>оживає</em></h3></div></div><div class="vgrid" id="pVid"></div></div>
     <div class="gal" id="pGal"></div>
     <div class="pcmp" id="pCmpW" hidden><div class="sec-head" style="margin:clamp(48px,7vw,96px) 0 clamp(24px,3vw,40px)"><p class="micro" data-i18n="cmpK">До і після</p><div><h3 class="big" style="margin:0" data-i18n-html="cmpT">Сира генерація → <em>фінальний кадр</em></h3><p class="lede" data-i18n="cmpL">Потягніть повзунок: зліва те, що видала нейромережа, справа кадр після ретуші й кольорокорекції.</p></div></div><div class="ba-grid" id="pCmp"></div></div>
     <div class="live">
@@ -675,7 +689,7 @@ function fromCMS(j){
   var img=function(v){ v=str(v); return v; };
   var projects=(j.projects||[]).map(function(p,i){ var k=ART[p.placeholder]?p.placeholder:"portrait";
     return {id:p.id||("p"+i), tint:p.tint||"#888888", images:(p.images||[]).map(img).filter(Boolean),
-      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, mine:{uk:str(p.my_price_uk),en:str(p.my_price_en)||str(p.my_price_uk)}, compare:(p.compare||[]).filter(function(c){ return str(c.before)&&str(c.after); }).map(function(c){ return {before:img(c.before),after:img(c.after)}; }), art:{k:k,pal:ART[k]},
+      live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, mine:{uk:str(p.my_price_uk),en:str(p.my_price_en)||str(p.my_price_uk)}, videos:(p.videos||[]).map(function(v){ return img(typeof v==="object"&&v?v.file:v); }).filter(Boolean), full:!!p.gallery_full, compare:(p.compare||[]).filter(function(c){ return str(c.before)&&str(c.after); }).map(function(c){ return {before:img(c.before),after:img(c.after)}; }), art:{k:k,pal:ART[k]},
       uk:{t:p.title_uk,c:p.category_uk,f:p.for_uk,k:p.task_uk,s:p.solution_uk},
       en:{t:p.title_en||p.title_uk,c:p.category_en||p.category_uk,f:p.for_en||p.for_uk,k:p.task_en||p.task_uk,s:p.solution_en||p.solution_uk}}; });
   var pidx=function(id){ for(var i=0;i<projects.length;i++) if(projects[i].id===id) return i; return 0; };
@@ -729,7 +743,7 @@ baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть по�
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
 ctK:"Контакти",ctT:"Створимо щось <em>неймовірне?</em>",ctL:"Напишіть у Telegram: коротко опишіть задачу, і я відповім з ідеями та ціною.",igSoon:"Instagram · скоро",
-close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",cmpK:"До і після",cmpT:"Сира генерація → <em>фінальний кадр</em>",cmpL:"Потягніть повзунок: зліва те, що видала нейромережа, справа кадр після ретуші й кольорокорекції.",rawL:"Генерація",finL:"Після ретуші",liveNoteK:"З чого складається сума",mineK:"Та сама робота зі мною",saveL:"Ви економите",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
+close:"Закрити",pFor:"Для чого",pTask:"Задача",pSol:"Рішення",liveK:"Якби знімати наживо",liveT:"Те саме без AI коштувало б",live1:"грн бюджету зйомки",live2:"людей у команді",live3:"днів підготовки та зйомки",vidK:"У русі",vidT:"Персонаж <em>оживає</em>",sndOn:"Увімкнути звук",sndOff:"Вимкнути звук",cmpK:"До і після",cmpT:"Сира генерація → <em>фінальний кадр</em>",cmpL:"Потягніть повзунок: зліва те, що видала нейромережа, справа кадр після ретуші й кольорокорекції.",rawL:"Генерація",finL:"Після ретуші",liveNoteK:"З чого складається сума",mineK:"Та сама робота зі мною",saveL:"Ви економите",want:"Хочу так само",next:"Наступний проєкт",photo:"Фото",of:"з",lbAria:"Перегляд фото",prev:"Попереднє фото",nextPh:"Наступне фото",
 phK:"Фотографам",phT:"Ретуш, що зберігає <em>ваш стиль</em>",phL:"Ви знімаєте, я доводжу кадри до здачі клієнту. Пакетна ретуш у вашому стилі, у ваші терміни.",phCta:"Надіслати фото на тест"},
 en:{skip:"Skip to work",navAria:"Main menu",footAria:"Footer links",menu:"Menu",nWorks:"Work",nServices:"Services",nCalc:"Calculator",nJournal:"Journal",nPhoto:"Photographers",nAbout:"About",nContact:"Contact",cta:"Get in touch",sndOn:"Turn sound on",sndOff:"Turn sound off",
 heroLede:"Ad campaigns, photoshoots and films made with AI. No studio, no casting, no weeks of production.",heroBtn:"View work",heroCalc:"Get a price",drag:"Drag to explore",
@@ -748,7 +762,7 @@ baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin st
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
 ctK:"Contact",ctT:"Shall we create something <em>unreal?</em>",ctL:"Message me on Telegram with a short description of the task, and I’ll reply with ideas and a price.",igSoon:"Instagram · soon",
-close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",cmpK:"Before and after",cmpT:"Raw generation → <em>final image</em>",cmpL:"Drag the slider: on the left is what the AI produced, on the right the image after retouching and colour grading.",rawL:"Raw",finL:"Final",liveNoteK:"How the amount adds up",mineK:"The same work with me",saveL:"You save",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
+close:"Close",pFor:"Made for",pTask:"The task",pSol:"The solution",liveK:"If shot for real",liveT:"The same shoot without AI would cost",live1:"UAH production budget",live2:"people in the team",live3:"days of preparation and shooting",vidK:"In motion",vidT:"The character <em>comes alive</em>",sndOn:"Turn sound on",sndOff:"Turn sound off",cmpK:"Before and after",cmpT:"Raw generation → <em>final image</em>",cmpL:"Drag the slider: on the left is what the AI produced, on the right the image after retouching and colour grading.",rawL:"Raw",finL:"Final",liveNoteK:"How the amount adds up",mineK:"The same work with me",saveL:"You save",want:"I want the same",next:"Next project",photo:"Photo",of:"of",lbAria:"Photo viewer",prev:"Previous photo",nextPh:"Next photo",
 phK:"For photographers",phT:"Retouching that keeps <em>your style</em>",phL:"You shoot, I get the frames ready for your client. Batch retouching in your style, on your schedule.",phCta:"Send photos for a test"}
 };
 var lang="uk";
@@ -1022,7 +1036,7 @@ mb.addEventListener("click",function(){ setMenu(!document.body.classList.contain
 var openStack=[], curP=-1, curA=-1;
 function anyOpen(){ return openStack.length>0; }
 function showOv(el,from){ el._from=from||document.activeElement; if(openStack.indexOf(el)<0) openStack.push(el); el.setAttribute("aria-hidden","false"); el.scrollTop=0; document.body.classList.add("locked"); setCursor(""); showTip(""); }
-function hideOv(el){ el.classList.remove("open","fly","flying"); el.setAttribute("aria-hidden","true"); openStack=openStack.filter(function(x){ return x!==el; }); if(!anyOpen() && !document.body.classList.contains("menu-open")) document.body.classList.remove("locked"); if(el===pj){ curP=-1; } if(el===artEl){ curA=-1; } if(el===phoEl && location.hash==="#photographers"){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} } var f=el._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
+function hideOv(el){ el.classList.remove("open","fly","flying"); el.setAttribute("aria-hidden","true"); openStack=openStack.filter(function(x){ return x!==el; }); if(!anyOpen() && !document.body.classList.contains("menu-open")) document.body.classList.remove("locked"); if(el===pj){ curP=-1; el.querySelectorAll("video").forEach(function(v){ v.pause(); }); } if(el===artEl){ curA=-1; } if(el===phoEl && location.hash==="#photographers"){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} } var f=el._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
 $$("[data-close]").forEach(function(b){ b.addEventListener("click",function(){ hideOv(b.closest(".ov")); }); });
 
 var pj=$("#proj");
@@ -1040,7 +1054,11 @@ function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover
   else { $("#pOld").textContent=""; $("#pPct").textContent=""; $("#pSaveL").textContent=""; }
   var cw=$("#pCmp"); cw.innerHTML=""; (p.compare||[]).forEach(function(c){ var e=baEl(c,t("rawL"),t("finL")); e.classList.remove("rv"); cw.appendChild(e); }); $("#pCmpW").hidden=!(p.compare&&p.compare.length);
   pj.style.setProperty("--tint",rgba(p.tint||"#000000",.16));
-  var g=$("#pGal"); g.innerHTML=""; p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML='<img src="'+u+'" alt="">'; b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
+  var vw=$("#pVid"); vw.querySelectorAll("video").forEach(function(v){ v.pause(); }); vw.innerHTML=""; (p.videos||[]).forEach(function(u){ var c=document.createElement("div"); c.className="vcard"; c.innerHTML='<video src="'+u+'#t=0.1" muted loop playsinline preload="metadata"></video><button type="button" class="snd" aria-label="'+esc(t("sndOn"))+'"><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/></svg></button>'; var v=c.querySelector("video"), b=c.querySelector(".snd");
+    b.addEventListener("click",function(){ var on=v.muted; vw.querySelectorAll(".vcard").forEach(function(o){ var ov=o.querySelector("video"); if(ov!==v){ ov.muted=true; o.classList.remove("sound"); o.querySelector(".snd").setAttribute("aria-label",t("sndOn")); } }); v.muted=!on; c.classList.toggle("sound",on); b.setAttribute("aria-label",t(on?"sndOff":"sndOn")); if(on) v.play().catch(function(){}); });
+    if(vio) vio.observe(v); else if(!RM) v.play().catch(function(){}); vw.appendChild(c); }); $("#pVidW").hidden=!(p.videos&&p.videos.length);
+  var g=$("#pGal"); g.innerHTML=""; g.classList.toggle("full",!!p.full); p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML='<img src="'+u+'" alt="">'; b.addEventListener("click",function(){ openLb(p.images,j,b); }); g.appendChild(b); }); }
+var vio=("IntersectionObserver" in window)?new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target; if(e.isIntersecting && !RM){ v.play().catch(function(){}); } else { v.pause(); } }); },{threshold:.35}):null;
 function openProj(i,srcImg,url,from){
   curP=i; fillProj(i,url||PROJ[i].images[0]); showOv(pj,from);
   if(srcImg && !RM){
