@@ -226,6 +226,47 @@
       ],
       "tint": "#c98a9b",
       "placeholder": "cartoon"
+    },
+    {
+      "images": [
+        "/images/bordeaux-01.jpg",
+        "/images/bordeaux-02.jpg",
+        "/images/bordeaux-03.jpg",
+        "/images/bordeaux-04.jpg",
+        "/images/bordeaux-05.jpg",
+        "/images/bordeaux-06.jpg",
+        "/images/bordeaux-07.jpg",
+        "/images/bordeaux-08.jpg",
+        "/images/bordeaux-09.jpg",
+        "/images/bordeaux-10.jpg",
+        "/images/bordeaux-11.jpg"
+      ],
+      "title_uk": "bordeaux",
+      "category_uk": "Рекламна кампанія · сумка",
+      "for_uk": "Зимова рекламна кампанія для бренду сумок: соцмережі, сайт, банери, сезонний розпродаж.",
+      "task_uk": "Створити повну рекламну концепцію для сумки за ескізом замовника. Персонаж з малюнка мав ожити, а один кадр — повторити ескіз один в один: поза, крок, шарф, подарунки, сумка в руці.",
+      "solution_uk": "Героїня — елегантна жінка з сивим волоссям, яка поспішає містом зі святковими подарунками. Глибокий бордо сумки повторюється в шарфі, помаді й туфлях, а темно-зелене пальто і сніг роблять його ще насиченішим. Кадр з ескізу збігається з малюнком до деталей, а навколо нього я зібрала цілу історію: перехід з трамваєм, кав'ярня, портрети зі сніжинками на віях, вид згори на снігу і чисті кадри самої сумки. Пересунь повзунок нижче, щоб побачити, як малюнок став фотографією.",
+      "title_en": "Bordeaux",
+      "category_en": "Ad campaign · handbag",
+      "for_en": "A winter campaign for a handbag brand: social media, website, banners, a seasonal sale.",
+      "task_en": "Build a complete ad concept for a handbag from the client’s sketch. The character in the drawing had to come to life, and one frame had to match the sketch exactly: pose, stride, scarf, gifts, the bag in hand.",
+      "solution_en": "The heroine is an elegant silver-haired woman hurrying through the city with holiday gifts. The bag’s deep bordeaux echoes in her scarf, lipstick and heels, while the dark green coat and the snow make it even richer. The sketch frame matches the drawing down to the details, and around it I built a whole story: a tram crossing, a café, portraits with snow on her lashes, an overhead shot in the snow and clean shots of the bag itself. Drag the slider below to see the drawing turn into a photograph.",
+      "live_budget": "18200",
+      "live_people": "4",
+      "live_days": "3",
+      "live_note_uk": "Фотограф, вулична зйомка 4 години — 6 000 грн\nМодель 60+, 4 години — 3 000 грн\nСтиліст і оренда образу (пальто, шарф, туфлі) — 3 000 грн\nВізаж і зачіска — 1 000 грн\nПредметна зйомка сумки в студії — 2 500 грн\nПодарункові коробки, реквізит — 500 грн\nРетуш 11 кадрів — 2 200 грн\nОрієнтовно, за середніми цінами в Україні у 2026 році.",
+      "live_note_en": "Photographer, 4-hour street shoot — 6,000 UAH\nModel 60+, 4 hours — 3,000 UAH\nStylist and wardrobe rental (coat, scarf, heels) — 3,000 UAH\nMake-up and hair — 1,000 UAH\nStudio product shoot of the bag — 2,500 UAH\nGift boxes, props — 500 UAH\nRetouching, 11 frames — 2,200 UAH\nEstimate based on average prices in Ukraine, 2026.",
+      "my_price_uk": "3 520",
+      "my_price_en": "3 520",
+      "sphere_hide": "11",
+      "gallery_full": false,
+      "compare": [
+        {
+          "before": "/images/bordeaux-sketch.jpg",
+          "after": "/images/bordeaux-final-1.jpg"
+        }
+      ],
+      "tint": "#6b1e2a"
     }
   ],
   "singles": [
