@@ -105,8 +105,10 @@ header.top.solid{background:rgba(11,11,12,.72);backdrop-filter:blur(14px);-webki
 #stage{position:absolute;inset:0;cursor:grab;touch-action:pan-y}
 @media (pointer:coarse){#stage{touch-action:none}}
 #stage.drag{cursor:grabbing}
-.card{position:absolute;left:0;top:0;will-change:transform,opacity;padding:0;background:#1a191b;box-shadow:0 20px 50px rgba(0,0,0,.5);transform-origin:center}
-.card img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;user-select:none}
+.card{position:absolute;left:0;top:0;will-change:transform,opacity;padding:0;background:#1a191b;box-shadow:0 14px 30px rgba(0,0,0,.45);transform-origin:center;contain:strict}
+@media (pointer:coarse){.card{box-shadow:none}}
+.card img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;user-select:none;opacity:0;transition:opacity .5s}
+.card img.ok{opacity:1}
 .card::after{content:"";position:absolute;inset:0;border:1px solid rgba(237,232,224,.12);transition:border-color .4s}
 .card:hover::after{border-color:var(--accent)}
 .hero-word{position:absolute;margin:0;left:50%;top:50%;transform:translate(-50%,-50%);z-index:50;pointer-events:none;font-size:clamp(60px,16.5vw,270px);padding-left:.16em;text-shadow:0 10px 60px rgba(0,0,0,.4)}
@@ -989,11 +991,19 @@ function sphereItems(){
   for(var k=0;k<N;k++) list.push(all[k%all.length]);
   return list;
 }
+var TH={}, THQ=[], THA=0; function thRun(){ while(THA<3 && THQ.length){ THA++; THQ.shift()(); } } function thEnd(){ THA--; thRun(); }
+function thumb(u,cb){ var e=TH[u]; if(e){ if(e.url) cb(e.url); else e.q.push(cb); return; } e=TH[u]={q:[cb]};
+  var done=function(r){ thEnd(); e.url=r; e.q.forEach(function(f){ f(r); }); e.q=null; };
+  var im=new Image(); im.decoding="async";
+  im.onload=function(){ try{ var w=320,h=400,c=document.createElement("canvas"); c.width=w; c.height=h; var x=c.getContext("2d"), iw=im.naturalWidth, ih=im.naturalHeight, s=Math.max(w/iw,h/ih), sw=w/s, sh=h/s;
+      x.drawImage(im,(iw-sw)/2,(ih-sh)/2,sw,sh,0,0,w,h);
+      if(c.toBlob) c.toBlob(function(b){ done(b?URL.createObjectURL(b):u); },"image/jpeg",.82); else done(c.toDataURL("image/jpeg",.82)); }catch(err){ done(u); } };
+  im.onerror=function(){ done(u); }; THQ.push(function(){ im.src=u; }); thRun(); }
 function buildSphere(){
   var list=sphereItems(), N=list.length, ga=Math.PI*(3-Math.sqrt(5));
   list.forEach(function(it,i){ var y=1-(i/(N-1))*2, rr=Math.sqrt(1-y*y), th=i*ga; pts.push([Math.cos(th)*rr,y,Math.sin(th)*rr]);
     var b=document.createElement("button"); b.type="button"; b.className="card"; b.tabIndex=-1; b.setAttribute("aria-hidden","true");
-    b.innerHTML='<img src="'+it.u+'" alt="" draggable="false">'; b._it=it; stage.appendChild(b); cards.push(b);
+    b.innerHTML='<img alt="" draggable="false">'; b._it=it; stage.appendChild(b); cards.push(b); var im=b.querySelector("img"); thumb(it.u,function(t){ im.onload=function(){ im.classList.add("ok"); }; im.src=t; });
     b.addEventListener("pointerenter",function(){ hover=true; showTip(it.p!==undefined?PROJ[it.p][lang].t:""); setCursor(t(it.p!==undefined?"open":"view")); });
     b.addEventListener("pointerleave",function(){ hover=false; showTip(""); setCursor(""); });
   });
@@ -1006,7 +1016,7 @@ function frame(){
     var cy=Math.cos(rotY), sy=Math.sin(rotY), cx=Math.cos(rotX), sx=Math.sin(rotX), rr=R*intro, D=R*2.6, mx=W/2, my=H/2;
     for(var i=0;i<cards.length;i++){ var p=pts[i], x1=p[0]*cy+p[2]*sy, z1=-p[0]*sy+p[2]*cy, y2=p[1]*cx-z1*sx, z2=p[1]*sx+z1*cx;
       var ps=D/(D-z2*rr), X=mx+x1*rr*ps-cw/2, Y=my+y2*rr*ps-chh/2, sc=ps*(.4+.6*intro), c=cards[i];
-      c.style.transform="translate3d("+X.toFixed(1)+"px,"+Y.toFixed(1)+"px,0) scale("+sc.toFixed(3)+")"; c.style.opacity=(.18+.82*((z2+1)/2)).toFixed(3); c.style.zIndex=Math.round((z2+1)*50); }
+      c.style.transform="translate3d("+X.toFixed(1)+"px,"+Y.toFixed(1)+"px,0) scale("+sc.toFixed(3)+")"; c.style.opacity=(.18+.82*((z2+1)/2)).toFixed(3); var zi=Math.round((z2+1)*50); if(c._z!==zi){ c._z=zi; c.style.zIndex=zi; } }
   }
   requestAnimationFrame(frame);
 }
