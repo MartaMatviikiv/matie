@@ -132,18 +132,44 @@
       "placeholder": "fashion"
     },
     {
-      "id": "soft-world",
-      "title_uk": "Soft World",
-      "category_uk": "AI-мультфільм · дитячий бренд",
-      "for_uk": "Рекламний мультфільм і персонаж для дитячого бренду.",
-      "task_uk": "Придумати героя й коротку історію, яку діти захочуть дивитися знову.",
-      "solution_uk": "М’які форми, пастельна палітра й теплий голос оповідача. Персонаж однаковий у кожній сцені.",
-      "title_en": "Soft World",
-      "category_en": "AI animation · kids brand",
-      "for_en": "An animated ad and a mascot for a children’s brand.",
-      "task_en": "Create a hero and a short story kids will want to watch again.",
-      "solution_en": "Soft shapes, a pastel palette and a warm narrator. The character stays consistent in every scene.",
-      "tint": "#ff8fab",
+      "id": "indigo",
+      "images": [
+        "/images/02-5.jpg",
+        "/images/03-5.jpg",
+        "/images/01-5.jpg"
+      ],
+      "title_uk": "Indigo",
+      "category_uk": "AI-фотосесія · портрет",
+      "for_uk": "Персональна фотосесія для соцмереж, портфоліо та публікацій у медіа.",
+      "task_uk": "Створити серію редакційних портретів реальної людини з повною схожістю, без студії, фотографа й візажиста. Кадри мали виглядати як знімання для модного журналу, а не як AI-аватарки.",
+      "solution_uk": "Холодне індигове світло, гладко зібране волосся, димчасті сині очі й контрастний чорний жакет. Після генерації кожен кадр я доводила вручну: повертала живу текстуру шкіри, вирівнювала тон, підсилювала погляд і робила кольорокорекцію в одному стилі. Пересунь повзунок нижче, щоб побачити різницю.",
+      "title_en": "Indigo",
+      "category_en": "AI photoshoot · portrait",
+      "for_en": "A personal photoshoot for social media, a portfolio and press features.",
+      "task_en": "Create a series of editorial portraits of a real person with a true likeness, without a studio, photographer or make-up artist. The frames had to look like a fashion magazine shoot, not AI avatars.",
+      "solution_en": "Cold indigo light, sleek hair, smoky blue eyes and a sharp black jacket. After generation I finished every frame by hand: restored natural skin texture, evened out tone, intensified the gaze and graded the colour into one style. Drag the slider below to see the difference.",
+      "live_budget": "8 200",
+      "live_people": "3",
+      "live_days": "1",
+      "live_note_uk": "Фотограф, 2 години — 3 000 грн\nОренда студії, 2 години — 2 200 грн\nВізаж і зачіска — 1 000 грн\nРетуш 10 фото — 2 000 грн\nОрієнтовно, за середніми цінами в Україні у 2026 році.",
+      "live_note_en": "Photographer, 2 hours — 3,000 UAH\nStudio rental, 2 hours — 2,200 UAH\nMake-up and hair — 1,000 UAH\nRetouching, 10 photos — 2,000 UAH\nEstimate based on average prices in Ukraine, 2026.",
+      "my_price_uk": "1 800 ",
+      "my_price_en": "1 800 ",
+      "compare": [
+        {
+          "before": "/images/02-raw.jpg",
+          "after": "/images/02-6.jpg"
+        },
+        {
+          "before": "/images/03-raw.jpg",
+          "after": "/images/03-6.jpg"
+        },
+        {
+          "before": "/images/01-raw.jpg",
+          "after": "/images/01-6.jpg"
+        }
+      ],
+      "tint": "#2b4a7a",
       "placeholder": "cartoon"
     },
     {
