@@ -582,6 +582,13 @@
         "/images/rt-04-d.jpg"
       ],
       "home": false
+    },
+    {
+      "gallery": [
+        "/images/rt-05-b-2.jpg",
+        "/images/rt-05-a.jpg"
+      ],
+      "home": false
     }
   ],
   "idea": [
