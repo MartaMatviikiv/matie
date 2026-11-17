@@ -104,6 +104,17 @@ content:
     - name: my_price_en
       label: 'Та сама робота зі мною (EN), напр. 3,200 UAH'
       type: string
+    - name: compare
+      label: 'До і після (необов''язково): пари «сира генерація → фінал». Фото в парі мають бути однакового розміру'
+      type: object
+      list: true
+      fields:
+      - name: before
+        label: 'До (сира генерація)'
+        type: image
+      - name: after
+        label: 'Після (фінал)'
+        type: image
     - name: tint
       label: 'Колір відтінку сторінки проєкту (напр. #c1121f)'
       type: string
