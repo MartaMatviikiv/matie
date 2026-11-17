@@ -552,6 +552,21 @@
     {
       "before": "/images/rt-01-raw.jpg",
       "after": "/images/rt-01.jpg",
+      "gallery": [
+        "/images/rt-01-a.jpg"
+      ],
+      "home": true
+    },
+    {
+      "before": "/images/rt-03-raw.jpg",
+      "after": "/images/rt-03.jpg",
+      "gallery": [
+        "/images/rt-03-a.jpg",
+        "/images/rt-03-b.jpg",
+        "/images/rt-03-d.jpg",
+        "/images/rt-03-e.jpg",
+        "/images/rt-03-c.jpg"
+      ],
       "home": false
     }
   ],
