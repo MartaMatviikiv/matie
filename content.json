@@ -588,6 +588,9 @@
         "/images/rt-05-a-1.jpg"
       ],
       "home": false
+    },
+    {
+      "home": false
     }
   ],
   "idea": [
@@ -605,6 +608,7 @@
   "journal": [
     {
       "project": "same-light",
+      "cover": "/images/уууууу.png",
       "title_uk": "Одне світло для всіх: як зроблено Same Light",
       "meta_uk": "Розбір · 3 хв",
       "excerpt_uk": "Чому однакове світло на різних тонах шкіри говорить про різноманіття сильніше за будь-який слоган.",
@@ -615,18 +619,8 @@
       "body_en": "The idea is simple: don't even out the people, even out the light. When every skin tone is lit the same way, viewers see for themselves that beauty doesn't depend on shade.\n\n## Light\n\nA warm soft backdrop, one large source from the side and gentle fill. The same setup for every frame, so the series reads as one story.\n\n## Texture\n\nI deliberately kept pores, lip lines and hair on the arm. They make the frame alive and set it apart from a glossy AI picture.\n\n## Touch\n\nHands, cheeks and lips side by side. Closeness instead of a line-up: diversity felt, not declared."
     },
     {
-      "project": "elysium",
-      "title_uk": "Античність без виїзду: Elysium",
-      "meta_uk": "Розбір · 4 хв",
-      "excerpt_uk": "Як перенести людину в Грецію й не загубити її впізнаваність.",
-      "body_uk": "Найскладніше в історичних зйомках — зберегти обличчя людини, коли навколо змінюється все: епоха, світло, одяг.\n\n## Референси\n\nЯ зібрала мудборд із живопису та фотографій мармуру на заході сонця. Саме теплий бічний світ зробив серію живою.\n\n## Схожість\n\nКожен кадр перевіряю на схожість окремо: пропорції, посмішка, погляд. Те, що не схоже на 100%, не потрапляє до фіналу.",
-      "title_en": "Antiquity without travel: Elysium",
-      "meta_en": "Breakdown · 4 min",
-      "excerpt_en": "How to place a person in Greece without losing their likeness.",
-      "body_en": "The hardest part of period shoots is keeping the face when everything else changes: era, light, clothing.\n\n## References\n\nI built a moodboard from paintings and photos of marble at sunset. The warm side light is what made the series feel alive.\n\n## Likeness\n\nI check every frame for likeness: proportions, smile, gaze. Anything less than a true match doesn’t make the final cut."
-    },
-    {
-      "project": "noir",
+      "project": "indigo",
+      "cover": "/images/03-7.jpg",
       "title_uk": "Чому ретуш не повинна стирати шкіру",
       "meta_uk": "Думка · 2 хв",
       "excerpt_uk": "Про пори, текстуру й портрети, яким хочеться вірити.",
