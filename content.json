@@ -573,6 +573,15 @@
       "before": "/images/rt-02-raw.jpg",
       "after": "/images/rt-02.jpg",
       "home": false
+    },
+    {
+      "gallery": [
+        "/images/rt-04-a-1.jpg",
+        "/images/rt-04-c.jpg",
+        "/images/rt-04-b.jpg",
+        "/images/rt-04-d.jpg"
+      ],
+      "home": false
     }
   ],
   "idea": [
