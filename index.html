@@ -48,7 +48,10 @@ button{background:none;border:0;padding:0;cursor:pointer}
 .skip:focus{top:12px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .micro{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:250;opacity:.07;mix-blend-mode:overlay;background-size:256px 256px}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:250;opacity:.035;mix-blend-mode:overlay;background-size:256px 256px;transition:opacity .4s}
+body.locked .grain,body.no-grain .grain{opacity:0}
+.btn.sm{min-height:38px;padding:0 16px;font-size:10px;letter-spacing:.22em;color:var(--soft);border-color:rgba(237,232,224,.22)}
+.btn.sm:hover{color:var(--ink);border-color:var(--ink)}
 
 /* logo wordmark */
 .logo{font-family:var(--f-logo);font-weight:400;letter-spacing:.16em;line-height:1;white-space:nowrap;text-transform:uppercase}
@@ -486,7 +489,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   <p class="hero-c tr micro">Marta Matviikiv</p>
   <div class="hero-c bl">
     <p data-i18n="heroLede">Рекламні кампанії, фотосесії та відео, створені з AI. Без студії, моделей і тижнів продакшну.</p>
-    <div class="ctas"><a class="btn fill" href="#works" data-i18n="heroBtn">Дивитись роботи</a><a class="btn" href="#calc" data-i18n="heroCalc">Розрахувати ціну</a><button class="btn" type="button" id="reelBtn" hidden><svg class="play" viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span data-i18n="reelBtn">Шоурил</span></button></div>
+    <div class="ctas"><a class="btn fill" href="#works" data-i18n="heroBtn">Дивитись роботи</a><a class="btn sm" href="#retouching" data-i18n="nRetouch">Ретуш</a><a class="btn" href="#calc" data-i18n="heroCalc">Розрахувати ціну</a><button class="btn" type="button" id="reelBtn" hidden><svg class="play" viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span data-i18n="reelBtn">Шоурил</span></button></div>
   </div>
   <p class="hero-c br micro drag-hint"><svg viewBox="0 0 42 12" aria-hidden="true"><path d="M1 6h40M1 6l5-5M1 6l5 5M41 6l-5-5M41 6l-5 5" stroke="currentColor" fill="none" stroke-width="1"/></svg><span data-i18n="drag">Тягніть, щоб роздивитися</span></p>
 </section>
@@ -920,6 +923,7 @@ $$('a[href^="https://t.me/"]').forEach(function(x){ x.href="https://t.me/"+SITE.
 function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var q=Math.imul(seed^seed>>>15,1|seed); q=q+Math.imul(q^q>>>7,61|q)^q; return ((q^q>>>14)>>>0)/4294967296; }; }
 var noiseCv=(function(){ var c=document.createElement("canvas"); c.width=c.height=256; var x=c.getContext("2d"), d=x.createImageData(256,256); for(var i=0;i<d.data.length;i+=4){ var v=Math.random()*255; d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255; } x.putImageData(d,0,0); return c; })();
 $("#grain").style.backgroundImage="url("+noiseCv.toDataURL()+")";
+if("IntersectionObserver" in window){ var gSeen=new Set(); var gio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) gSeen.add(e.target); else gSeen.delete(e.target); }); document.body.classList.toggle("no-grain",gSeen.size>0); },{threshold:.15}); ["#retouch","#idea"].forEach(function(q){ var el=$(q); if(el) gio.observe(el); }); }
 function rgba(hex,a){ var n=parseInt(hex.slice(1),16); return "rgba("+(n>>16&255)+","+(n>>8&255)+","+(n&255)+","+a+")"; }
 function glow(x,cx,cy,r,col,a){ var g=x.createRadialGradient(cx,cy,0,cx,cy,r); g.addColorStop(0,rgba(col,a)); g.addColorStop(1,rgba(col,0)); x.fillStyle=g; x.fillRect(0,0,x.canvas.width,x.canvas.height); }
 function finish(x,W,H,ga){ x.globalCompositeOperation="overlay"; x.globalAlpha=ga; x.fillStyle=x.createPattern(noiseCv,"repeat"); x.fillRect(0,0,W,H); x.globalAlpha=1; x.globalCompositeOperation="source-over"; var v=x.createRadialGradient(W/2,H/2,Math.min(W,H)*.3,W/2,H/2,Math.max(W,H)*.75); v.addColorStop(0,"rgba(0,0,0,0)"); v.addColorStop(1,"rgba(0,0,0,.55)"); x.fillStyle=v; x.fillRect(0,0,W,H); }
