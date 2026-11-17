@@ -548,6 +548,18 @@
       "extra_percent": 60
     }
   ],
+  "idea": [
+    {
+      "before": "/images/bordeaux-sketch-2.jpg",
+      "after": "/images/bordeaux-final-2.jpg",
+      "label_before_uk": "Ескіз клієнта",
+      "label_after_uk": "Готовий кадр",
+      "caption_uk": "Потягніть повзунок: зліва малюнок, який приніс замовник, справа кадр з кампанії.",
+      "label_before_en": "Client's sketch",
+      "label_after_en": "Final frame",
+      "caption_en": "Drag the slider: on the left, the drawing the client brought; on the right, the frame from the campaign."
+    }
+  ],
   "journal": [
     {
       "project": "same-light",
