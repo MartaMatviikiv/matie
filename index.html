@@ -155,6 +155,14 @@ h2 em,h3 em,.big em{font-style:italic;color:var(--accent)}
 .work .h3{display:block;font-family:var(--f-head);font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.1}
 .work .cat{display:block;font-size:13px;color:var(--muted);margin:2px 0 0}
 .work .n{font-family:var(--f-logo);font-size:13px;color:var(--muted);letter-spacing:.1em}
+.works-feat{margin:0 0 clamp(36px,5vw,72px)}
+.works-feat:empty{display:none}
+.work.feat{width:100%}
+.work.feat .ph{aspect-ratio:16/8}
+.work.feat .ph img{object-position:50% 32%}
+.work.feat .h3{font-size:clamp(34px,4.2vw,60px)}
+@media (max-width:760px){.work.feat .ph{aspect-ratio:4/5}.work.feat .h3{font-size:clamp(26px,2.4vw,34px)}}
+.ba-grid.one{grid-template-columns:minmax(0,min(100%,620px));justify-content:center}
 
 /* marquee */
 .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;white-space:nowrap}
@@ -333,6 +341,40 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .article p{font-size:18px;line-height:1.75;color:var(--soft);margin:0 0 24px}
 .article h3{font-family:var(--f-head);font-weight:400;font-size:34px;line-height:1.1;margin:48px 0 16px}
 .article .draft{border:1px dashed var(--line);padding:12px 16px;margin-bottom:32px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.bf-wrap{max-width:900px;margin:0 auto;padding:clamp(40px,7vw,96px) var(--gut) clamp(64px,8vw,120px)}
+.bf-prog{display:flex;gap:6px;margin:0 0 18px}
+.bf-prog i{flex:1;height:2px;background:var(--line);transition:background .4s}
+.bf-prog i.on{background:var(--accent)}
+.bf-step[hidden]{display:none}
+.bf-step h2{font-size:clamp(34px,5vw,64px);margin:6px 0 10px}
+.bf-step .lede{margin:0 0 clamp(24px,3vw,40px)}
+.bf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.bf-styles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.bf-styles button{position:relative;padding:0;text-align:left;background:var(--bg-2);border:1px solid transparent;transition:border-color .3s}
+.bf-styles button .ph{display:block;aspect-ratio:4/5;overflow:hidden}
+.bf-styles button img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),opacity .3s}
+.bf-styles button:hover img{transform:scale(1.04)}
+.bf-styles button b{display:block;font-weight:500;font-size:13px;padding:10px 12px;color:var(--soft)}
+.bf-styles button[aria-pressed="true"]{border-color:var(--accent)}
+.bf-styles button[aria-pressed="true"] b{color:var(--ink)}
+.bf-styles button::after{content:"";position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(237,232,224,.6);background:rgba(11,11,12,.45)}
+.bf-styles button[aria-pressed="true"]::after{background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%230B0B0C' stroke-width='2.2'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--accent)}
+.bf-field{display:flex;flex-direction:column;gap:10px;margin:0 0 26px}
+.bf-field input[type=text],.bf-field textarea{width:100%;background:transparent;border:1px solid var(--line);padding:14px 16px;font-size:16px}
+.bf-field textarea{min-height:120px;resize:vertical}
+.bf-field input:focus,.bf-field textarea:focus{border-color:var(--accent);outline:none}
+.bf-note{color:var(--muted);font-size:14px;margin:0 0 24px}
+.bf-price{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:28px 0 0}
+.bf-price b{font-family:var(--f-head);font-weight:300;font-size:clamp(40px,5vw,64px);line-height:1;font-variant-numeric:tabular-nums}
+.bf-price b small{font-size:.42em;color:var(--muted)}
+.bf-nav{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(32px,4vw,48px);flex-wrap:wrap}
+.bf-msg{white-space:pre-wrap;background:var(--bg-2);border:1px solid var(--line);padding:20px;font-size:14px;line-height:1.6;color:var(--soft);margin:0 0 24px}
+.bf-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.brief-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border:1px solid var(--line);padding:clamp(20px,3vw,32px);margin-top:clamp(20px,2.4vw,28px)}
+.brief-cta p{margin:0;color:var(--soft);max-width:560px}
+.brief-cta b{display:block;font-family:var(--f-head);font-weight:400;font-size:clamp(24px,2.4vw,32px);color:var(--ink);margin-bottom:4px}
+@media (max-width:760px){.bf-styles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .rt-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 clamp(28px,4vw,48px)}
 .rt-chips button{padding:10px 18px;border:1px solid var(--line);color:var(--soft);font:500 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;transition:color .3s,border-color .3s,background .3s}
 .rt-chips button:hover{color:var(--ink);border-color:var(--ink)}
@@ -364,9 +406,13 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 .terms div{border-top:1px solid var(--line);padding-top:18px}
 .terms b{display:block;font-family:var(--f-head);font-weight:400;font-size:26px;line-height:1.15;margin-bottom:6px}
 .terms span{font-size:14px;color:var(--soft)}
-#lb{position:fixed;inset:0;z-index:170;background:rgba(11,11,12,.97);display:none;align-items:center;justify-content:center;touch-action:pan-y}
+#lb{position:fixed;inset:0;z-index:170;background:rgba(11,11,12,.97);display:none;align-items:center;justify-content:center;touch-action:none;overflow:hidden}
 #lb.open{display:flex}
-#lb img{max-width:min(92vw,1100px);max-height:84svh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb img{max-width:min(92vw,1100px);max-height:84svh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6);cursor:zoom-in;user-select:none;-webkit-user-drag:none;will-change:transform;transform-origin:50% 50%}
+#lb.zoomed img{cursor:grab;box-shadow:none}
+#lb.zoomed .ctl:not(.x),#lb.zoomed .cnt,#lb.zoomed .zh{opacity:0;pointer-events:none}
+#lb .zh{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:var(--gut);margin:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:opacity .3s}
+@media (max-width:700px){#lb .zh{left:var(--gut);right:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
 #lb .ctl{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
 #lb .ctl:hover{border-color:var(--ink)}
 #lb .prev{left:var(--gut)}#lb .next{right:var(--gut)}
@@ -579,6 +625,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
         </div>
       </div>
     </form>
+    <div class="brief-cta rv"><p><b data-i18n="bfCtaT">Є більше деталей?</b><span data-i18n="bfCtaL">Заповніть онлайн-бриф за 2 хвилини: задача, стиль, терміни. Я відповім з точною ціною та ідеями.</span></p><a class="btn fill" href="#brief" data-i18n="bfOpen">Заповнити бриф</a></div>
   </div>
 </section>
 
@@ -649,6 +696,7 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
     <div class="ctas">
       <a class="btn fill" href="https://t.me/martamatviykiv" target="_blank" rel="noopener">Telegram · @martamatviykiv</a>
       <a class="btn" id="igBtn" href="#contact" aria-disabled="true" data-i18n="igSoon">Instagram · скоро</a>
+      <a class="btn" href="#brief" data-i18n="bfOpen">Заповнити бриф</a>
       <a class="btn mailto" id="mailBtn" href="#contact" hidden></a>
       <a class="btn" href="#calc" data-i18n="toCalc">Розрахувати вартість</a>
     </div>
@@ -746,6 +794,47 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
   </div>
 </div>
 
+<div id="brief" class="ov" role="dialog" aria-modal="true" aria-labelledby="bfTitle" aria-hidden="true">
+  <div class="bar">
+    <span class="logo" style="font-size:16px;padding-left:.16em" aria-hidden="true">MATI<span class="e">E<span class="acc"></span></span></span>
+    <button class="btn" type="button" data-close><span data-i18n="close">Закрити</span><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+  </div>
+  <form class="bf-wrap" id="bfForm" novalidate>
+    <div class="bf-prog" id="bfProg" aria-hidden="true"></div>
+    <p class="micro" id="bfStepN"></p>
+    <h2 class="sr-only" id="bfTitle" data-i18n="bfK">Онлайн-бриф</h2>
+
+    <section class="bf-step" data-step="0"><h2 data-i18n-html="bf1T">Що <em>потрібно?</em></h2><p class="lede" data-i18n="bf1L">Оберіть послугу. Якщо сумніваєтесь, оберіть найближчу — уточнимо разом.</p><div class="bf-chips" id="bfSvc"></div></section>
+
+    <section class="bf-step" data-step="1" hidden><h2 data-i18n-html="bf2T">Для <em>чого</em> кадри?</h2><p class="lede" data-i18n="bf2L">Можна обрати кілька варіантів.</p><div class="bf-chips" id="bfUse"></div></section>
+
+    <section class="bf-step" data-step="2" hidden><h2 data-i18n-html="bf3T">Який стиль <em>ближчий?</em></h2><p class="lede" data-i18n="bf3L">Оберіть до трьох робіт, які вам подобаються. Це найточніший бриф.</p><div class="bf-styles" id="bfStyle"></div></section>
+
+    <section class="bf-step" data-step="3" hidden><h2 data-i18n-html="bf4T">Обсяг і <em>терміни</em></h2><p class="lede" data-i18n="bf4L">Ціна рахується одразу. Точну вартість підтверджу після брифу.</p>
+      <div class="calc" style="border:0;display:block"><fieldset><legend class="micro" id="bfQtyL" data-i18n="cQty">Обсяг</legend><div class="qty"><input type="range" id="bfQty" aria-labelledby="bfQtyL"><output id="bfQtyO" for="bfQty"></output></div>
+      <label class="opt" id="bfHiWrap"><input type="checkbox" id="bfHi"><span data-i18n="cHi">High-end ретуш (beauty, обкладинки)</span></label></fieldset>
+      <fieldset style="margin-top:28px"><legend class="micro" data-i18n="cUrg">Терміни</legend><div class="chips" id="bfUrg"></div></fieldset></div>
+      <div class="bf-price"><span class="micro" data-i18n="cTotal">Орієнтовна вартість</span><b id="bfTotal"></b></div></section>
+
+    <section class="bf-step" data-step="4" hidden><h2 data-i18n-html="bf5T">Розкажіть <em>про ідею</em></h2><p class="lede" data-i18n="bf5L">Кілька речень достатньо. Усі поля необов’язкові.</p>
+      <label class="bf-field"><span class="micro" data-i18n="bfBrand">Бренд, продукт або ваш Instagram</span><input type="text" id="bfBrandI" autocomplete="organization"></label>
+      <label class="bf-field"><span class="micro" data-i18n="cIdea">Коротко про ідею</span><textarea id="bfIdea" data-i18n-ph="bfIdeaPh" placeholder="Наприклад: зимова кампанія для нової сумки, теплі тони, місто, сніг"></textarea></label>
+      <label class="bf-field"><span class="micro" data-i18n="bfDate">Бажана дата готовності</span><input type="text" id="bfDateI" data-i18n-ph="bfDatePh" placeholder="напр. до 15 грудня"></label>
+      <p class="bf-note" data-i18n="bfRefs">Референси, фото продукту чи обличчя можна буде прикріпити в Telegram або листі одразу після надсилання брифу.</p></section>
+
+    <section class="bf-step" data-step="5" hidden><h2 data-i18n-html="bf6T">Як з вами <em>зв’язатися?</em></h2><p class="lede" data-i18n="bf6L">Відповім протягом дня.</p>
+      <label class="bf-field"><span class="micro" data-i18n="bfName">Ваше ім’я</span><input type="text" id="bfNameI" autocomplete="name"></label>
+      <fieldset class="bf-field" style="border:0;padding:0"><legend class="micro" style="margin-bottom:10px" data-i18n="bfVia">Зручний спосіб зв’язку</legend><div class="bf-chips" id="bfVia"></div></fieldset>
+      <label class="bf-field"><span class="micro" data-i18n="bfHandle">Нік або email</span><input type="text" id="bfHandleI" autocomplete="email"></label></section>
+
+    <section class="bf-step" data-step="6" hidden><h2 data-i18n-html="bf7T">Бриф <em>готовий</em></h2><p class="lede" data-i18n="bf7L">Перевірте текст і надішліть зручним способом. Потім прикріпіть референси, якщо вони є.</p>
+      <p class="bf-msg" id="bfMsg"></p>
+      <div class="bf-acts"><a class="btn fill" id="bfTg" href="#" target="_blank" rel="noopener" data-i18n="cSend">Надіслати в Telegram</a><a class="btn" id="bfMail" href="#" hidden data-i18n="bfMailB">Надіслати на email</a><button class="btn" type="button" id="bfCopy" data-i18n="cCopy">Скопіювати текст</button><p class="status" id="bfStatus" role="status"></p></div></section>
+
+    <div class="bf-nav"><button class="btn" type="button" id="bfBack" data-i18n="bfBack">Назад</button><button class="btn fill" type="button" id="bfNext" data-i18n="bfNext">Далі</button></div>
+  </form>
+</div>
+
 <div id="reel" role="dialog" aria-modal="true" aria-label="Шоурил" data-i18n-aria="reelBtn">
   <button class="x" type="button" id="reelX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
   <video id="reelV" controls playsinline preload="none"></video>
@@ -753,7 +842,8 @@ footer nav a:hover,footer nav button:hover{color:var(--ink)}
 <div id="lb" role="dialog" aria-modal="true" aria-label="Перегляд фото" data-i18n-aria="lbAria">
   <button class="ctl x" type="button" id="lbX" aria-label="Закрити" data-i18n-aria="close"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
   <button class="ctl prev" type="button" id="lbP" aria-label="Попереднє фото" data-i18n-aria="prev"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M16 9H2M7 4L2 9l5 5"/></svg></button>
-  <img id="lbImg" alt="">
+  <img id="lbImg" alt="" draggable="false">
+  <p class="zh" id="lbZh" data-i18n="zoomHint">Двічі натисніть, щоб наблизити</p>
   <button class="ctl next" type="button" id="lbN" aria-label="Наступне фото" data-i18n-aria="nextPh"><svg class="icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h14M11 4l5 5-5 5"/></svg></button>
   <p class="cnt micro" id="lbC"></p>
 </div>
@@ -773,7 +863,8 @@ function fromCMS(j){
   var str=function(v){ return v==null?"":String(v).trim(); };
   var img=function(v){ v=str(v); return v; };
   var projects=(j.projects||[]).map(function(p,i){ var k=ART[p.placeholder]?p.placeholder:"portrait";
-    return {id:p.id||("p"+i), tint:p.tint||"#888888", images:(p.images||[]).map(img).filter(Boolean),
+    var sl=function(x){ return String(x||"").trim().toLowerCase().replace(/[^a-z0-9а-яіїєґ]+/gi,"-").replace(/^-+|-+$/g,""); };
+    return {id:sl(p.id)||sl(p.title_en)||sl(p.title_uk)||("p"+i), tint:p.tint||"#888888", images:(p.images||[]).map(img).filter(Boolean),
       live:[str(p.live_budget)||null,str(p.live_people)||null,str(p.live_days)||null], note:{uk:str(p.live_note_uk),en:str(p.live_note_en)||str(p.live_note_uk)}, mine:{uk:str(p.my_price_uk),en:str(p.my_price_en)||str(p.my_price_uk)}, hide:str(p.sphere_hide), videos:(p.videos||[]).map(function(v){ return img(typeof v==="object"&&v?v.file:v); }).filter(Boolean), full:!!p.gallery_full, compare:(p.compare||[]).filter(function(c){ return str(c.before)&&str(c.after); }).map(function(c){ return {before:img(c.before),after:img(c.after),la:{uk:str(c.label_before_uk),en:str(c.label_before_en)||str(c.label_before_uk)},lb:{uk:str(c.label_after_uk),en:str(c.label_after_en)||str(c.label_after_uk)}}; }), cmpH:{uk:str(p.compare_title_uk),en:str(p.compare_title_en)||str(p.compare_title_uk)}, cmpX:{uk:str(p.compare_text_uk),en:str(p.compare_text_en)||str(p.compare_text_uk)}, art:{k:k,pal:ART[k]},
       uk:{t:p.title_uk,c:p.category_uk,f:p.for_uk,k:p.task_uk,s:p.solution_uk},
       en:{t:p.title_en||p.title_uk,c:p.category_en||p.category_uk,f:p.for_en||p.for_uk,k:p.task_en||p.task_uk,s:p.solution_en||p.solution_uk}}; });
@@ -834,7 +925,14 @@ msgHi:"Привіт, Марто! Хочу замовити:",msgPrice:"Оріє�
 baK:"Ретуш",baT:"До і <em>після</em>",baL:"Потягніть повзунок. Шкіра лишається живою: зберігаю пори й текстуру, прибираю лише зайве.",before:"До",after:"Після",baAria:"Порівняти до і після",toPhoto:"Фотографам: пакетна ретуш",
 prK:"Процес",prT:"Як ми <em>працюємо</em>",s1t:"Бриф",s1p:"Ви розповідаєте про продукт, задачу й настрій. Я ставлю питання і пропоную ідеї.",s2t:"Концепція",s2p:"Мудборд, образи, світло й локації. Затверджуємо до початку роботи.",s3t:"Створення",s3p:"Генерація, відбір найкращого, доопрацювання деталей і ретуш кожного кадру.",s4t:"Готові файли",s4p:"Фото та відео у високій якості, у форматах для сайту, соцмереж і друку.",
 jrT:"Журнал: <em>як зроблено</em> кадр",jrL:"Короткі розбори проєктів: ідея, світло, деталі та ретуш.",read:"Читати",seeProj:"Дивитись проєкт",
-reelBtn:"Шоурил",nRetouch:"Ретуш",rtAll:"Усі роботи з ретуші",rtK:"Обробка і ретуш",rtT:"Ретуш, якій <em>вірять</em>",rtL:"Портретна, beauty, предметна та fashion-ретуш. Потягніть повзунок: зліва вихідний кадр, справа після обробки. Шкіра лишається живою, а кадр — природним.",rtPho:"Ціни для фотографів",rtFilter:"Фільтр",rtAllF:"Усі",rtSet:"Готові кадри з зйомки",rtSetN:"фото",
+reelBtn:"Шоурил",bfK:"Онлайн-бриф",bfOpen:"Заповнити бриф",bfCtaT:"Є більше деталей?",bfCtaL:"Заповніть онлайн-бриф за 2 хвилини: задача, стиль, терміни. Я відповім з точною ціною та ідеями.",
+bf1T:"Що <em>потрібно?</em>",bf1L:"Оберіть послугу. Якщо сумніваєтесь, оберіть найближчу — уточнимо разом.",bf2T:"Для <em>чого</em> кадри?",bf2L:"Можна обрати кілька варіантів.",
+bf3T:"Який стиль <em>ближчий?</em>",bf3L:"Оберіть до трьох робіт, які вам подобаються. Це найточніший бриф.",bf4T:"Обсяг і <em>терміни</em>",bf4L:"Ціна рахується одразу. Точну вартість підтверджу після брифу.",
+bf5T:"Розкажіть <em>про ідею</em>",bf5L:"Кілька речень достатньо. Усі поля необов’язкові.",bfBrand:"Бренд, продукт або ваш Instagram",bfIdeaPh:"Наприклад: зимова кампанія для нової сумки, теплі тони, місто, сніг",bfDate:"Бажана дата готовності",bfDatePh:"напр. до 15 грудня",
+bfRefs:"Референси, фото продукту чи обличчя можна буде прикріпити в Telegram або листі одразу після надсилання брифу.",bf6T:"Як з вами <em>зв’язатися?</em>",bf6L:"Відповім протягом дня.",bfName:"Ваше ім’я",bfVia:"Зручний спосіб зв’язку",bfHandle:"Нік або email",
+bf7T:"Бриф <em>готовий</em>",bf7L:"Перевірте текст і надішліть зручним способом. Потім прикріпіть референси, якщо вони є.",bfMailB:"Надіслати на email",bfBack:"Назад",bfNext:"Далі",bfDone:"До брифу",bfStep:"Крок",bfOf:"з",
+bfUses:["Соцмережі","Сайт","Реклама й банери","Маркетплейси","Друк і упаковка","Особисте / портфоліо"],bfVias:["Telegram","Instagram","Email"],
+bfHi:"Привіт, Марто! Бриф із сайту:",bfLSvc:"Послуга",bfLUse:"Для чого",bfLStyle:"Стиль як у роботах",bfLQty:"Обсяг",bfLUrg:"Терміни",bfLPrice:"Орієнтовна ціна",bfLBrand:"Бренд / продукт",bfLIdea:"Ідея",bfLDate:"Готовність до",bfLName:"Ім’я",bfLContact:"Зв’язок",bfSubj:"Бриф з сайту MATIÉ",zoomHint:"Двічі натисніть або зведіть пальці, щоб наблизити",nRetouch:"Ретуш",rtAll:"Усі роботи з ретуші",rtK:"Обробка і ретуш",rtT:"Ретуш, якій <em>вірять</em>",rtL:"Портретна, beauty, предметна та fashion-ретуш. Потягніть повзунок: зліва вихідний кадр, справа після обробки. Шкіра лишається живою, а кадр — природним.",rtPho:"Ціни для фотографів",rtFilter:"Фільтр",rtAllF:"Усі",rtSet:"Готові кадри з зйомки",rtSetN:"фото",
 cat_beauty:"Beauty",cat_portrait:"Портрет",cat_product:"Предметна",cat_fashion:"Fashion",cat_wedding:"Весільна",cat_body:"Тіло",cat_restore:"Реставрація фото",cat_color:"Кольорокорекція",cat_other:"Інше",dlK:"Що ви отримаєте",dlT:"Що <em>входить</em> у роботу",
 d1t:"Файли",d1p:"Фото у високій роздільності (JPEG або PNG, до 4K) і відео MP4 у 1080p або 4K. Передаю посиланням на Google Диск.",
 d2t:"Формати",d2p:"4:5 і 1:1 для стрічки Instagram, 9:16 для Stories, Reels і TikTok, 16:9 для сайту та YouTube. Версії для друку — за запитом.",
@@ -864,7 +962,14 @@ msgHi:"Hi Marta! I’d like to order:",msgPrice:"Estimated price from the websit
 baK:"Retouching",baT:"Before &amp; <em>after</em>",baL:"Drag the slider. Skin stays alive: I keep pores and texture and remove only what distracts.",before:"Before",after:"After",baAria:"Compare before and after",toPhoto:"For photographers: batch retouching",
 prK:"Process",prT:"How we <em>work</em>",s1t:"Brief",s1p:"You tell me about the product, the goal and the mood. I ask questions and suggest ideas.",s2t:"Concept",s2p:"Moodboard, looks, light and locations, approved before production starts.",s3t:"Creation",s3p:"Generation, selecting the best, refining details and retouching every frame.",s4t:"Delivery",s4p:"High-resolution photos and films, sized for web, social and print.",
 jrT:"Journal: <em>how the frame</em> was made",jrL:"Short project breakdowns: idea, light, detail and retouching.",read:"Read",seeProj:"View the project",
-reelBtn:"Showreel",nRetouch:"Retouching",rtAll:"All retouching work",rtK:"Editing & retouching",rtT:"Retouching you can <em>believe</em>",rtL:"Portrait, beauty, product and fashion retouching. Drag the slider: the original on the left, the edit on the right. Skin stays alive and the image stays natural.",rtPho:"Prices for photographers",rtFilter:"Filter",rtAllF:"All",rtSet:"Final images from the shoot",rtSetN:"photos",
+reelBtn:"Showreel",bfK:"Online brief",bfOpen:"Fill in the brief",bfCtaT:"Got more details?",bfCtaL:"Fill in a 2-minute online brief: task, style, timing. I’ll reply with an exact price and ideas.",
+bf1T:"What do you <em>need?</em>",bf1L:"Choose a service. If unsure, pick the closest one and we’ll refine it together.",bf2T:"What are the images <em>for?</em>",bf2L:"You can choose several.",
+bf3T:"Which style feels <em>closest?</em>",bf3L:"Pick up to three projects you like. It’s the most precise brief there is.",bf4T:"Volume and <em>timing</em>",bf4L:"The price updates instantly. I’ll confirm the exact cost after the brief.",
+bf5T:"Tell me <em>about the idea</em>",bf5L:"A few sentences are enough. All fields are optional.",bfBrand:"Brand, product or your Instagram",bfIdeaPh:"E.g. a winter campaign for a new bag, warm tones, city, snow",bfDate:"Desired delivery date",bfDatePh:"e.g. by 15 December",
+bfRefs:"You can attach references, product photos or face photos in Telegram or the email right after sending the brief.",bf6T:"How can I <em>reach you?</em>",bf6L:"I reply within a day.",bfName:"Your name",bfVia:"Preferred contact",bfHandle:"Handle or email",
+bf7T:"Your brief is <em>ready</em>",bf7L:"Check the text and send it the way you prefer. Then attach any references.",bfMailB:"Send by email",bfBack:"Back",bfNext:"Next",bfDone:"Brief",bfStep:"Step",bfOf:"of",
+bfUses:["Social media","Website","Ads & banners","Marketplaces","Print & packaging","Personal / portfolio"],bfVias:["Telegram","Instagram","Email"],
+bfHi:"Hi Marta! A brief from the website:",bfLSvc:"Service",bfLUse:"For",bfLStyle:"Style like these projects",bfLQty:"Volume",bfLUrg:"Timing",bfLPrice:"Estimated price",bfLBrand:"Brand / product",bfLIdea:"Idea",bfLDate:"Needed by",bfLName:"Name",bfLContact:"Contact",bfSubj:"Brief from the MATIÉ website",zoomHint:"Double-tap or pinch to zoom",nRetouch:"Retouching",rtAll:"All retouching work",rtK:"Editing & retouching",rtT:"Retouching you can <em>believe</em>",rtL:"Portrait, beauty, product and fashion retouching. Drag the slider: the original on the left, the edit on the right. Skin stays alive and the image stays natural.",rtPho:"Prices for photographers",rtFilter:"Filter",rtAllF:"All",rtSet:"Final images from the shoot",rtSetN:"photos",
 cat_beauty:"Beauty",cat_portrait:"Portrait",cat_product:"Product",cat_fashion:"Fashion",cat_wedding:"Wedding",cat_body:"Body",cat_restore:"Photo restoration",cat_color:"Colour grading",cat_other:"Other",dlK:"What you get",dlT:"What's <em>included</em>",
 d1t:"Files",d1p:"High-resolution photos (JPEG or PNG, up to 4K) and MP4 video in 1080p or 4K, delivered via a Google Drive link.",
 d2t:"Formats",d2p:"4:5 and 1:1 for the Instagram feed, 9:16 for Stories, Reels and TikTok, 16:9 for websites and YouTube. Print versions on request.",
@@ -894,7 +999,7 @@ function applyLang(){
   $$(".lang button").forEach(function(b){ b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang)); });
   $("#worksK").textContent = t("worksK")+" · "+String(PROJ.length).padStart(2,"0");
   sndLabel();
-  if(ready){ renderWorks(); renderSvc(); renderBA(); renderIdea(); renderMarq(); renderJournal(); renderPho(); renderCalc(); if(curP>=0) fillProj(curP,null); if(curA>=0) fillArt(curA); }
+  if(ready){ renderWorks(); renderSvc(); renderBA(); renderIdea(); renderMarq(); renderJournal(); renderPho(); renderCalc(); if(bfEl.classList.contains("open")) bfRender(); if(curP>=0) fillProj(curP,null); if(curA>=0) fillArt(curA); }
 }
 $$(".lang button").forEach(function(b){ b.addEventListener("click",function(){ lang=b.getAttribute("data-lang"); try{localStorage.setItem("matie-lang",lang)}catch(e){} applyLang(); }); });
 /* ---------- email, showreel, exchange rates ---------- */
@@ -1022,12 +1127,13 @@ function opt(u,w){ return (OPT && /^\/[^\/]/.test(u) && /\.(jpe?g|png|webp)$/i.t
 function oimg(u,w,alt){ var o=opt(u,w); return '<img src="'+o+'"'+(o!==u?' data-o="'+u+'" onerror="this.onerror=null;this.src=this.dataset.o"':'')+' alt="'+esc(alt||"")+'" decoding="async">'; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]}); }
 function renderWorks(){
-  var g=$("#worksGrid"); g.innerHTML="";
-  PROJ.forEach(function(p,i){ var d=p[lang]; var b=document.createElement("button"); b.type="button"; b.className="work rv"; b.setAttribute("data-cursor",t("open"));
-    b.innerHTML='<span class="ph">'+oimg(p.images[0],828,p[lang].t+" — "+p[lang].c+" · MATIÉ")+'</span><span class="row"><span><span class="h3">'+esc(d.t)+'</span><span class="cat">'+esc(d.c)+'</span></span><span class="n">'+String(i+1).padStart(2,"0")+'</span></span>';
+  var g=$("#worksGrid"); g.innerHTML=""; var fe=$("#worksFeat"); if(!fe){ fe=document.createElement("div"); fe.id="worksFeat"; fe.className="works-feat"; g.parentNode.insertBefore(fe,g); } fe.innerHTML="";
+  var feat=PROJ.length>3 && PROJ.length%3===1;
+  PROJ.forEach(function(p,i){ var d=p[lang]; var isF=feat&&i===0; var b=document.createElement("button"); b.type="button"; b.className="work rv"+(isF?" feat":""); b.setAttribute("data-cursor",t("open"));
+    b.innerHTML='<span class="ph">'+oimg(p.images[0],isF?1920:828,p[lang].t+" — "+p[lang].c+" · MATIÉ")+'</span><span class="row"><span><span class="h3">'+esc(d.t)+'</span><span class="cat">'+esc(d.c)+'</span></span><span class="n">'+String(i+1).padStart(2,"0")+'</span></span>';
     b.setAttribute("aria-label",d.t+". "+d.c);
     b.addEventListener("click",function(){ openProj(i,b.querySelector("img"),p.images[0],b); });
-    g.appendChild(b); });
+    (isF?fe:g).appendChild(b); });
   observe();
 }
 function renderSvc(){
@@ -1046,7 +1152,7 @@ function baEl(pair,la,lb_,cap){
 function baLab(b,k,def){ return (b[k]&&b[k][lang])||t(def); }
 function renderBA(){ var g=$("#baGrid"); g.innerHTML=""; var list=BA, real=SITE.retouch.length>0;
   if(real){ var pairs=BA.filter(function(b){ return b.pair; }), fe=pairs.filter(function(b){ return b.home; }); list=(fe.length?fe:pairs).slice(0,4); }
-  list.forEach(function(b){ g.appendChild(baEl(b,baLab(b,"la","before"),baLab(b,"lb","after"))); });
+  g.classList.toggle("one",list.length===1); list.forEach(function(b){ g.appendChild(baEl(b,baLab(b,"la","before"),baLab(b,"lb","after"))); });
   var all=$("#rtAll"); all.hidden=!real; $("#rtCnt").textContent=real?BA.length:""; observe(); renderRt(); }
 var rtCat="all";
 function renderRt(){ var g=$("#rtG"), f=$("#rtF"); if(!g) return; g.innerHTML=""; f.innerHTML="";
@@ -1071,7 +1177,7 @@ function renderRt(){ var g=$("#rtG"), f=$("#rtF"); if(!g) return; g.innerHTML=""
       f.appendChild(bt); }); }
   f.hidden=cats.length<2;
 }
-function renderIdea(){ var g=$("#ideaGrid"); g.innerHTML=""; IDEA.forEach(function(p){ g.appendChild(p.la?baEl(p,p.la[lang],p.lb[lang],p.lc[lang]):baEl(p,t(p.a),t(p.b),t(p.c))); }); observe(); }
+function renderIdea(){ var g=$("#ideaGrid"); g.innerHTML=""; g.classList.toggle("one",IDEA.length===1); IDEA.forEach(function(p){ g.appendChild(p.la?baEl(p,p.la[lang],p.lb[lang],p.lc[lang]):baEl(p,t(p.a),t(p.b),t(p.c))); }); observe(); }
 function renderMarq(){ var items=SVC.map(function(s){ return s[lang][0]; }); var h=""; for(var k=0;k<2;k++) items.forEach(function(n){ h+='<span>'+esc(n)+'</span><b>✦</b>'; }); $("#marq").innerHTML=h; }
 function renderJournal(){
   var g=$("#jrGrid"); g.innerHTML="";
@@ -1105,11 +1211,11 @@ function setupQty(){ var c=SVC[cState.s].calc, r=$("#cQty"); r.min=c.min; r.max=
 $("#cQty").addEventListener("input",function(e){ cState.q=+e.target.value; calc(); });
 $("#cHi").addEventListener("change",function(e){ cState.hi=e.target.checked; calc(); });
 $("#cIdea").addEventListener("input",function(){ calc(); });
+function priceOf(si,q,ui,hi){ var c=SVC[si].calc, u=SITE.urgency[ui], disc=1; var base=c.per?q*(hi&&c.perHi?c.perHi:c.per):c.base+Math.max(0,q-c.incl)*c.extra; (c.bulk||[]).forEach(function(b){ if(q>=b[0]) disc=b[1]; }); base*=disc; return {total:Math.round(base*u.k/50)*50,disc:disc}; }
+function totalHTML(total){ return lang==="en" ? '<small>'+t("from")+' </small>$'+fxRound(total*FX.usd).toLocaleString("en-US")+' <small>· €'+fxRound(total*FX.eur).toLocaleString("en-US")+'</small>' : '<small>'+t("from")+' </small>'+fmt(total)+' <small>'+t("uah")+'</small>'; }
 function calc(){
-  var s=SVC[cState.s], c=s.calc, q=cState.q, u=SITE.urgency[cState.u], unit=c.unit[L()], disc=1;
-  var base = c.per ? q*(cState.hi&&c.perHi?c.perHi:c.per) : c.base + Math.max(0,q-c.incl)*c.extra;
-  (c.bulk||[]).forEach(function(b){ if(q>=b[0]) disc=b[1]; }); base*=disc;
-  var total = Math.round(base*u.k/50)*50;
+  var s=SVC[cState.s], c=s.calc, q=cState.q, u=SITE.urgency[cState.u], unit=c.unit[L()];
+  var pr=priceOf(cState.s,q,cState.u,cState.hi), disc=pr.disc, total=pr.total;
   $("#cQtyO").innerHTML = q+'<small>'+esc(unit)+'</small>';
   $("#cTotal").innerHTML = lang==="en" ? '<small>'+t("from")+' </small>$'+fxRound(total*FX.usd).toLocaleString("en-US")+' <small>· €'+fxRound(total*FX.eur).toLocaleString("en-US")+'</small>' : '<small>'+t("from")+' </small>'+fmt(total)+' <small>'+t("uah")+'</small>';
   var svcName = s[lang][0]+(cState.hi?" ("+t("hiNote")+")":"");
@@ -1122,6 +1228,43 @@ function calc(){
 $("#cCopy").addEventListener("click",function(){ var m=$("#cMsgT").textContent, st=$("#cStatus");
   try{ navigator.clipboard.writeText(m).then(function(){ st.textContent=t("copied"); },function(){ st.textContent=t("copyFail"); }); }catch(e){ st.textContent=t("copyFail"); } });
 $("#calcForm").addEventListener("submit",function(e){ e.preventDefault(); });
+
+/* ---------- online brief ---------- */
+var bf={step:0,s:0,use:[],sty:[],q:null,u:0,hi:false,via:0}, BFN=7, bfEl=$("#brief");
+function bfChip(name,label,checked,type,onch){ var lab=document.createElement("label"); lab.className="chip"; lab.innerHTML='<input type="'+type+'" name="'+name+'"'+(checked?" checked":"")+'><span>'+esc(label)+'</span>'; lab.querySelector("input").addEventListener("change",onch); return lab; }
+function bfRender(){
+  var sv=$("#bfSvc"); sv.innerHTML=""; SVC.forEach(function(x,i){ sv.appendChild(bfChip("bfsvc",x[lang][0],i===bf.s,"radio",function(){ bf.s=i; bf.q=null; bfQty(); })); });
+  var us=$("#bfUse"); us.innerHTML=""; t("bfUses").forEach(function(x,i){ us.appendChild(bfChip("bfuse"+i,x,bf.use.indexOf(i)>-1,"checkbox",function(e){ if(e.target.checked){ if(bf.use.indexOf(i)<0) bf.use.push(i); } else bf.use=bf.use.filter(function(k){ return k!==i; }); })); });
+  var st=$("#bfStyle"); st.innerHTML=""; PROJ.forEach(function(p,i){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-pressed",String(bf.sty.indexOf(i)>-1)); b.innerHTML='<span class="ph">'+oimg(p.images[0],384,p[lang].t)+'</span><b>'+esc(p[lang].t)+'</b>';
+    b.addEventListener("click",function(){ var k=bf.sty.indexOf(i); if(k>-1) bf.sty.splice(k,1); else { if(bf.sty.length>=3) bf.sty.shift(); bf.sty.push(i); } $$("button",st).forEach(function(x,j){ x.setAttribute("aria-pressed",String(bf.sty.indexOf(j)>-1)); }); }); st.appendChild(b); });
+  var ur=$("#bfUrg"); ur.innerHTML=""; SITE.urgency.forEach(function(u,i){ ur.appendChild(bfChip("bfurg",u[lang][0]+" · "+u[lang][1],i===bf.u,"radio",function(){ bf.u=i; bfPrice(); })); });
+  var vi=$("#bfVia"); vi.innerHTML=""; t("bfVias").forEach(function(x,i){ if(i===2&&!SITE.email) return; vi.appendChild(bfChip("bfvia",x,i===bf.via,"radio",function(){ bf.via=i; })); });
+  bfQty(); bfShow();
+}
+function bfQty(){ var c=SVC[bf.s].calc, r=$("#bfQty"); r.min=c.min; r.max=c.max; r.step=c.step; if(bf.q===null) bf.q=c.incl||c.min; r.value=bf.q; $("#bfHiWrap").style.display=c.perHi?"flex":"none"; if(!c.perHi) bf.hi=false; $("#bfHi").checked=bf.hi; bfPrice(); }
+function bfPrice(){ var c=SVC[bf.s].calc; $("#bfQtyO").innerHTML=bf.q+'<small>'+esc(c.unit[L()])+'</small>'; $("#bfTotal").innerHTML=totalHTML(priceOf(bf.s,bf.q,bf.u,bf.hi).total); }
+$("#bfQty").addEventListener("input",function(e){ bf.q=+e.target.value; bfPrice(); });
+$("#bfHi").addEventListener("change",function(e){ bf.hi=e.target.checked; bfPrice(); });
+function bfMsg(){ var s=SVC[bf.s], c=s.calc, u=SITE.urgency[bf.u], tot=priceOf(bf.s,bf.q,bf.u,bf.hi).total, v=function(id){ return $(id).value.trim(); }, L2=[];
+  L2.push(t("bfHi")); L2.push("— "+t("bfLSvc")+": "+s[lang][0]+(bf.hi?" ("+t("hiNote")+")":""));
+  if(bf.use.length) L2.push("— "+t("bfLUse")+": "+bf.use.slice().sort().map(function(i){ return t("bfUses")[i]; }).join(", "));
+  if(bf.sty.length) L2.push("— "+t("bfLStyle")+": "+bf.sty.map(function(i){ return PROJ[i][lang].t; }).join(", "));
+  L2.push("— "+t("bfLQty")+": "+bf.q+" "+c.unit[L()]); L2.push("— "+t("bfLUrg")+": "+u[lang][0]+" ("+u[lang][1]+")");
+  L2.push("— "+t("bfLPrice")+": "+t("from")+" "+(lang==="en"?money(tot)+" ("+fmt(tot)+" UAH)":fmt(tot)+" "+t("uah")));
+  if(v("#bfBrandI")) L2.push("— "+t("bfLBrand")+": "+v("#bfBrandI")); if(v("#bfIdea")) L2.push("— "+t("bfLIdea")+": "+v("#bfIdea")); if(v("#bfDateI")) L2.push("— "+t("bfLDate")+": "+v("#bfDateI"));
+  if(v("#bfNameI")) L2.push("— "+t("bfLName")+": "+v("#bfNameI")); if(v("#bfHandleI")) L2.push("— "+t("bfLContact")+": "+t("bfVias")[bf.via]+" "+v("#bfHandleI"));
+  return L2.join("\n"); }
+function bfShow(){ var n=bf.step; $$(".bf-step",bfEl).forEach(function(sec){ sec.hidden=+sec.dataset.step!==n; });
+  var pg=$("#bfProg"); pg.innerHTML=""; for(var i=0;i<BFN;i++){ var b=document.createElement("i"); if(i<=n) b.className="on"; pg.appendChild(b); }
+  $("#bfStepN").textContent=t("bfK")+" · "+t("bfStep")+" "+(n+1)+" "+t("bfOf")+" "+BFN;
+  $("#bfBack").style.visibility=n===0?"hidden":"visible"; $("#bfNext").hidden=n===BFN-1;
+  if(n===BFN-1){ var m=bfMsg(); $("#bfMsg").textContent=m; $("#bfTg").href="https://t.me/"+SITE.telegram+"?text="+encodeURIComponent(m);
+    var mb=$("#bfMail"); mb.hidden=!SITE.email; if(SITE.email) mb.href="mailto:"+SITE.email+"?subject="+encodeURIComponent(t("bfSubj"))+"&body="+encodeURIComponent(m); $("#bfStatus").textContent=""; } }
+function bfGo(d){ bf.step=Math.max(0,Math.min(BFN-1,bf.step+d)); bfShow(); bfEl.scrollTop=0; var h=$(".bf-step:not([hidden]) h2",bfEl); if(h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); } }
+$("#bfNext").addEventListener("click",function(){ bfGo(1); }); $("#bfBack").addEventListener("click",function(){ bfGo(-1); });
+$("#bfForm").addEventListener("submit",function(e){ e.preventDefault(); });
+$("#bfCopy").addEventListener("click",function(){ var st=$("#bfStatus"); try{ navigator.clipboard.writeText($("#bfMsg").textContent).then(function(){ st.textContent=t("copied"); },function(){ st.textContent=t("copyFail"); }); }catch(e){ st.textContent=t("copyFail"); } });
+function openBrief(from){ bf.s=cState.s; bf.q=cState.q; bf.u=cState.u; bf.hi=cState.hi; bf.step=0; bfRender(); showOv(bfEl,from); bfEl.classList.add("open"); setTimeout(function(){ bfEl.querySelector("[data-close]").focus({preventScroll:true}); },60); }
 
 /* ---------- reveal ---------- */
 var io=("IntersectionObserver" in window && !RM)?new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target);} }); },{rootMargin:"0px 0px -8% 0px"}):null;
@@ -1211,7 +1354,7 @@ mb.addEventListener("click",function(){ setMenu(!document.body.classList.contain
 var openStack=[], curP=-1, curA=-1;
 function anyOpen(){ return openStack.length>0; }
 function showOv(el,from){ el._from=from||document.activeElement; if(openStack.indexOf(el)<0) openStack.push(el); el.setAttribute("aria-hidden","false"); el.scrollTop=0; document.body.classList.add("locked"); setCursor(""); showTip(""); }
-function hideOv(el){ el.classList.remove("open","fly","flying"); el.setAttribute("aria-hidden","true"); openStack=openStack.filter(function(x){ return x!==el; }); if(!anyOpen() && !document.body.classList.contains("menu-open")) document.body.classList.remove("locked"); if(el===pj){ curP=-1; el.querySelectorAll("video").forEach(function(v){ v.pause(); }); } if(el===artEl){ curA=-1; } if(el===phoEl && location.hash==="#photographers"){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} } var f=el._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
+function hideOv(el){ el.classList.remove("open","fly","flying"); el.setAttribute("aria-hidden","true"); openStack=openStack.filter(function(x){ return x!==el; }); if(!anyOpen() && !document.body.classList.contains("menu-open")) document.body.classList.remove("locked"); if(el===pj){ curP=-1; if(PROJ.some(function(p){ return "#"+p.id===location.hash; })) setHash(""); el.querySelectorAll("video").forEach(function(v){ v.pause(); }); } if(el===artEl){ curA=-1; } if(el===phoEl && location.hash==="#photographers"){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} } var f=el._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
 $$("[data-close]").forEach(function(b){ b.addEventListener("click",function(){ hideOv(b.closest(".ov")); }); });
 
 var pj=$("#proj");
@@ -1234,8 +1377,9 @@ function fillProj(i,coverUrl){ var p=PROJ[i], d=p[lang]; if(coverUrl) $("#pCover
     if(vio) vio.observe(v); else if(!RM) v.play().catch(function(){}); vw.appendChild(c); }); $("#pVidW").hidden=!(p.videos&&p.videos.length);
   var g=$("#pGal"); g.innerHTML=""; g.classList.toggle("full",!!p.full); p.images.forEach(function(u,j){ var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label",t("photo")+" "+(j+1)+" "+t("of")+" "+p.images.length); b.setAttribute("data-cursor","+"); b.innerHTML=oimg(u,1920,p[lang].t+" — "+p[lang].c+", "+t("photo").toLowerCase()+" "+(j+1)); b.addEventListener("click",function(){ openLb(p.images,j,b,p[lang].t); }); g.appendChild(b); }); }
 var vio=("IntersectionObserver" in window)?new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target; if(e.isIntersecting && !RM){ v.play().catch(function(){}); } else { v.pause(); } }); },{threshold:.35}):null;
+function setHash(h){ try{ history.replaceState(null,"",h?"#"+h:location.pathname+location.search); }catch(e){} }
 function openProj(i,srcImg,url,from){
-  curP=i; fillProj(i,url||PROJ[i].images[0]); showOv(pj,from);
+  curP=i; setHash(PROJ[i].id); fillProj(i,url||PROJ[i].images[0]); showOv(pj,from);
   if(srcImg && !RM){
     var r=srcImg.getBoundingClientRect(); pj.classList.add("fly","flying"); void pj.offsetWidth;
     var fl=document.createElement("div"); fl.className="flyer"; fl.style.cssText="left:"+r.left+"px;top:"+r.top+"px;width:"+r.width+"px;height:"+r.height+"px"; fl.innerHTML='<img src="'+(url||PROJ[i].images[0])+'" alt="">'; document.body.appendChild(fl);
@@ -1246,7 +1390,7 @@ function openProj(i,srcImg,url,from){
   } else { pj.classList.add("open"); }
   setTimeout(function(){ var c=pj.querySelector("[data-close]"); if(c) c.focus({preventScroll:true}); },60);
 }
-$("#pNext").addEventListener("click",function(){ var n=(curP+1)%PROJ.length; pj.classList.remove("open","fly"); setTimeout(function(){ curP=n; fillProj(n,PROJ[n].images[0]); pj.scrollTop=0; pj.classList.add("open"); pj.querySelector("[data-close]").focus({preventScroll:true}); },RM?0:500); });
+$("#pNext").addEventListener("click",function(){ var n=(curP+1)%PROJ.length; pj.classList.remove("open","fly"); setTimeout(function(){ curP=n; setHash(PROJ[n].id); fillProj(n,PROJ[n].images[0]); pj.scrollTop=0; pj.classList.add("open"); pj.querySelector("[data-close]").focus({preventScroll:true}); },RM?0:500); });
 
 var artEl=$("#art");
 function fillArt(i){ var a=SITE.journal[i], d=a[lang], p=PROJ[a.proj]; $("#aCover").src=a.cover||p.images[a.img%p.images.length]; $("#aTitle").textContent=d.t; $("#aMeta").textContent=d.m;
@@ -1260,6 +1404,7 @@ function openPho(from){ showOv(phoEl,from); phoEl.classList.add("open"); setTime
 document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return; var h=a.getAttribute("href");
   if(document.body.classList.contains("menu-open")) setMenu(false);
   if(h==="#photographers"){ e.preventDefault(); openPho(a); return; }
+  if(h==="#brief"){ e.preventDefault(); var bo=a.closest(".ov"); if(bo) hideOv(bo); openBrief(a); return; }
   if(h==="#retouching"){ e.preventDefault(); var po=a.closest(".ov"); if(po) hideOv(po); openRt(a); return; }
   var ov=a.closest(".ov"); if(ov && h!=="#"+ov.id){ e.preventDefault(); hideOv(ov); var tg=$(h); if(tg) setTimeout(function(){ tg.scrollIntoView({behavior:RM?"auto":"smooth"}); },RM?0:400); }
 });
@@ -1267,15 +1412,38 @@ document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.
 /* lightbox */
 var lb=$("#lb"), lbList=[], gi=0;
 var lbTitle="";
-function showLb(){ var im=$("#lbImg"); im.src=lbList[gi]; im.alt=(lbTitle||"MATIÉ — AI visual")+" · "+(gi+1)+" / "+lbList.length; $("#lbC").textContent=(gi+1)+" / "+lbList.length; }
+var zs={z:1,x:0,y:0};
+function zApply(anim){ var im=$("#lbImg"); im.style.transition=anim?"transform .35s var(--ease)":"none"; im.style.transform=zs.z>1.001?"translate("+zs.x+"px,"+zs.y+"px) scale("+zs.z+")":""; lb.classList.toggle("zoomed",zs.z>1.01); }
+function zClamp(){ var im=$("#lbImg"), w=im.offsetWidth, h=im.offsetHeight, mx=Math.max(0,(w*zs.z-innerWidth)/2), my=Math.max(0,(h*zs.z-innerHeight)/2); zs.x=Math.max(-mx,Math.min(mx,zs.x)); zs.y=Math.max(-my,Math.min(my,zs.y)); }
+function zTo(nz,cx,cy,anim){ var im=$("#lbImg"); nz=Math.max(1,Math.min(5,nz)); var bx=im.offsetLeft+im.offsetWidth/2, by=im.offsetTop+im.offsetHeight/2;
+  zs.x=(cx-bx)-((cx-bx)-zs.x)*nz/zs.z; zs.y=(cy-by)-((cy-by)-zs.y)*nz/zs.z; zs.z=nz; if(nz<=1.001){ zs.x=zs.y=0; } zClamp(); zApply(anim); if(nz>1.01) $("#lbZh").hidden=true; }
+function zReset(){ zs={z:1,x:0,y:0}; zApply(false); }
+function showLb(){ zReset(); var im=$("#lbImg"); im.src=lbList[gi]; im.alt=(lbTitle||"MATIÉ — AI visual")+" · "+(gi+1)+" / "+lbList.length; $("#lbC").textContent=(gi+1)+" / "+lbList.length; }
 function openLb(list,j,from,title){ lbTitle=title||""; lbList=list; gi=j; lb._from=from||document.activeElement; lb.classList.toggle("single",list.length<2); showLb(); lb.classList.add("open"); document.body.classList.add("locked"); $("#lbX").focus(); }
-function closeLb(){ lb.classList.remove("open"); if(!anyOpen()) document.body.classList.remove("locked"); var f=lb._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
+function closeLb(){ zReset(); lb.classList.remove("open"); if(!anyOpen()) document.body.classList.remove("locked"); var f=lb._from; if(f&&f.focus&&document.contains(f)) f.focus(); }
 function step(d){ gi=(gi+d+lbList.length)%lbList.length; showLb(); }
 $("#lbX").addEventListener("click",closeLb); $("#lbP").addEventListener("click",function(){ step(-1); }); $("#lbN").addEventListener("click",function(){ step(1); });
-var sx0=null; lb.addEventListener("pointerdown",function(e){ sx0=e.clientX; }); lb.addEventListener("pointerup",function(e){ if(sx0===null) return; var dx=e.clientX-sx0; sx0=null; if(Math.abs(dx)>50 && lbList.length>1) step(dx<0?1:-1); });
+(function(){ var pts=new Map(), pinch=null, pan=null, wasPinch=false, lastTap=0, lastX=0, lastY=0;
+  var dist=function(){ var a=Array.from(pts.values()); return Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y); };
+  var mid=function(){ var a=Array.from(pts.values()); return {x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}; };
+  lb.addEventListener("pointerdown",function(e){ if(e.target.closest("button")) return; pts.set(e.pointerId,{x:e.clientX,y:e.clientY}); try{ lb.setPointerCapture(e.pointerId); }catch(er){}
+    if(pts.size===2){ var m=mid(); pinch={d:dist(),z:zs.z}; wasPinch=true; pan=null; }
+    else if(pts.size===1){ pan={x:e.clientX,y:e.clientY,sx:zs.x,sy:zs.y,moved:false}; wasPinch=false; } });
+  lb.addEventListener("pointermove",function(e){ if(!pts.has(e.pointerId)) return; pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pinch && pts.size===2){ var m=mid(); zTo(pinch.z*dist()/pinch.d,m.x,m.y,false); return; }
+    if(pan){ var dx=e.clientX-pan.x, dy=e.clientY-pan.y; if(Math.abs(dx)+Math.abs(dy)>6) pan.moved=true; if(zs.z>1.01){ zs.x=pan.sx+dx; zs.y=pan.sy+dy; zClamp(); zApply(false); } } });
+  var end=function(e){ if(!pts.has(e.pointerId)) return; pts.delete(e.pointerId);
+    if(pinch){ if(pts.size<2) pinch=null; if(zs.z<1.05) zTo(1,0,0,true); if(pts.size===1){ var r=Array.from(pts.values())[0]; pan={x:r.x,y:r.y,sx:zs.x,sy:zs.y,moved:true}; } return; }
+    if(!pan) return; var dx=e.clientX-pan.x, mv=pan.moved; pan=null; if(wasPinch) return;
+    if(!mv){ var now=Date.now(); if(now-lastTap<320 && Math.hypot(e.clientX-lastX,e.clientY-lastY)<40){ lastTap=0; if(zs.z>1.01) zTo(1,0,0,true); else zTo(2.6,e.clientX,e.clientY,true); } else { lastTap=now; lastX=e.clientX; lastY=e.clientY; } return; }
+    if(zs.z<=1.01 && Math.abs(dx)>50 && lbList.length>1) step(dx<0?1:-1); };
+  lb.addEventListener("pointerup",end); lb.addEventListener("pointercancel",end);
+  lb.addEventListener("wheel",function(e){ if(!lb.classList.contains("open")) return; e.preventDefault(); zTo(zs.z*Math.exp(-e.deltaY*0.0022),e.clientX,e.clientY,false); },{passive:false});
+  lb.addEventListener("dblclick",function(e){ e.preventDefault(); });
+})();
 
 document.addEventListener("keydown",function(e){
-  if(lb.classList.contains("open")){ if(e.key==="Escape") closeLb(); else if(e.key==="ArrowRight") step(1); else if(e.key==="ArrowLeft") step(-1); else if(e.key==="Tab") trap(e,lb); return; }
+  if(lb.classList.contains("open")){ if(e.key==="Escape"){ if(zs.z>1.01) zTo(1,0,0,true); else closeLb(); } else if(e.key==="+"||e.key==="="){ zTo(zs.z*1.5,innerWidth/2,innerHeight/2,true); } else if(e.key==="-"){ zTo(zs.z/1.5,innerWidth/2,innerHeight/2,true); } else if(e.key==="ArrowRight") step(1); else if(e.key==="ArrowLeft") step(-1); else if(e.key==="Tab") trap(e,lb); return; }
   if(anyOpen()){ var top=openStack[openStack.length-1]; if(e.key==="Escape") hideOv(top); else if(e.key==="Tab") trap(e,top); return; }
   if(document.body.classList.contains("menu-open")){ if(e.key==="Escape"){ setMenu(false); mb.focus(); } else if(e.key==="Tab") trap(e,document.body,[mb].concat($$("#mnav a"))); }
 });
@@ -1288,6 +1456,8 @@ build().then(function(){
   ready=true; applyLang(); buildSphere(); requestAnimationFrame(frame);
   if(location.hash==="#photographers") openPho(null);
   if(location.hash==="#retouching") openRt(null);
+  if(location.hash==="#brief") openBrief(null);
+  var hp=-1; PROJ.forEach(function(p,k){ if(location.hash==="#"+p.id || decodeURIComponent(location.hash)==="#"+p.id) hp=k; }); if(hp>-1) openProj(hp,null,null,null);
   var wait=Math.max(0,(RM?200:1900)-(performance.now()-t0));
   setTimeout(function(){
     pre.classList.add("out"); pre.addEventListener("transitionend",function(){ pre.style.display="none"; },{once:true});
